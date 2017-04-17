@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+	
+	<!-- <import resource="server-protocols.xml"></import> -->
+	
+	<context:annotation-config />
+	
+	<!-- Configure all properties files here, wildcards like *.properties are also allowed -->
+	<!-- <context:property-placeholder
+		location="classpath:props/server.properties" /> -->
+		
+	<util:properties id="appProperties" location="classpath:props/server.properties" />
+	<context:property-placeholder properties-ref="appProperties"/>		
+		
+	<!-- The Spring application context -->
+	<bean id="appContext" class="com.aiblockchain.context.AppContext"></bean>
+	
+	<bean id="DbManager" class="com.aiblockchain.service.db.DbManagerImpl"></bean>
+	<bean id="FileManager" class="com.aiblockchain.service.file.FileManagerImpl"></bean>
+	<bean id="UtilsManager" class="com.aiblockchain.service.aiutils.UtilsManagerImpl">
+		<!-- <property name="properties" ref="appProperties"/> -->
+	</bean>
+	<bean id="AWSServiceManager" class="com.aiblockchain.service.aws.AWSServiceManagerImpl"></bean>
+		
+	<bean id="AIBlockChainResource" class="com.aiblockchain.rest.resource.AIBlockChainResource"></bean>
+	<bean id="SapHana2Resource" class="com.aiblockchain.rest.resource.SapHana2Resource">
+		<!-- <property name="utils" ref="UtilsManager"/> -->
+	</bean>
+
+	
+<!-- 	<bean id="NettyServer" class="com.aiblockchain.server.NettyServer">
+		<property name="portNumber" value="${default.server.port}"></property>
+	</bean> -->
+	
+	<!-- <bean id="tcpServer" class= "org.menacheri.jetserver.server.netty.NettyTCPServer"
+		init-method="createServerBootstrap" destroy-method="stopServer">
+		<property name="pipelineFactory" ref="protocolMultiplexerPipelineFactory"></property>
+		<property name="gameAdminService" ref="gameAdminService"></property>
+		<property name="portNumber" value="${tcp.port}"></property>
+	</bean>
+
+	<bean id="udpServer" class="org.menacheri.jetserver.server.netty.NettyUDPServer"
+		init-method="createServerBootstrap" destroy-method="stopServer">
+		<property name="pipelineFactory" ref="updChannelPipelineFactory"></property>
+		<property name="gameAdminService" ref="gameAdminService"></property>
+		<property name="bufferSizePredictor" ref="bufferSizePredictor"></property>
+		<property name="portNumber" value="${udp.port}"></property>
+	</bean>
+
+	Configure the Flash policy server. By default it runs at 843
+	<bean id="flashPolicyServer" class="org.menacheri.jetserver.server.netty.FlashPolicyServer"
+		init-method="createServerBootstrap" destroy-method="stopServer">
+		<property name="pipelineFactory" ref="flashPolicyServerPipelineFactory"></property>
+		<property name="gameAdminService" ref="gameAdminService"></property>
+		<property name="portNumber" value="${flash.policy.port}"></property>
+	</bean>
+
+	All the pipeline factory beans are now defined
+	<bean id="flashPolicyServerPipelineFactory" class="org.menacheri.jetserver.server.netty.FlashPolicyServerPipelineFactory">
+		<lookup-method name="getFlashPolicyServerHandler" bean="flashPolicyServerHandler"/>
+		<property name="timer" ref="hashedWheelTimer"></property>
+	</bean>
+		
+	<bean id="loginPipelineFactory" class="org.menacheri.jetserver.server.netty.LoginPipelineFactory">
+		<property name="frameSize" value="1024"></property>
+		<property name="timer" ref="hashedWheelTimer"></property>
+		<property name="idleCheckHandler" ref="idleCheckHandler"></property>
+		<property name="eventDecoder" ref="eventDecoder"></property>
+		<property name="loginHandler" ref="loginHandler"></property>
+		<property name="lengthFieldPrepender" ref="lengthFieldPrepender"></property>
+	</bean>
+	
+	<bean id="updChannelPipelineFactory" class="org.menacheri.jetserver.server.netty.UDPChannelPipelineFactory" 
+	init-method="init">
+		<property name="messageBufferEventDecoder" ref="messageBufferEventDecoder"></property>
+		<property name="messageBufferEventEncoder" ref="messageBufferEventEncoder"></property>
+		<property name="upstream" ref="udpUpstreamHandler"></property>
+	</bean>
+	
+	<bean id="protocolMultiplexerPipelineFactory" class="org.menacheri.jetserver.server.netty.ProtocolMultiplexerPipelineFactory">
+		<property name="bytesForProtocolCheck" value="5"></property>
+		<property name="loginProtocol" ref="compositeLoginProtocol"></property>
+		<property name="timer" ref="hashedWheelTimer"></property>
+		<property name="idleCheckHandler" ref="idleCheckHandler"></property>
+	</bean>
+	
+	<bean id="hashedWheelTimer" class="org.jboss.netty.util.HashedWheelTimer"></bean>
+
+	Netty channelgroup
+	<bean id="defaultChannelGroup" class="org.jboss.netty.channel.group.DefaultChannelGroup" scope="prototype"></bean>
+	
+	Buffer size predictor is used to create the UDP server
+	<bean id="bufferSizePredictor" class="org.jboss.netty.channel.FixedReceiveBufferSizePredictorFactory">
+		<constructor-arg type="int" value="1024"></constructor-arg>
+	</bean> -->
+	
+</beans>
