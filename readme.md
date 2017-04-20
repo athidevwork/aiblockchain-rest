@@ -1,15 +1,21 @@
-One-jar standalone
+This server can be run as a stand alone java server using runServer.sh or as a docker container which can be built using build.sh
 
-Go to the project folder and run mvn clean package. 
+build.sh script assumes docker is installed in the environment. If not docker commands will fail.
 
-The file target/aiblockchain-rest.jar will be created
+Go to the project folder and run mvn clean package docker:build. 
 
-Run Netty server on port 5000:
+This would create two versions of the jar in the target folder, 
+original-aiblockchain-rest.jar which does not have any dependant libraries used by runServer.sh 
+and 
+aiblockchain-rest.jar which was built specifically to be run a docker container with all dependant libraries included in it.
 
-java -jar target/aiblockchain-rest-0.0.1-SNAPSHOT.jar 5000
+
+To run Netty server on port 5000:
+
+java -Dlog4j.debug -Dlog4j.configuration=log4j.properties -jar target/original-aiblockchain-rest.jar 5000 $@
 
 ===================================================================================
-Hana Test
+Hana Test scenarios as it stands,
 
 http://localhost:5000/saphana2/share?bucketName=aiblockchain&keyName=upload.JPG
 
@@ -61,3 +67,13 @@ Read file from AWS S3:
 
 Write file to AWS S3:
 	http://localhost:5000/aiblockchain/writeToS3?bucket=aiblockchain&key=upload.JPG&file=C:\Users\User\Dropbox\Camera Uploads\IMG_0112.JPG
+
+
+For AWS S3 to make it work, a user has to be created with access id and key and proper permissions (AWSS3FullAccess or AWSS3ReadOnlyAccess as needed)
+
+Also create the ~/.aws/credentials file with the following lines, with user details created in the earlier step.
+
+[default]
+aws_access_key_id=
+aws_secret_access_key=
+

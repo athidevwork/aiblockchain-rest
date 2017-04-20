@@ -275,7 +275,39 @@
 			    </executions>
 			</plugin>
 			
-	        <plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.4.10</version>
+				<configuration>
+					<imageName>aiblockchain-rest</imageName>
+					<imageTags>
+			           <!-- <imageTag>${project.version}</imageTag> -->
+			           <imageTag>latest</imageTag>
+			        </imageTags>
+					<baseImage>java:8</baseImage>
+					<entryPoint>["java", "-cp", "target/lib/*:target/aiblockchain-rest.jar", "-Dlog4j.debug", "-Dlog4j.configuration=log4j.properties", "-jar", "/apps/${project.build.finalName}.jar", "5000"]</entryPoint>
+					<pushImage>false</pushImage>
+					<!-- copy the service's jar file from target into the root directory of the image -->
+					<resources>
+						<resource>
+							<targetPath>/apps/</targetPath>
+							<directory>${project.build.directory}</directory>
+				            <includes>
+				                <include>${project.build.directory}/log4j.properties</include>
+                                <include>${project.build.finalName}.jar</include>				                
+				            </includes>							
+							<excludes>
+							     <exclude>*.iml</exclude>
+							     <exclude>pom.xml</exclude>
+							     <!-- <exclude>target/**/*</exclude> -->
+							</excludes>
+						</resource>
+					</resources>
+				</configuration>
+			</plugin>
+			
+<!-- 	        <plugin>
 	            <groupId>org.apache.maven.plugins</groupId>
 	            <artifactId>maven-jar-plugin</artifactId>
 	            <version>3.0.2</version>
@@ -284,9 +316,9 @@
 						<descriptorRef>jar-with-dependencies</descriptorRef>
 					</descriptorRefs>
 	                <archive>
-	                    <!-- <index>true</index> -->
+	                    <index>true</index>
 	                    <manifest>
-	                        <!-- <addClasspath>true</addClasspath> -->
+	                        <addClasspath>true</addClasspath>
 	                        <mainClass>com.aiblockchain.server.NettyServerMain</mainClass>
 	                    </manifest>
 	                    <manifestEntries>
@@ -297,7 +329,7 @@
 	                    </manifestEntries>
 	                </archive>
 	            </configuration>
-	        </plugin>
+	        </plugin> -->
         			
 			<!-- 
 		      <plugin>
@@ -320,7 +352,42 @@
 		        </execution>
 		       </executions>
 		      </plugin>	
-		       -->					    		
+		       -->	
+		       
+		    <!-- Need this to run in docker -->
+	        <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-shade-plugin</artifactId>
+	            <version>2.4.3</version>
+	            <executions>
+	                <execution>
+	                    <phase>package</phase>
+	                    <goals>
+	                        <goal>shade</goal>
+	                    </goals>
+				        <configuration>
+				          <filters>
+				            <filter>
+				              <artifact>*:*</artifact>
+				              <excludes>
+				                <exclude>META-INF/*.SF</exclude>
+				                <exclude>META-INF/*.DSA</exclude>
+				                <exclude>META-INF/*.RSA</exclude>
+				              </excludes>
+				            </filter>
+				          </filters>
+			              <transformers>
+			                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+			                  <resource>META-INF/spring.handlers</resource>
+			                </transformer>
+			                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+			                  <resource>META-INF/spring.schemas</resource>
+			                </transformer>
+			              </transformers>				          
+				        </configuration>
+	                </execution>
+	            </executions>
+	        </plugin>		       				    		
 		</plugins>	
 	</build>
 </project>
