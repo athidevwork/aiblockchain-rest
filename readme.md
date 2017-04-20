@@ -1,5 +1,4 @@
-This server can be run as a stand alone java server using runServer.sh or as a docker container which can be built using build.sh
-
+This server can be run as a stand alone java server using runServer.sh or as a docker container which can be built using build.sh 
 build.sh script assumes docker is installed in the environment. If not docker commands will fail.
 
 Go to the project folder and run mvn clean package docker:build. 
@@ -74,6 +73,8 @@ For AWS S3 to make it work, a user has to be created with access id and key and 
 Also create the ~/.aws/credentials file with the following lines, with user details created in the earlier step.
 
 [default]
+
 aws_access_key_id=
+
 aws_secret_access_key=
 
