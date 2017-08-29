@@ -62,6 +62,12 @@
 		    <version>2.25.1</version>
 		</dependency>
 		
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>2.25.1</version>
+		</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api -->
 		<!--  <dependency>
 		    <groupId>javax.ws.rs</groupId>
@@ -154,7 +160,22 @@
 			<artifactId>jersey-json</artifactId>
 			<version>1.19.3</version>
 		</dependency>	
-		 -->		 
+		 -->
+<!-- 		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<version>4.5.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient-cache</artifactId>
+			<version>4.5.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>4.4.6</version>
+		</dependency> -->
 	</dependencies>  
 	
 	<build>
