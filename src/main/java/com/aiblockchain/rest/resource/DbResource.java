@@ -1,6 +1,5 @@
 package com.aiblockchain.rest.resource;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.GET;

@@ -1,0 +1,1790 @@
+{
+    "MessageId": "Message-502000755-H004344",
+	"CorrelationId": "1-H004344",
+    "Address": [
+        {
+            "key": "11",
+            "AddressNumberId": "11",
+            "LineOne": "5814 Reed Road",
+            "CityName": "Fort Wayne",
+            "CountyCode": "1702",
+            "StateOrProvinceCode": {
+                "value": "IN"
+            },
+            "PostalCode": "46835",
+            "CountryCode": {
+                "value": "USA"
+            },
+            "PostOfficeAddressIndicator": {
+                "value": "false"
+            }
+        },
+        {
+            "key": "80114131",
+            "AddressNumberId": "80114131",
+            "LineOne": "2573 Oak Bluff Dr",
+            "CityName": "Dacula",
+            "CountyCode": "1167",
+            "StateOrProvinceCode": {
+                "value": "GA"
+            },
+            "PostalCode": "30019",
+            "CountryCode": {
+                "value": "USA"
+            },
+            "PostOfficeAddressIndicator": {
+                "value": "false"
+            }
+        },
+        {
+            "key": "573511421",
+            "AddressNumberId": "573511421",
+            "LineOne": "104 Turtle Cay #10",
+            "CityName": "Wilmington",
+            "CountyCode": "3265",
+            "StateOrProvinceCode": {
+                "value": "NC"
+            },
+            "PostalCode": "28412",
+            "CountryCode": {
+                "value": "USA"
+            },
+            "PostOfficeAddressIndicator": {
+                "value": "false"
+            }
+        },
+        {
+            "key": "751900870",
+            "AddressNumberId": "751900870",
+            "LineOne": "P.O. Box 88523",
+            "CityName": "Colorado Springs",
+            "CountyCode": "620",
+            "StateOrProvinceCode": {
+                "value": "CO"
+            },
+            "PostalCode": "80908",
+            "CountryCode": {
+                "value": "USA"
+            },
+            "PostOfficeAddressIndicator": {
+                "value": "false"
+            }
+        },
+        {
+            "key": "259814123",
+            "AddressNumberId": "259814123",
+            "LineOne": "931 Tullis Rd",
+            "CityName": "Lawrenceville",
+            "CountyCode": "1167",
+            "StateOrProvinceCode": {
+                "value": "GA"
+            },
+            "PostalCode": "30043",
+            "CountryCode": {
+                "value": "USA"
+            },
+            "PostOfficeAddressIndicator": {
+                "value": "false"
+            }
+        },
+        {
+            "key": "984185684",
+            "AddressNumberId": "984185684",
+            "LineOne": "Attn: Patti Sollers",
+            "LineTwo": "PO Box 818",
+            "CityName": "Marion",
+            "StateOrProvinceCode": {
+                "value": "IL"
+            },
+            "PostalCode": "62959",
+            "CountryCode": {
+                "value": "USA"
+            },
+            "AttentionName": "HealthPro Insurance ",
+            "PostOfficeAddressIndicator": {}
+        },
+        {
+            "key": "89033322",
+            "AddressNumberId": "89033322",
+            "LineOne": "5814 Reed Rd.",
+            "CityName": "Fort Wayne",
+            "CountyCode": "1702",
+            "StateOrProvinceCode": {
+                "value": "IN"
+            },
+            "PostalCode": "46835",
+            "CountryCode": {
+                "value": "USA"
+            },
+            "PostOfficeAddressIndicator": {
+                "value": "false"
+            }
+        },
+        {
+            "key": "366995158",
+            "AddressNumberId": "366995158",
+            "LineOne": "3501 We Knight Dr",
+            "CityName": "Fort Smith",
+            "CountyCode": "131",
+            "StateOrProvinceCode": {
+                "value": "AR"
+            },
+            "PostalCode": "72903",
+            "CountryCode": {
+                "value": "USA"
+            },
+            "PostOfficeAddressIndicator": {}
+        },
+        {
+            "key": "154678440",
+            "AddressNumberId": "154678440",
+            "LineOne": "3501 We Knight Dr",
+            "CityName": "Fort Smith",
+            "CountyCode": "131",
+            "StateOrProvinceCode": {
+                "value": "AR"
+            },
+            "PostalCode": "72903",
+            "CountryCode": {
+                "value": "USA"
+            },
+            "PostOfficeAddressIndicator": {}
+        }
+    ],
+    "Person": [
+        {
+            "key": "89033320",
+            "PersonNumberId": "89033320",
+            "ClientId": "0000251101",
+            "GenderCode": "M",
+            "PersonName": {
+                "Surname": "Bricker",
+                "GivenName": "Timothy",
+                "FullName": "Bricker, Timothy"
+            },
+            "BusinessEmail": [
+                {
+                    "key": "1"
+                },
+                {
+                    "key": "2"
+                },
+                {
+                    "key": "3"
+                }
+            ],
+            "BasicPhoneNumber": [
+                {
+                    "key": "281816377",
+                    "PhoneNumberId": "281816377",
+                    "PhoneTypeCode": {
+                        "value": "OFFICE"
+                    },
+                    "PhoneNumber": "+1-260-4860450",
+                    "PrimaryIndicator": {
+                        "value": "false"
+                    }
+                }
+            ],
+            "BasicAddress": [
+                {
+                    "addressReference": "89033322",
+                    "key": "89033322",
+                    "PrimaryIndicator": {
+                        "value": "true"
+                    },
+                    "FuturePrimaryIndicator": {
+                        "value": "false"
+                    },
+                    "AddressTypeCode": {
+                        "value": "OFFICE"
+                    },
+                    "AddressPeriod": {
+                        "StartDate": "2011-07-07",
+                        "EndDate": "3000-01-01"
+                    }
+                }
+            ],
+            "EducationInformation": [],
+            "ProfessionalLicense": [],
+            "Certification": [],
+            "Contact": [],
+            "PartyNote": [],
+            "Relationship": [],
+            "PartyClassification": [
+                {
+                    "key": "281471713",
+                    "ClassificationNumberId": "281471713",
+                    "ClassificationCode": "UNDWRITER",
+                    "SubClassificationCode": "POLUNDWRTR",
+                    "EffectivePeriod": {
+                        "StartDate": "2013-01-01",
+                        "EndDate": "3000-01-01"
+                    }
+                }
+            ]
+        },
+        {
+            "key": "154285688",
+            "PersonNumberId": "154285688",
+            "ClientId": "0000449753",
+            "ExternalReferenceId": "POLICY_751015",
+            "GenderCode": "U",
+            "SocialSecurityNumberId": "427042538",
+            "BirthDate": "1955-12-10",
+            "PersonName": {
+                "Surname": "Johnson",
+                "GivenName": "Arthur",
+                "OtherGivenName": "M",
+                "FullName": "Johnson, Arthur"
+            },
+            "BusinessEmail": [
+                {
+                    "key": "1"
+                },
+                {
+                    "key": "2"
+                },
+                {
+                    "key": "3"
+                }
+            ],
+            "BasicPhoneNumber": [],
+            "BasicAddress": [
+                {
+                    "addressReference": "366995158",
+                    "key": "366995158",
+                    "PrimaryIndicator": {
+                        "value": "true"
+                    },
+                    "FuturePrimaryIndicator": {
+                        "value": "false"
+                    },
+                    "AddressTypeCode": {
+                        "value": "OFFICE"
+                    },
+                    "AddressPeriod": {
+                        "StartDate": "2014-03-17",
+                        "EndDate": "3000-01-01"
+                    }
+                },
+                {
+                    "addressReference": "154678440",
+                    "key": "154678440",
+                    "PrimaryIndicator": {
+                        "value": "false"
+                    },
+                    "FuturePrimaryIndicator": {
+                        "value": "false"
+                    },
+                    "AddressTypeCode": {
+                        "value": "OFFICE"
+                    },
+                    "AddressPeriod": {
+                        "StartDate": "1901-01-01",
+                        "EndDate": "2014-03-17"
+                    }
+                }
+            ],
+            "EducationInformation": [
+                {
+                    "key": "154854712",
+                    "EducationInformationNumberId": "154854712",
+                    "EducationTypeCode": "MEDSCHOOL",
+                    "GraduationYear": "0",
+                    "EducationalInstitution": {
+                        "InstitutionName": "Univ Of Mississippi School Of Med",
+                        "CountryCode": "USA",
+                        "City": "Jackson",
+                        "StateOrProvinceCode": {
+                            "value": "MS"
+                        }
+                    }
+                }
+            ],
+            "ProfessionalLicense": [
+                {
+                    "key": "154814351",
+                    "LicenseNumberId": "154814351",
+                    "LicenseNumber": "E1847",
+                    "LicensePeriod": {},
+                    "StateOrProvinceCode": {},
+                    "SuspensionReinstatementInformation": {
+                        "LicenseSuspensionPeriod": {}
+                    }
+                }
+            ],
+            "Certification": [],
+            "Contact": [],
+            "PartyNote": [],
+            "Relationship": [],
+            "PartyClassification": []
+        }
+    ],
+    "Organization": [
+        {
+            "key": "1",
+            "OrganizationNumberId": "1",
+            "ClientId": "0000006236",
+            "ExternalReferenceId": "POLICY_000000",
+            "OrganizationName": {
+                "FullName": "The Medical Protective Company"
+            },
+            "BusinessEmail": [
+                {
+                    "key": "1"
+                },
+                {
+                    "key": "2"
+                },
+                {
+                    "key": "3"
+                }
+            ],
+            "BasicPhoneNumber": [],
+            "BasicAddress": [
+                {
+                    "addressReference": "11",
+                    "key": "11",
+                    "PrimaryIndicator": {
+                        "value": "true"
+                    },
+                    "FuturePrimaryIndicator": {
+                        "value": "false"
+                    },
+                    "AddressTypeCode": {
+                        "value": "OFFICE"
+                    },
+                    "AddressPeriod": {
+                        "StartDate": "1930-01-01",
+                        "EndDate": "3000-01-01"
+                    }
+                }
+            ],
+            "ProfessionalLicense": [],
+            "Certification": [],
+            "PartyNote": [],
+            "Relationship": [],
+            "PartyClassification": [
+                {
+                    "key": "16892511",
+                    "ClassificationNumberId": "16892511",
+                    "ClassificationCode": "INSCOMPANY",
+                    "EffectivePeriod": {
+                        "StartDate": "2008-04-29"
+                    }
+                },
+                {
+                    "key": "31",
+                    "ClassificationNumberId": "31",
+                    "ClassificationCode": "ISSUECOMP",
+                    "SubClassificationCode": "MPCO",
+                    "EffectivePeriod": {
+                        "StartDate": "1900-01-01",
+                        "EndDate": "3000-01-01"
+                    }
+                }
+            ]
+        },
+        {
+            "key": "80114129",
+            "OrganizationNumberId": "80114129",
+            "ClientId": "0000248415",
+            "ExternalReferenceId": "2154/5056",
+            "FEINId": "264793693",
+            "OrganizationName": {
+                "FullName": "AB Risk Specialist Inc"
+            },
+            "BusinessEmail": [
+                {
+                    "key": "1"
+                },
+                {
+                    "key": "2"
+                },
+                {
+                    "key": "3"
+                }
+            ],
+            "BasicPhoneNumber": [
+                {
+                    "addressReference": "80114131",
+                    "key": "80114133",
+                    "PhoneNumberId": "80114133",
+                    "PhoneTypeCode": {
+                        "value": "OFFICE"
+                    },
+                    "PhoneNumber": "+1-770-3393359",
+                    "PrimaryIndicator": {
+                        "value": "false"
+                    }
+                },
+                {
+                    "addressReference": "259814123",
+                    "key": "259814127",
+                    "PhoneNumberId": "259814127",
+                    "PhoneTypeCode": {
+                        "value": "OFFICE"
+                    },
+                    "PhoneNumber": "+1-770-3393359",
+                    "PrimaryIndicator": {
+                        "value": "false"
+                    }
+                },
+                {
+                    "addressReference": "751900870",
+                    "key": "751901163",
+                    "PhoneNumberId": "751901163",
+                    "PhoneTypeCode": {
+                        "value": "OFFICE"
+                    },
+                    "PhoneNumber": "+1-719-3095949",
+                    "PrimaryIndicator": {
+                        "value": "false"
+                    }
+                }
+            ],
+            "BasicAddress": [
+                {
+                    "addressReference": "80114131",
+                    "key": "80114131",
+                    "PrimaryIndicator": {
+                        "value": "false"
+                    },
+                    "FuturePrimaryIndicator": {
+                        "value": "false"
+                    },
+                    "AddressTypeCode": {
+                        "value": "OFFICE"
+                    },
+                    "AddressPeriod": {
+                        "StartDate": "2011-03-09",
+                        "EndDate": "2011-03-09"
+                    }
+                },
+                {
+                    "addressReference": "573511421",
+                    "key": "573511421",
+                    "PrimaryIndicator": {
+                        "value": "false"
+                    },
+                    "FuturePrimaryIndicator": {
+                        "value": "false"
+                    },
+                    "AddressTypeCode": {
+                        "value": "OFFICE"
+                    },
+                    "AddressPeriod": {
+                        "StartDate": "2015-05-14",
+                        "EndDate": "3000-01-01"
+                    }
+                },
+                {
+                    "addressReference": "751900870",
+                    "key": "751900870",
+                    "PrimaryIndicator": {
+                        "value": "false"
+                    },
+                    "FuturePrimaryIndicator": {
+                        "value": "false"
+                    },
+                    "AddressTypeCode": {
+                        "value": "OFFICE"
+                    },
+                    "AddressPeriod": {
+                        "StartDate": "2016-03-09",
+                        "EndDate": "3000-01-01"
+                    }
+                },
+                {
+                    "addressReference": "259814123",
+                    "key": "259814123",
+                    "PrimaryIndicator": {
+                        "value": "true"
+                    },
+                    "FuturePrimaryIndicator": {
+                        "value": "false"
+                    },
+                    "AddressTypeCode": {
+                        "value": "OFFICE"
+                    },
+                    "AddressPeriod": {
+                        "StartDate": "2011-03-09",
+                        "EndDate": "3000-01-01"
+                    }
+                },
+                {
+                    "addressReference": "984185684",
+                    "key": "984185684",
+                    "PrimaryIndicator": {
+                        "value": "false"
+                    },
+                    "FuturePrimaryIndicator": {
+                        "value": "false"
+                    },
+                    "AddressTypeCode": {
+                        "value": "REFUND"
+                    },
+                    "AddressPeriod": {
+                        "StartDate": "2016-12-13",
+                        "EndDate": "3000-01-01"
+                    }
+                }
+            ],
+            "ProfessionalLicense": [],
+            "Certification": [],
+            "PartyNote": [],
+            "Relationship": [],
+            "PartyClassification": [
+                {
+                    "key": "80114130",
+                    "ClassificationNumberId": "80114130",
+                    "ClassificationCode": "AGENT",
+                    "SubClassificationCode": "QUOTEBIND",
+                    "EffectivePeriod": {}
+                }
+            ]
+        }
+    ],
+    "Property": [],
+    "MedicalMalpracticePolicy": [
+        {
+            "PolicyId": "H004344",
+            "PolicyNumberId": "1055531389",
+            "PolicyTermNumberId": "1055531390",
+            "CurrentTermAmount": "27221",
+            "CurrentTotalAmount": "27221",
+            "PrintName": {
+                "FullName": "Johnson, Arthur M "
+            },
+            "ContractPeriod": {
+                "StartDate": "2018-06-01",
+                "EndDate": "2019-01-01"
+            },
+            "TransactionDetail": {
+                "TransactionNumberId": "1055533064",
+                "TransactionEffectiveDate": "01/01/2019",
+                "TransactionCode": {
+                    "value": "CANCEL"
+                }
+            },
+            "RenewalDetail": {
+                "RenewalIndicator": "false"
+            },
+            "PolicyHolder": {
+                "personReference": "154285688",
+                "ReferredParty": {
+                    "PartyNumberId": "154285688"
+                }
+            },
+            "Insurer": [
+                {
+                    "personReference": "89033320",
+                    "ReferredParty": {
+                        "PartyNumberId": "89033320"
+                    },
+                    "UnderWriterName": "Bricker, Timothy  ",
+                    "EffectivePeriod": {
+                        "StartDate": "06/01/2018",
+                        "EndDate": "01/01/2019"
+                    },
+                    "InsurerNumberId": "1055533066",
+                    "RenewalIndicator": "false"
+                }
+            ],
+            "Producer": [
+                {
+                    "organizationReference": "80114129",
+                    "ProducerNumberId": "1055531845",
+                    "ProducerAgentName": "AB Risk Specialist Inc",
+                    "EffectivePeriod": {
+                        "StartDate": "2018-06-01",
+                        "EndDate": "3000-01-01"
+                    },
+                    "ReferredParty": {
+                        "PartyNumberId": "80114129"
+                    },
+                    "License": [
+                        {
+                            "LicenseOrPermitNumberId": "431829503",
+                            "LicenseClassCode": "PRODUCER",
+                            "ProducerLicTypeCode": {
+                                "description": "Med. Mal. PL",
+                                "value": "MED_MAL_PL"
+                            }
+                        }
+                    ],
+                    "Commission": [
+                        {
+                            "CommissionRatePercent": "20",
+                            "CommissionBasisCode": "PERCENT",
+                            "CommissionPayCode": "WRITE_PREM",
+                            "CommissionTypeCode": "NEWBUS"
+                        },
+                        {
+                            "CommissionRatePercent": "20",
+                            "CommissionBasisCode": "PERCENT",
+                            "CommissionPayCode": "WRITE_PREM",
+                            "CommissionTypeCode": "RENEWAL"
+                        },
+                        {
+                            "CommissionRatePercent": "10",
+                            "CommissionBasisCode": "PERCENT",
+                            "CommissionPayCode": "WRITE_PREM",
+                            "CommissionTypeCode": "TAIL"
+                        }
+                    ],
+                    "ProducerAuthorizationCode": "BINDQUOTE",
+                    "ProducerAgentTypeCode": "W",
+                    "OverrideB": "Y"
+                },
+                {
+                    "organizationReference": "80114129",
+                    "ProducerNumberId": "1055531845",
+                    "ProducerAgentName": "AB Risk Specialist Inc",
+                    "EffectivePeriod": {
+                        "StartDate": "2018-06-01",
+                        "EndDate": "3000-01-01"
+                    },
+                    "ReferredParty": {
+                        "PartyNumberId": "80114129"
+                    },
+                    "License": [
+                        {
+                            "LicenseOrPermitNumberId": "431829503",
+                            "LicenseClassCode": "PRODUCER",
+                            "ProducerLicTypeCode": {
+                                "description": "Med. Mal. PL",
+                                "value": "MED_MAL_PL"
+                            }
+                        }
+                    ],
+                    "Commission": [
+                        {
+                            "CommissionRatePercent": "20",
+                            "CommissionBasisCode": "PERCENT",
+                            "CommissionPayCode": "WRITE_PREM",
+                            "CommissionTypeCode": "NEWBUS"
+                        },
+                        {
+                            "CommissionRatePercent": "20",
+                            "CommissionBasisCode": "PERCENT",
+                            "CommissionPayCode": "WRITE_PREM",
+                            "CommissionTypeCode": "RENEWAL"
+                        },
+                        {
+                            "CommissionRatePercent": "10",
+                            "CommissionBasisCode": "PERCENT",
+                            "CommissionPayCode": "WRITE_PREM",
+                            "CommissionTypeCode": "TAIL"
+                        }
+                    ],
+                    "ProducerAuthorizationCode": "BINDQUOTE",
+                    "ProducerAgentTypeCode": "W",
+                    "OverrideB": "Y"
+                }
+            ],
+            "PolicyDetail": {
+                "PolicyTypeCode": {
+                    "value": "MODFAC"
+                },
+                "ShortTermIndicator": "false",
+                "PolicyStatusCode": {
+                    "value": "CANCEL"
+                },
+                "PolicyCycleCode": {
+                    "value": "POLICY"
+                },
+                "PriorPolicy": {
+                    "EndDate": "1900-01-01"
+                },
+                "IssueCompany": {
+                    "organizationReference": "1",
+                    "ReferredParty": {
+                        "PartyNumberId": "1"
+                    },
+                    "ControllingStateOrProvinceCode": {
+                        "value": "AR"
+                    },
+                    "ProcessLocationCode": {}
+                },
+                "OrganizationType": "FACILITY",
+                "CollateralIndicator": "false",
+                "HospitalTier": "1",
+                "PeerGroupCode": "-1",
+                "AccountIdentifier": "SMALL",
+                "PolicyTermTypeCode": "NON_COMMON",
+                "ProcessStatusCode": "NULL",
+                "TermReasonCode": "C020",
+                "TermStatusCode": "CANCEL",
+                "WaitForPaymentIndicator": "Y",
+                "AdditionalInformation": {
+                    "AdditionalDateTime": [
+                        {
+                            "key": "1"
+                        },
+                        {
+                            "key": "2"
+                        },
+                        {
+                            "key": "3"
+                        }
+                    ],
+                    "AdditionalNumber": [
+                        {
+                            "key": "1"
+                        },
+                        {
+                            "key": "2",
+                            "value": "0"
+                        },
+                        {
+                            "key": "3"
+                        }
+                    ],
+                    "AdditionalData": [
+                        {
+                            "key": "1"
+                        },
+                        {
+                            "key": "2"
+                        },
+                        {
+                            "key": "3"
+                        }
+                    ]
+                },
+                "PolicyVersionDetail": {
+                    "VersionModeCode": "OFFICIAL",
+                    "ParentVersionNumberId": "1055532939",
+                    "AfterImageIndicator": "false"
+                }
+            },
+            "IQBFormData": {},
+            "LimitDeductibleSharing": {
+                "SharedGroup": [
+                    {
+                        "SharedGroupMasterId": "1055533067",
+                        "SharedGroupNunmber": {
+                            "description": "LICSHARE",
+                            "value": "1"
+                        },
+                        "ShareLimitsIndicator": "Y",
+                        "ShareDeductIndicator": "N",
+                        "ShareSIRIndicator": "N",
+                        "EffectivePeriod": {
+                            "StartDate": "06/01/2018",
+                            "EndDate": "01/01/2019"
+                        },
+                        "ErosionPaid": "0",
+                        "ErosionReserve": "0",
+                        "RenewalIndicator": "N",
+                        "MaxGroupNumber": "1",
+                        "GroupCount": "1",
+                        "VersionDetail": {
+                            "VersionModeCode": "OFFICIAL"
+                        },
+                        "SharedGroupDetail": [
+                            {
+                                "SharedGroupDetailId": "1055533068",
+                                "ReferredInsured": {
+                                    "insuredReference": "1055531399"
+                                },
+                                "ReferredMedicalMalpracticeCoverage": {
+                                    "medicalMalpracticeCoverageReference": "1055531601"
+                                },
+                                "OwnerIndicator": "Y",
+                                "EffectivePeriod": {
+                                    "StartDate": "06/01/2018",
+                                    "EndDate": "01/01/2019"
+                                },
+                                "RenewalIndicator": "N",
+                                "ShareLimitIndicator": "Y",
+                                "RiskPrimaryIndicator": "Y",
+                                "CovgSeqNumber": "66",
+                                "VersionDetail": {
+                                    "VersionModeCode": "OFFICIAL"
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "SeparateLimit": [
+                    {
+                        "ReferredInsured": {
+                            "insuredReference": "1055531399"
+                        },
+                        "ReferredMedicalMalpracticeCoverage": {
+                            "medicalMalpracticeCoverageReference": "1055531596"
+                        },
+                        "ErosionReserve": "0",
+                        "ErosionPaid": "0"
+                    }
+                ]
+            },
+            "Tail": [
+                {
+                    "CoverageNumberId": {
+                        "description": "Phys-CM",
+                        "type": "TAIL",
+                        "value": "1055533073"
+                    },
+                    "CoverageRelationNumberId": {
+                        "description": "Phys Tail",
+                        "value": "1055533074"
+                    },
+                    "Status": "OFFER",
+                    "EffectivePeriod": {
+                        "StartDate": "01/01/2019",
+                        "EndDate": "01/01/3000"
+                    },
+                    "ReferredMedicalMalpracticeCoverage": {
+                        "medicalMalpracticeCoverageReference": "1055531596"
+                    },
+                    "OfferStartDate": "01/01/2019",
+                    "OfferEndDate": "01/31/2019",
+                    "OfferPurgeDate": "02/15/2019",
+                    "SuppressTailOffer": "N",
+                    "SuppressTailEndorse": "N",
+                    "AdditionalInformation": {
+                        "AdditionalInfo": [
+                            {
+                                "key": "1",
+                                "value": "N"
+                            }
+                        ]
+                    },
+                    "ProductCoverageCode": "ARMPSCHPLT",
+                    "ToRate": "Y",
+                    "RatingModuleCode": "TAIL_A",
+                    "ProductCovRelTypeCode": "TAIL",
+                    "PCFAmountIndicator": "N",
+                    "Limit": "1M/3M",
+                    "GrossPremium": "20370",
+                    "NetPremium": "20370",
+                    "RetroActiveDate": "06/01/2017",
+                    "coverageId": "1055533073",
+                    "tailCovBaseRecordId": "1055533072",
+                    "RiskInfo": {
+                        "RiskIBNRStatus": "ACTIVE",
+                        "RiskTypeCode": "HPS",
+                        "RiskPCFParticipate": "N"
+                    },
+                    "TailVersionDetail": {
+                        "ParentVersionRiskNumberId": {
+                            "description": "HPS",
+                            "value": "1055531399"
+                        },
+                        "ParentVersionCoverageNumberId": "1055531596",
+                        "ParentTermBaseNumberId": "1055531390",
+                        "VersionModeCode": "OFFICIAL"
+                    }
+                },
+                {
+                    "CoverageNumberId": {
+                        "description": "Licensure-CM",
+                        "type": "TAIL",
+                        "value": "1055533079"
+                    },
+                    "CoverageRelationNumberId": {
+                        "description": "Licensure Tail",
+                        "value": "1055533080"
+                    },
+                    "Status": "OFFER",
+                    "EffectivePeriod": {
+                        "StartDate": "01/01/2019",
+                        "EndDate": "01/01/3000"
+                    },
+                    "ReferredMedicalMalpracticeCoverage": {
+                        "medicalMalpracticeCoverageReference": "1055531601"
+                    },
+                    "OfferStartDate": "01/01/2019",
+                    "OfferEndDate": "01/31/2019",
+                    "OfferPurgeDate": "02/15/2019",
+                    "SuppressTailOffer": "N",
+                    "SuppressTailEndorse": "N",
+                    "AdditionalInformation": {
+                        "AdditionalInfo": [
+                            {
+                                "key": "1",
+                                "value": "Y"
+                            }
+                        ]
+                    },
+                    "ProductCoverageCode": "ARMPSCLICT",
+                    "ToRate": "Y",
+                    "RatingModuleCode": "M",
+                    "AnnualBaseRate": "0",
+                    "ProductCovRelTypeCode": "TAIL",
+                    "PCFAmountIndicator": "N",
+                    "Limit": "25K/100K",
+                    "GrossPremium": "0",
+                    "NetPremium": "0",
+                    "RetroActiveDate": "06/01/2017",
+                    "coverageId": "1055533079",
+                    "tailCovBaseRecordId": "1055533078",
+                    "RiskInfo": {
+                        "RiskIBNRStatus": "ACTIVE",
+                        "RiskTypeCode": "HPS",
+                        "RiskPCFParticipate": "N"
+                    },
+                    "TailVersionDetail": {
+                        "ParentVersionRiskNumberId": {
+                            "description": "HPS",
+                            "value": "1055531399"
+                        },
+                        "ParentVersionCoverageNumberId": "1055531601",
+                        "ParentTermBaseNumberId": "1055531390",
+                        "VersionModeCode": "OFFICIAL"
+                    }
+                }
+            ],
+            "Transaction": [
+                {
+                    "TransactionLogId": "1055531391",
+                    "EffectiveFromDate": "06/01/2018",
+                    "AccountingFromDate": "06/30/2017",
+                    "TermBaseRecordNumberId": "1055531390",
+                    "PolicyTermCode": "PYN18",
+                    "Status": "COMPLETE",
+                    "TransTypeCode": {
+                        "description": "New Business",
+                        "value": "NEWBUS"
+                    },
+                    "TransactionCode": {
+                        "description": "New Business",
+                        "value": "NEWBUS"
+                    },
+                    "User": "502000760",
+                    "InitTermIndictaor": "Y",
+                    "PrtExist": "N",
+                    "TransactionForm": [
+                        {
+                            "FormId": {
+                                "description": "PL Disciplinary, Licensing Credentialing Actions Endorsement",
+                                "value": "1303-PPX-00-1215"
+                            },
+                            "EndNo": "1",
+                            "Risk": "Arthur M Johnson"
+                        },
+                        {
+                            "FormId": {
+                                "description": "Declarations",
+                                "value": "0001-PXX-00-1215"
+                            }
+                        },
+                        {
+                            "FormId": {
+                                "description": "Schedule of Forms and Endorsements",
+                                "value": "0002-PXX-00-1215"
+                            }
+                        },
+                        {
+                            "FormId": {
+                                "description": "Common Policy Provisions and Conditions",
+                                "value": "0010-PXX-AR-0117"
+                            }
+                        },
+                        {
+                            "FormId": {
+                                "description": "Professional Liability Coverage Part - Facilities",
+                                "value": "0011-PPF-00-1215"
+                            },
+                            "Risk": "Arthur M Johnson"
+                        },
+                        {
+                            "FormId": {
+                                "description": "Policy Cover Letter",
+                                "value": "PLCYCVLTR-00-1215"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "TransactionLogId": "1055532938",
+                    "EffectiveFromDate": "01/01/2019",
+                    "AccountingFromDate": "06/30/2017",
+                    "TermBaseRecordNumberId": "1055531390",
+                    "PolicyTermCode": "PYN18",
+                    "Status": "COMPLETE",
+                    "TransTypeCode": {
+                        "description": "Reinstatement",
+                        "value": "REINSTATE"
+                    },
+                    "TransactionCode": {
+                        "description": "Reinstatement",
+                        "value": "REINSTATE"
+                    },
+                    "User": "502000760",
+                    "InitTermIndictaor": "Y",
+                    "PrtExist": "N",
+                    "TransactionForm": [
+                        {
+                            "FormId": {
+                                "description": "Policy Reinstatement Endorsement",
+                                "value": "1104-PXX-00-1215"
+                            },
+                            "EndNo": "5"
+                        }
+                    ]
+                },
+                {
+                    "TransactionLogId": "1055532675",
+                    "EffectiveFromDate": "01/01/2019",
+                    "AccountingFromDate": "06/30/2017",
+                    "TermBaseRecordNumberId": "1055531390",
+                    "PolicyTermCode": "PYN18",
+                    "Status": "COMPLETE",
+                    "TransTypeCode": {
+                        "description": "Reinstatement",
+                        "value": "REINSTATE"
+                    },
+                    "TransactionCode": {
+                        "description": "Reinstatement",
+                        "value": "REINSTATE"
+                    },
+                    "User": "502000760",
+                    "InitTermIndictaor": "Y",
+                    "PrtExist": "N",
+                    "TransactionForm": [
+                        {
+                            "FormId": {
+                                "description": "Policy Reinstatement Endorsement",
+                                "value": "1104-PXX-00-1215"
+                            },
+                            "EndNo": "3"
+                        }
+                    ]
+                },
+                {
+                    "TransactionLogId": "1055532780",
+                    "EffectiveFromDate": "01/01/2019",
+                    "AccountingFromDate": "06/30/2017",
+                    "TermBaseRecordNumberId": "1055531390",
+                    "PolicyTermCode": "PYN18",
+                    "Status": "COMPLETE",
+                    "TransTypeCode": {
+                        "description": "Cancellation",
+                        "value": "CANCEL"
+                    },
+                    "TransactionCode": {
+                        "description": "Cancellation",
+                        "value": "CANCEL"
+                    },
+                    "User": "502000760",
+                    "InitTermIndictaor": "Y",
+                    "PrtExist": "N",
+                    "ChangeDetail": [
+                        {
+                            "ChangeDesc": "Cancellation",
+                            "Risk": "Johnson, Arthur M "
+                        },
+                        {
+                            "ChangeDesc": "Coverage",
+                            "Risk": "Johnson, Arthur M ",
+                            "Coverage": "Licensure Actions - Claims Made"
+                        },
+                        {
+                            "ChangeDesc": "Coverage",
+                            "Risk": "Johnson, Arthur M ",
+                            "Coverage": "Physician & Surgeon - Claims Made"
+                        }
+                    ],
+                    "TransactionForm": [
+                        {
+                            "FormId": {
+                                "description": "Policy Cancellation Endorsement",
+                                "value": "1103-PXX-00-1215"
+                            },
+                            "EndNo": "4"
+                        }
+                    ]
+                },
+                {
+                    "TransactionLogId": "1055533064",
+                    "EffectiveFromDate": "01/01/2019",
+                    "AccountingFromDate": "06/30/2017",
+                    "TermBaseRecordNumberId": "1055531390",
+                    "PolicyTermCode": "PYN18",
+                    "Status": "COMPLETE",
+                    "TransTypeCode": {
+                        "description": "Cancellation",
+                        "value": "CANCEL"
+                    },
+                    "TransactionCode": {
+                        "description": "Cancellation",
+                        "value": "CANCEL"
+                    },
+                    "User": "502000760",
+                    "InitTermIndictaor": "Y",
+                    "PrtExist": "N",
+                    "ChangeDetail": [
+                        {
+                            "ChangeDesc": "Cancellation",
+                            "Risk": "Johnson, Arthur M "
+                        },
+                        {
+                            "ChangeDesc": "Coverage",
+                            "Risk": "Johnson, Arthur M ",
+                            "Coverage": "Licensure Actions - Claims Made"
+                        },
+                        {
+                            "ChangeDesc": "Coverage",
+                            "Risk": "Johnson, Arthur M ",
+                            "Coverage": "Physician & Surgeon - Claims Made"
+                        }
+                    ],
+                    "TransactionForm": [
+                        {
+                            "FormId": {
+                                "description": "Policy Cancellation Endorsement",
+                                "value": "1103-PXX-00-1215"
+                            },
+                            "EndNo": "6"
+                        }
+                    ]
+                },
+                {
+                    "TransactionLogId": "1055532306",
+                    "EffectiveFromDate": "01/01/2019",
+                    "AccountingFromDate": "06/30/2017",
+                    "TermBaseRecordNumberId": "1055531390",
+                    "PolicyTermCode": "PYN18",
+                    "Status": "COMPLETE",
+                    "TransTypeCode": {
+                        "description": "Cancellation",
+                        "value": "CANCEL"
+                    },
+                    "TransactionCode": {
+                        "description": "Cancellation",
+                        "value": "CANCEL"
+                    },
+                    "User": "502000760",
+                    "InitTermIndictaor": "Y",
+                    "PrtExist": "N",
+                    "ChangeDetail": [
+                        {
+                            "ChangeDesc": "Cancellation",
+                            "Risk": "Johnson, Arthur M "
+                        },
+                        {
+                            "ChangeDesc": "Coverage",
+                            "Risk": "Johnson, Arthur M ",
+                            "Coverage": "Licensure Actions - Claims Made"
+                        },
+                        {
+                            "ChangeDesc": "Coverage",
+                            "Risk": "Johnson, Arthur M ",
+                            "Coverage": "Physician & Surgeon - Claims Made"
+                        }
+                    ],
+                    "TransactionForm": [
+                        {
+                            "FormId": {
+                                "description": "Policy Cancellation Endorsement",
+                                "value": "1103-PXX-00-1215"
+                            },
+                            "EndNo": "2"
+                        }
+                    ]
+                }
+            ],
+            "Insured": [
+                {
+                    "key": "1055531399",
+                    "personReference": "154285688",
+                    "InsuredNumberId": "1055531399",
+                    "ReferredParty": {
+                        "PartyNumberId": "154285688"
+                    },
+                    "CurrentTermAmount": "27221",
+                    "InsuredVersion": [
+                        {
+                            "InsuredVersionNumberId": "1055533069",
+                            "PrimaryIndicator": "true",
+                            "EffectivePeriod": {
+                                "StartDate": "2018-06-01",
+                                "EndDate": "2019-01-01"
+                            },
+                            "PracticeStateOrProvinceCode": {
+                                "value": "AR"
+                            },
+                            "PracticeCountyCode": {
+                                "value": "301"
+                            },
+                            "InsuredStatusCode": "CANCEL",
+                            "InsuredTypeCode": {
+                                "value": "HPS"
+                            },
+                            "InsuredClassCode": {
+                                "value": "8013620"
+                            },
+                            "InsuredAlternateSpecialtyCode": "MDH",
+                            "TeachingIndicator": "false",
+                            "IbnrIndicator": "false",
+                            "IbnrStatus": "ACTIVE",
+                            "ScorecardEligibilityIndicator": "false",
+                            "InsuredTerritoryCode": "301",
+                            "IbnrPlaceholderIndicator": "N",
+                            "InsuredIsInCisIndicator": "Y",
+                            "InsuredBlockedListIndicator": "N",
+                            "RateAsFteIndicator": "Y",
+                            "DisciplinaryListStatus": "NORECORD",
+                            "InsuredName": "Johnson, Arthur M ",
+                            "CancellationDetail": {
+                                "CancellationDate": "01/01/2019",
+                                "CancellationReasonCode": "C020"
+                            },
+                            "AttorneyInformation": {
+                                "AttorneyName": "Johnson, Arthur M "
+                            },
+                            "FullTimeEquivalencyInformation": {},
+                            "FundInformation": [
+                                {
+                                    "state": "AR",
+                                    "FundData": [
+                                        {
+                                            "key": "fundEligible",
+                                            "value": "N"
+                                        },
+                                        {
+                                            "key": "totalFundHours",
+                                            "value": "40"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "MalpracticeLiabilityExposureInformation": {},
+                            "BuildingInformation": {
+                                "FrameTypeCode": "N",
+                                "SprinklerIndicator": "false",
+                                "FloorTypeCode": "Y"
+                            },
+                            "VehiclesOperatedInformation": {
+                                "VehicleYear": "0"
+                            },
+                            "AdditionalInformation": {
+                                "AdditionalDateTime": [
+                                    {
+                                        "key": "1"
+                                    },
+                                    {
+                                        "key": "2"
+                                    },
+                                    {
+                                        "key": "3"
+                                    },
+                                    {
+                                        "key": "4"
+                                    }
+                                ],
+                                "AdditionalNumber": [
+                                    {
+                                        "key": "1",
+                                        "value": "2"
+                                    },
+                                    {
+                                        "key": "2",
+                                        "value": "0"
+                                    },
+                                    {
+                                        "key": "3"
+                                    },
+                                    {
+                                        "key": "4"
+                                    }
+                                ],
+                                "AdditionalData": [
+                                    {
+                                        "key": "1",
+                                        "value": "N"
+                                    },
+                                    {
+                                        "key": "2",
+                                        "value": "N"
+                                    },
+                                    {
+                                        "key": "3"
+                                    },
+                                    {
+                                        "key": "4",
+                                        "value": "LS"
+                                    }
+                                ]
+                            },
+                            "InsuredVersionDetail": {
+                                "VersionModeCode": "OFFICIAL",
+                                "ParentVersionNumberId": "1055532943",
+                                "AfterImageIndicator": "true"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "COIHolder": [],
+            "FTERiskNamesInformation": [],
+            "RiskRelation": [],
+            "Schedule": [],
+            "HoursPerWeek": [
+                {
+                    "HoursPerWeekNumberId": "1055533070",
+                    "ReferredInsured": {
+                        "insuredReference": "1055531399"
+                    },
+                    "OfficialRecordId": "1055532948",
+                    "RecordModeCode": "OFFICIAL",
+                    "State": "AR",
+                    "EffectivePeriod": {
+                        "EndDate": "01/01/2019"
+                    },
+                    "Hours": "40",
+                    "RenewalIndicator": "Y"
+                }
+            ],
+            "MedicalMalpracticeLineOfBusiness": {
+                "MedicalMalpracticeCoverage": [
+                    {
+                        "key": "1055531596",
+                        "CoverageNumberId": "1055531596",
+                        "CurrentTermAmount": "6851",
+                        "CurrentGrossTermAmount": "7651",
+                        "MedicalMalpracticeCoverageCode": {
+                            "value": "ARMPSCHPL"
+                        },
+                        "ReferredInsured": {
+                            "insuredReference": "1055531399"
+                        },
+                        "MedicalMalpracticeCoverageVersion": [
+                            {
+                                "MedicalMalpracticeCoverageVersionId": "1055533071",
+                                "PrimaryIndicator": "true",
+                                "MedicalMalpracticeCoverageStatusCode": "CANCEL",
+                                "EffectivePeriod": {
+                                    "StartDate": "2018-06-01",
+                                    "EndDate": "2019-01-01"
+                                },
+                                "ProductCoverageInfo": {
+                                    "CoverageGroup": "PROFLIAB",
+                                    "PracticeStateCode": "AR",
+                                    "ProductSplitRetroIndicator": "N",
+                                    "SegmentCode": "MAIN",
+                                    "SubCoverageAvailableIndicator": "N",
+                                    "NoseCoverageIndicator": "N",
+                                    "PolicyFormCode": "CM"
+                                },
+                                "MinimumPremiumMode": "S",
+                                "Limit": {
+                                    "LimitTypeCode": {
+                                        "value": "1M/3M"
+                                    },
+                                    "SharedLimitIndicator": "false",
+                                    "IncidentLimitTypeCode": {},
+                                    "AgregateLimitTypeCode": {},
+                                    "ErosionTypeCode": "INDEMNITY"
+                                },
+                                "ClaimMadeLiabilityPolicyInformation": {
+                                    "CurrentRetroactiveDate": "2017-06-01"
+                                },
+                                "LossOfIncomeDays": "0",
+                                "DirectPrimaryIndicator": "false",
+                                "CoverageLimitCode": "1M/3M",
+                                "RatingModuleCode": "A",
+                                "RetiredIndicator": "N",
+                                "CoverageConversionInformation": {},
+                                "Pcf": {
+                                    "PracticeStateCode": "AR"
+                                },
+                                "CancellationInformation": {
+                                    "CancellationMethodCode": "PRORATA",
+                                    "Reason": "C020",
+                                    "Date": "01/01/2019"
+                                },
+                                "PriorActs": {
+                                    "PriorActsIndicator": "X",
+                                    "PriorActsType": "N"
+                                },
+                                "FundInformation": [
+                                    {
+                                        "state": "AR",
+                                        "FundData": [
+                                            {
+                                                "key": "fundPtHrsB",
+                                                "value": "N"
+                                            },
+                                            {
+                                                "key": "maxFundPtHrs",
+                                                "value": "0"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "CCMCoverageInformation": {
+                                    "ConvertibleProduct": "NONE",
+                                    "FundParticipation": "Y"
+                                },
+                                "AdditionalInformation": {
+                                    "AdditionalDateTime": [
+                                        {
+                                            "key": "1"
+                                        },
+                                        {
+                                            "key": "2"
+                                        },
+                                        {
+                                            "key": "3"
+                                        }
+                                    ],
+                                    "AdditionalNumber": [
+                                        {
+                                            "key": "1"
+                                        },
+                                        {
+                                            "key": "2",
+                                            "value": "0"
+                                        },
+                                        {
+                                            "key": "3"
+                                        }
+                                    ],
+                                    "AdditionalData": [
+                                        {
+                                            "key": "1"
+                                        },
+                                        {
+                                            "key": "2",
+                                            "value": "N"
+                                        },
+                                        {
+                                            "key": "3",
+                                            "value": "1M"
+                                        }
+                                    ]
+                                },
+                                "MedicalMalpracticeCoverageVersionDetail": {
+                                    "VersionModeCode": "OFFICIAL",
+                                    "ParentVersionNumberId": "1055532944",
+                                    "AfterImageIndicator": "true"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "key": "1055531601",
+                        "CoverageNumberId": "1055531601",
+                        "CurrentTermAmount": "0",
+                        "CurrentGrossTermAmount": "0",
+                        "MedicalMalpracticeCoverageCode": {
+                            "value": "ARMPSCLIC"
+                        },
+                        "ReferredInsured": {
+                            "insuredReference": "1055531399"
+                        },
+                        "MedicalMalpracticeCoverageVersion": [
+                            {
+                                "MedicalMalpracticeCoverageVersionId": "1055533077",
+                                "PrimaryIndicator": "false",
+                                "MedicalMalpracticeCoverageStatusCode": "CANCEL",
+                                "EffectivePeriod": {
+                                    "StartDate": "2018-06-01",
+                                    "EndDate": "2019-01-01"
+                                },
+                                "ProductCoverageInfo": {
+                                    "CoverageGroup": "LICENSE",
+                                    "PracticeStateCode": "AR",
+                                    "ProductSplitRetroIndicator": "N",
+                                    "SegmentCode": "MAIN",
+                                    "SubCoverageAvailableIndicator": "N",
+                                    "NoseCoverageIndicator": "N",
+                                    "PolicyFormCode": "CM"
+                                },
+                                "MinimumPremiumMode": "S",
+                                "Limit": {
+                                    "LimitTypeCode": {
+                                        "value": "25K/100K"
+                                    },
+                                    "SharedLimitIndicator": "true",
+                                    "IncidentLimitTypeCode": {},
+                                    "AgregateLimitTypeCode": {},
+                                    "ErosionTypeCode": "EXPENSE"
+                                },
+                                "ClaimMadeLiabilityPolicyInformation": {
+                                    "CurrentRetroactiveDate": "2017-06-01"
+                                },
+                                "AnnualBaseRate": "0",
+                                "LossOfIncomeDays": "0",
+                                "DirectPrimaryIndicator": "false",
+                                "CoverageLimitCode": "25K/100K",
+                                "RatingModuleCode": "M",
+                                "RetiredIndicator": "N",
+                                "CoverageConversionInformation": {},
+                                "Pcf": {
+                                    "PracticeStateCode": "AR"
+                                },
+                                "CancellationInformation": {
+                                    "CancellationMethodCode": "PRORATA",
+                                    "Reason": "C020",
+                                    "Date": "01/01/2019"
+                                },
+                                "PriorActs": {
+                                    "PriorActsIndicator": "X",
+                                    "PriorActsType": "N"
+                                },
+                                "FundInformation": [
+                                    {
+                                        "state": "AR",
+                                        "FundData": [
+                                            {
+                                                "key": "fundPtHrsB",
+                                                "value": "N"
+                                            },
+                                            {
+                                                "key": "maxFundPtHrs",
+                                                "value": "0"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "CCMCoverageInformation": {
+                                    "ConvertibleProduct": "NONE",
+                                    "FundParticipation": "Y"
+                                },
+                                "AdditionalInformation": {
+                                    "AdditionalDateTime": [
+                                        {
+                                            "key": "1"
+                                        },
+                                        {
+                                            "key": "2"
+                                        },
+                                        {
+                                            "key": "3"
+                                        }
+                                    ],
+                                    "AdditionalNumber": [
+                                        {
+                                            "key": "1"
+                                        },
+                                        {
+                                            "key": "2",
+                                            "value": "0"
+                                        },
+                                        {
+                                            "key": "3"
+                                        }
+                                    ],
+                                    "AdditionalData": [
+                                        {
+                                            "key": "1"
+                                        },
+                                        {
+                                            "key": "2",
+                                            "value": "N"
+                                        },
+                                        {
+                                            "key": "3",
+                                            "value": "1M"
+                                        }
+                                    ]
+                                },
+                                "MedicalMalpracticeCoverageVersionDetail": {
+                                    "VersionModeCode": "OFFICIAL",
+                                    "ParentVersionNumberId": "1055532947",
+                                    "AfterImageIndicator": "true"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "key": "1055533072",
+                        "CoverageNumberId": "1055533072",
+                        "ParentCoverageNumberId": "1055533072",
+                        "CurrentTermAmount": "20370",
+                        "CurrentGrossTermAmount": "20370",
+                        "MedicalMalpracticeCoverageCode": {
+                            "description": "Phys Tail",
+                            "value": "ARMPSCHPLT"
+                        },
+                        "ReferredInsured": {
+                            "insuredReference": "1055531399",
+                            "value": "1055531399"
+                        }
+                    },
+                    {
+                        "key": "1055533078",
+                        "CoverageNumberId": "1055533078",
+                        "ParentCoverageNumberId": "1055533078",
+                        "CurrentTermAmount": "0",
+                        "CurrentGrossTermAmount": "0",
+                        "MedicalMalpracticeCoverageCode": {
+                            "description": "Licensure Tail",
+                            "value": "ARMPSCLICT"
+                        },
+                        "ReferredInsured": {
+                            "insuredReference": "1055531399",
+                            "value": "1055531399"
+                        }
+                    }
+                ]
+            },
+            "CreditSurchargeDeductible": [
+                {
+                    "key": "1055531823",
+                    "CreditSurchargeDeductibleNumberId": "1055531823",
+                    "ReferredMedicalMalpracticeCoverage": {
+                        "medicalMalpracticeCoverageReference": "1055531596"
+                    },
+                    "CreditSurchargeDeductibleCodeNumberId": "18366805",
+                    "CurrentTermAmount": "-761",
+                    "CreditSurchargeDeductibleCode": {
+                        "value": "EXPCR"
+                    },
+                    "CreditSurchargeDeductibleTypeCode": {
+                        "value": "DISCOUNT"
+                    },
+                    "CreditSurchargeDeductibleVersion": [
+                        {
+                            "CreditSurchargeDeductibleVersionId": "1055533076",
+                            "EffectivePeriod": {
+                                "StartDate": "2018-06-01",
+                                "EndDate": "2019-01-01"
+                            },
+                            "ProductCoverageComponentInfo": {
+                                "LowValue": "50",
+                                "HighValue": "0",
+                                "ExpiryDateIndicator": "true",
+                                "CycleIndicator": "false",
+                                "NoteIndicator": "true",
+                                "PercentValueIndicator": "true",
+                                "ScheduleIndicator": "false",
+                                "Sign": "-1"
+                            },
+                            "NumericValue": "10",
+                            "ProrateIndicator": "false",
+                            "RenewalIndicator": "false",
+                            "AdditionalInformation": {
+                                "AdditionalDateTime": [
+                                    {
+                                        "key": "1"
+                                    },
+                                    {
+                                        "key": "2"
+                                    },
+                                    {
+                                        "key": "3"
+                                    }
+                                ],
+                                "AdditionalNumber": [
+                                    {
+                                        "key": "1"
+                                    },
+                                    {
+                                        "key": "2"
+                                    },
+                                    {
+                                        "key": "3"
+                                    }
+                                ],
+                                "AdditionalData": [
+                                    {
+                                        "key": "1"
+                                    },
+                                    {
+                                        "key": "2"
+                                    },
+                                    {
+                                        "key": "3"
+                                    }
+                                ]
+                            },
+                            "CreditSurchargeDeductibleVersionDetail": {
+                                "VersionModeCode": "OFFICIAL",
+                                "ParentVersionNumberId": "1055532946",
+                                "AfterImageIndicator": "true"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "key": "1055531813",
+                    "CreditSurchargeDeductibleNumberId": "1055531813",
+                    "ReferredMedicalMalpracticeCoverage": {
+                        "medicalMalpracticeCoverageReference": "1055531596"
+                    },
+                    "CreditSurchargeDeductibleCodeNumberId": "152093899",
+                    "CurrentTermAmount": "-39",
+                    "CreditSurchargeDeductibleCode": {
+                        "value": "L_00025000"
+                    },
+                    "CreditSurchargeDeductibleTypeCode": {
+                        "value": "DEDUCTIBLE"
+                    },
+                    "CreditSurchargeDeductibleVersion": [
+                        {
+                            "CreditSurchargeDeductibleVersionId": "1055533075",
+                            "EffectivePeriod": {
+                                "StartDate": "2018-06-01",
+                                "EndDate": "2019-01-01"
+                            },
+                            "ProductCoverageComponentInfo": {
+                                "LowValue": "1.1",
+                                "HighValue": "1.1",
+                                "ExpiryDateIndicator": "true",
+                                "CycleIndicator": "false",
+                                "NoteIndicator": "true",
+                                "PercentValueIndicator": "true",
+                                "ScheduleIndicator": "false",
+                                "Sign": "-1"
+                            },
+                            "NumericValue": "1.1",
+                            "ProrateIndicator": "false",
+                            "RenewalIndicator": "false",
+                            "AdditionalInformation": {
+                                "AdditionalDateTime": [
+                                    {
+                                        "key": "1"
+                                    },
+                                    {
+                                        "key": "2"
+                                    },
+                                    {
+                                        "key": "3"
+                                    }
+                                ],
+                                "AdditionalNumber": [
+                                    {
+                                        "key": "1"
+                                    },
+                                    {
+                                        "key": "2"
+                                    },
+                                    {
+                                        "key": "3"
+                                    }
+                                ],
+                                "AdditionalData": [
+                                    {
+                                        "key": "1"
+                                    },
+                                    {
+                                        "key": "2"
+                                    },
+                                    {
+                                        "key": "3"
+                                    }
+                                ]
+                            },
+                            "CreditSurchargeDeductibleVersionDetail": {
+                                "VersionModeCode": "OFFICIAL",
+                                "ParentVersionNumberId": "1055532945",
+                                "AfterImageIndicator": "true"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "MessageStatus": {
+        "MessageStatusCode": "Success"
+    }
+}
