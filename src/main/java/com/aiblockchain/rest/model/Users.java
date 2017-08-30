@@ -1,7 +1,5 @@
 package com.aiblockchain.rest.model;
 
-import java.util.Date;
-
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -46,5 +44,9 @@ public class Users {
 	}
 	public void setDate(String date) {
 		this.date = date;
-	}    
+	}
+	@Override
+	public String toString() {
+		return "Users [id=" + id + ", name=" + name + ", age=" + age + ", date=" + date + "]";
+	}
 }

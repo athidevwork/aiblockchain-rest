@@ -1,7 +1,8 @@
-package com.aiblockchain.service.db;
+/**
+ * 
+ */
+package com.aiblockchain.rest.service.db;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -11,33 +12,13 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
-import javax.ws.rs.core.Response;
-
 import com.aiblockchain.rest.model.Users;
 
-public class DbManagerImpl implements DbManager{
-	Connection conn = null;
-	
-	public void init () {
-		try{  
-			Class.forName("com.mysql.jdbc.Driver");  
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/aiblockchain","root","p@ssword"); 
-			System.out.println("connection = " + conn);
-		}
-		catch(Exception e) { 
-			System.out.println(e);
-		}  
-	}
-
-	public void shutdown () {
-		try{  
-			conn.close();
-		}
-		catch(Exception e) { 
-			System.out.println(e);
-		}  
-	}
-	
+/**
+ * @author Athi
+ *
+ */
+public class UserManagerImpl extends DbManagerImpl implements UserManager  {
 	public void getUsers() {
 		try{    
 			Statement stmt=conn.createStatement();  

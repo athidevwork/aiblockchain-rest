@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.aiblockchain.service.file;
+package com.aiblockchain.rest.service.file;
 
 import java.io.File;
 import java.io.FileOutputStream;

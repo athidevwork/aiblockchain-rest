@@ -1,4 +1,4 @@
-package com.aiblockchain.service.aws;
+package com.aiblockchain.rest.service.aws;
 
 import java.io.IOException;
 

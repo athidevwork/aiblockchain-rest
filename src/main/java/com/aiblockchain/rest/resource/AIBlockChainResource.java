@@ -35,8 +35,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 
 import com.aiblockchain.context.AppContext;
-import com.aiblockchain.service.aws.AWSServiceManager;
-import com.aiblockchain.service.file.FileManager;
+import com.aiblockchain.rest.service.aws.AWSServiceManager;
+import com.aiblockchain.rest.service.file.FileManager;
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;

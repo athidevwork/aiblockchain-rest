@@ -26,6 +26,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 
 import com.aiblockchain.rest.resource.AIBlockChainResource;
 import com.aiblockchain.rest.resource.DbResource;
+import com.aiblockchain.rest.resource.DiamondResource;
 import com.aiblockchain.rest.resource.HelloWorldResource;
 import com.aiblockchain.rest.resource.SapHana2Resource;
 import com.aiblockchain.rest.resource.UserResource;
@@ -59,6 +60,7 @@ public class NettyServer {
         .register(AIBlockChainResource.class)
         .register(SapHana2Resource.class)
         .register(DbResource.class)
+        .register(DiamondResource.class)
         .register(MoxyJsonFeature.class)
         .register(MoxyXmlFeature.class)
         //.register(JaxbContextResolver.class)  // No need to register this provider if no special configuration is required.

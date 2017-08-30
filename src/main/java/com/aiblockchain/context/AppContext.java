@@ -21,8 +21,10 @@ public class AppContext implements ApplicationContextAware
 	
 	//Business classes
 	public static final String DB_MANAGER = "DbManager";
+	public static final String USER_MANAGER = "UserManager";
+	public static final String DIAMOND_MANAGER = "DiamondManager";
 	public static final String FILE_MANAGER = "FileManager";
-	public static final String UTILS_MANAGER = "UtilsManager";	
+	public static final String UTILS_MANAGER = "UtilsManager";
 	public static final String AWS_MANAGER = "AWSServiceManager";
 	
 	// Servers

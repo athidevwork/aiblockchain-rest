@@ -11,6 +11,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.aiblockchain.context.AppContext;
+import com.aiblockchain.rest.service.db.UserManager;
+
 /**
  * 
  * @author Athi
@@ -19,6 +22,12 @@ import javax.ws.rs.core.Response;
 
 @Path("/users")
 public class UserResource {
+	UserManager userMgr = (UserManager) AppContext.getBean(AppContext.USER_MANAGER);
+	
+    public UserManager getUserMgr() {
+		return userMgr;
+	}
+    
     @GET
     @Path("/json")
     @Produces({MediaType.APPLICATION_JSON})

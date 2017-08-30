@@ -10,4 +10,4 @@
 
 #java -cp target/lib/*:target/aiblockchain-rest.jar -Dlog4j.debug -Dlog4j.configuration=log4j.properties -jar target/aiblockchain-rest.jar 5000 $@
 #java -Dlog4j.debug -Dlog4j.configuration=log4j.properties -jar target/aiblockchain-rest.jar 5000 $@
-java -Dlog4j.debug -Dlog4j.configuration=log4j.properties -jar target/original-aiblockchain-rest.jar 5000 $@
+java -Dlog4j.debug -Dlog4j.configuration=log4j.properties -jar target/original-aiblockchain-rest.jar 20001 $@

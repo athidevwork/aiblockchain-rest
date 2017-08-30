@@ -11,8 +11,8 @@ import javax.ws.rs.core.Response;
 
 import com.aiblockchain.context.AppContext;
 import com.aiblockchain.rest.model.ServerProperties;
-import com.aiblockchain.service.aiutils.UtilsManager;
-import com.aiblockchain.service.aws.AWSServiceManager;
+import com.aiblockchain.rest.service.aiutils.UtilsManager;
+import com.aiblockchain.rest.service.aws.AWSServiceManager;
 
 @Path("/saphana2")
 public class SapHana2Resource {

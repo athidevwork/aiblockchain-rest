@@ -21,18 +21,19 @@
 	<!-- The Spring application context -->
 	<bean id="appContext" class="com.aiblockchain.context.AppContext"></bean>
 	
-	<bean id="DbManager" class="com.aiblockchain.service.db.DbManagerImpl"></bean>
-	<bean id="FileManager" class="com.aiblockchain.service.file.FileManagerImpl"></bean>
-	<bean id="UtilsManager" class="com.aiblockchain.service.aiutils.UtilsManagerImpl">
+	<bean id="DbManager" class="com.aiblockchain.rest.service.db.DbManagerImpl"></bean>
+	<bean id="FileManager" class="com.aiblockchain.rest.service.file.FileManagerImpl"></bean>
+	<bean id="UtilsManager" class="com.aiblockchain.rest.service.aiutils.UtilsManagerImpl">
 		<!-- <property name="properties" ref="appProperties"/> -->
 	</bean>
-	<bean id="AWSServiceManager" class="com.aiblockchain.service.aws.AWSServiceManagerImpl"></bean>
+	<bean id="AWSServiceManager" class="com.aiblockchain.rest.service.aws.AWSServiceManagerImpl"></bean>
 		
 	<bean id="AIBlockChainResource" class="com.aiblockchain.rest.resource.AIBlockChainResource"></bean>
 	<bean id="SapHana2Resource" class="com.aiblockchain.rest.resource.SapHana2Resource">
 		<!-- <property name="utils" ref="UtilsManager"/> -->
 	</bean>
-
+  <bean id="UserManager" class="com.aiblockchain.rest.service.db.UserManagerImpl"></bean>
+  <bean id="DiamondManager" class="com.aiblockchain.rest.service.db.DiamondManagerImpl"></bean>
 	
 <!-- 	<bean id="NettyServer" class="com.aiblockchain.server.NettyServer">
 		<property name="portNumber" value="${default.server.port}"></property>

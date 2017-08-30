@@ -1,4 +1,4 @@
-package com.aiblockchain.service.aiutils;
+package com.aiblockchain.rest.service.aiutils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
