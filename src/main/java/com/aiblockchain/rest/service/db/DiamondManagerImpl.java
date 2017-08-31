@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import com.aiblockchain.api.SaveRequest;
 import com.aiblockchain.context.AppContext;
 import com.aiblockchain.rest.model.Diamond;
 
@@ -27,8 +28,7 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
     
 	@Override
 	public void getDiamond() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Get not implemented");		
 	}
 
 	@Override
@@ -44,11 +44,12 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 		}
 		catch(Exception e) { 
 			System.out.println("Error getting max id from db " + e);
-		}  
+		}
 		
+		String rowHash = null;
 		try{    
 			// the mysql insert statement
-			String query = " insert into diamond (id,description,cut,color,clarity,carat,shape,certification,quality,weight,measurements) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String query = " insert into diamond (id,description,cut,color,clarity,carat,shape,certification,quality,weight,measurements,rowhash) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 			PreparedStatement preparedStmt = getDbMgr().getConnection().prepareStatement(query);
 			preparedStmt.setInt (1, value);
@@ -62,20 +63,69 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 			preparedStmt.setString (9, d.getQuality());			
 			preparedStmt.setString (10, d.getWeight());
 			preparedStmt.setString (11, d.getMeasurements());
+			preparedStmt.setString (12, rowHash);
 			
 			if (preparedStmt.execute())
 				getDbMgr().getConnection().commit();
 		}
 		catch(Exception e) { 
-			System.out.println("Error on insert " + e);
+			System.out.println("Error on insert of diamond characteristic." + e);
 		}
+		
+		try {
+			Statement stmt=getDbMgr().getConnection().createStatement();
+			String query = "SELECT MD5(CONCAT(id,description,cut,color,clarity,carat,shape,certification,quality,weight,measurements)) from diamond where id="+value;
+			System.out.println("Query Str : " + query);
+			ResultSet rs = stmt.executeQuery(query);
+			while(rs.next())
+				rowHash = rs.getString(1);
+		}
+		catch(Exception e) { 
+			System.out.println("Error getting row hash from db " + e);
+		} 
+		System.out.println("Row Hash = " + rowHash);
+				
+		try {
+			getDbMgr().getConnection().setAutoCommit(false);
+			String query = "update diamond set rowhash = ? where id = ?";
+			PreparedStatement preparedStmt = getDbMgr().getConnection().prepareStatement(query);
+			preparedStmt.setString (1, rowHash);
+			preparedStmt.setInt(2, value);
+
+			if (preparedStmt.executeUpdate() != 0)
+				getDbMgr().getConnection().commit();
+		}
+		catch(Exception e) { 
+			System.out.println("Error updating row hash to db " + e);
+		} 
+		//System.out.println("Row Hash = " + rowHash);
+		
+		//{"diamondData":{"hashId":["4d2e42fc990bc58bf257beada3362977"]},"command":"add"}
+		/*JSONObject saveRequest = new JSONObject();
+		saveRequest.put("command", "add");
+		JSONObject hashID = new JSONObject();
+		
+		JSONArray txnIds = new JSONArray();
+		txnIds.put(rowHash);
+		hashID.put("hashId", txnIds);
+		saveRequest.put("diamondData", hashID);
+		String saveRequestStr = saveRequest.toString();
+		System.out.println ("Json Request : " + saveRequestStr);*/
+		
+		List<String> hashList = new ArrayList<String>();
+		hashList.add(rowHash);
+		SaveRequest request = new SaveRequest("add", hashList);
+		System.out.println("Request : " + request);
+		
+		//call to send the row hash to AI blockchain
+		//SaveResponse response = AbstractAPIAdapter.getInstance().saveRequest(request);
+		//System.out.println("Response : " + response);
 		return value;
 	}
 
 	@Override
 	public void updateDiamond(int id) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Update not implemented");
 	}
 
 	@Override
@@ -88,7 +138,7 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 			//System.out.println("Result set = " + rs.getFetchSize());
 			while(rs.next())  
 				diamond.add(new Diamond(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)
-						, rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11))); 
+						, rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12))); 
 		}
 		catch(Exception e) { 
 			System.out.println(e);

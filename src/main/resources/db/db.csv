@@ -1,3 +1,4 @@
-"id";"description";"cut";"color";"clarity";"carat";"shape";"certification";"quality";"weight";"measurements"
-1;"Natural Diamond";"Radiant Cut";"Intense Yellow";"VS1";"1.26 Carat";"Cubic";"None";"Good";"1.36";"6.15 - 5.45 x 3.97 mm"
-2;"Artificial Diamond";"Radiant Cut";"Intense White";"VVS1";"1.25 Carat";"Cubic";"None";"Good";"1.5";"6.15 - 5.45 x 3.97 mm"
+"id";"description";"cut";"color";"clarity";"carat";"shape";"certification";"quality";"weight";"measurements";"rowhash"
+1;"Natural Diamond";"Radiant Cut";"Intense Yellow";"VS1";"1.26 Carat";"Cubic";"None";"Good";"1.36";"6.15 - 5.45 x 3.97 mm";"4565a303270b1774732bcb65236596b5"
+2;"Artificial Diamond";"Radiant Cut";"Intense White";"VVS1";"1.25 Carat";"Cubic";"None";"Good";"1.5";"6.15 - 5.45 x 3.97 mm";"4d2e42fc990bc58bf257beada3362977"
+3;"Real Diamond";"Instant Radiant Cut";"Bright White";"VVVS1";"1.00 Carat";"Cubic";"None";"Excellent";"2.5";"4.15 - 4.45 x 5.17 mm";"64ca7f257cce122d38d7d2d1bb8531cc"

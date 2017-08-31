@@ -10,5 +10,6 @@ CREATE TABLE `diamond` (
   `quality` varchar(45) DEFAULT NULL,
   `weight` varchar(45) DEFAULT NULL,
   `measurements` varchar(45) DEFAULT NULL,
+  `rowhash` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

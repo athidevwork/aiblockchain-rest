@@ -22,11 +22,12 @@ public class Diamond {
     private String quality;
     private String weight;
     private String measurements;
+    private String rowHash;
     
     public Diamond() {}
     
 	public Diamond(int id, String description, String cut, String color, String clarity, String carat, String shape,
-			String certification, String quality, String weight, String measurements) {
+			String certification, String quality, String weight, String measurements, String rowHash) {
 		super();
 		this.id = id;
 		this.description = description;
@@ -39,6 +40,7 @@ public class Diamond {
 		this.quality = quality;
 		this.weight = weight;
 		this.measurements = measurements;
+		this.rowHash = rowHash;
 	}
 	public int getId() {
 		return id;
@@ -106,10 +108,16 @@ public class Diamond {
 	public void setMeasurements(String measurements) {
 		this.measurements = measurements;
 	}
+	public String getRowHash() {
+		return rowHash;
+	}
+	public void setRowHash(String rowHash) {
+		this.rowHash = rowHash;
+	}
 	@Override
 	public String toString() {
 		return "Diamond [id=" + id + ", description=" + description + ", cut=" + cut + ", color=" + color + ", clarity="
 				+ clarity + ", carat=" + carat + ", shape=" + shape + ", certification=" + certification + ", quality="
-				+ quality + ", weight=" + weight + ", measurements=" + measurements + "]";
+				+ quality + ", weight=" + weight + ", measurements=" + measurements + ", rowHash=" + rowHash + "]";
 	}
 }
