@@ -309,14 +309,14 @@
 				<configuration>
 				    <serverId>docker-hub</serverId>
 				    <registryUrl>https://index.docker.io/v1/</registryUrl>
-					<imageName>aiblockchain-rest</imageName>
+					<imageName>athidevwork/aiblockchain-rest</imageName>
 					<imageTags>
 			           <!-- <imageTag>${project.version}</imageTag> -->
 			           <imageTag>latest</imageTag>
 			        </imageTags>
 					<baseImage>java:8</baseImage>
 					<entryPoint>["java", "-cp", "target/lib/*:target/aiblockchain-rest.jar", "-Dlog4j.debug", "-Dlog4j.configuration=log4j.properties", "-jar", "/apps/${project.build.finalName}.jar", "5000"]</entryPoint>
-					<pushImage>false</pushImage>
+					<pushImage>true</pushImage>
 					<!-- copy the service's jar file from target into the root directory of the image -->
 					<resources>
 						<resource>
