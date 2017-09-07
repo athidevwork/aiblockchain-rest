@@ -3,6 +3,8 @@
  */
 package com.aiblockchain.rest.model;
 
+import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -10,8 +12,9 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  */
 @XmlRootElement
-public class Diamond {
-    private int id;
+public class Diamond implements Serializable {
+	private static final long serialVersionUID = -6687050666721108516L;
+	private int id;
     private String description;
     private String cut;
     private String color;

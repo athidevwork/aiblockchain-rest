@@ -3,6 +3,12 @@
  */
 package com.aiblockchain.rest.service.db;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -10,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+
+import javax.xml.bind.DatatypeConverter;
 
 import com.aiblockchain.api.SaveRequest;
 import com.aiblockchain.context.AppContext;
@@ -33,7 +41,7 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 
 	@Override
 	public int addDiamond(Diamond d) {
-		Random rand = new Random(); 
+		//Random rand = new Random(); 
 		int value = 0;
 		//int value = rand.nextInt(500); 
 		try {
@@ -47,6 +55,14 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 		}
 		
 		String rowHash = null;
+		//Create a hash for row
+		try {
+			rowHash = getChecksum(d);
+		} catch (NoSuchAlgorithmException | IOException e1) {
+			e1.printStackTrace();
+		}
+		System.out.println("Hex Of Database Row Hash = " + rowHash);
+		
 		try{    
 			// the mysql insert statement
 			String query = " insert into diamond (id,description,cut,color,clarity,carat,shape,certification,quality,weight,measurements,rowhash) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -72,7 +88,7 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 			System.out.println("Error on insert of diamond characteristic." + e);
 		}
 		
-		try {
+		/*try {
 			Statement stmt=getDbMgr().getConnection().createStatement();
 			String query = "SELECT MD5(CONCAT(id,description,cut,color,clarity,carat,shape,certification,quality,weight,measurements)) from diamond where id="+value;
 			System.out.println("Query Str : " + query);
@@ -83,8 +99,7 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 		catch(Exception e) { 
 			System.out.println("Error getting row hash from db " + e);
 		} 
-		System.out.println("Row Hash = " + rowHash);
-				
+
 		try {
 			getDbMgr().getConnection().setAutoCommit(false);
 			String query = "update diamond set rowhash = ? where id = ?";
@@ -123,6 +138,22 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 		return value;
 	}
 
+	private String getChecksum(Serializable object) throws IOException, NoSuchAlgorithmException {
+	    ByteArrayOutputStream baos = null;
+	    ObjectOutputStream oos = null;
+	    try {
+	        baos = new ByteArrayOutputStream();
+	        oos = new ObjectOutputStream(baos);
+	        oos.writeObject(object);
+	        MessageDigest md = MessageDigest.getInstance("MD5");
+	        byte[] thedigest = md.digest(baos.toByteArray());
+	        return DatatypeConverter.printHexBinary(thedigest);
+	    } finally {
+	        oos.close();
+	        baos.close();
+	    }
+	}
+	
 	@Override
 	public void updateDiamond(int id) {
 		System.out.println("Update not implemented");
