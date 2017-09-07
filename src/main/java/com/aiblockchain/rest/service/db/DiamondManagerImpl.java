@@ -41,7 +41,7 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 
 	@Override
 	public int addDiamond(Diamond d) {
-		//Random rand = new Random(); 
+		Random rand = new Random(); 
 		int value = 0;
 		//int value = rand.nextInt(500); 
 		try {
@@ -53,6 +53,7 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 		catch(Exception e) { 
 			System.out.println("Error getting max id from db " + e);
 		}
+		System.out.println("Last ID : " + value);
 		
 		String rowHash = null;
 		//Create a hash for row
@@ -81,8 +82,16 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 			preparedStmt.setString (11, d.getMeasurements());
 			preparedStmt.setString (12, rowHash);
 			
-			if (preparedStmt.execute())
+			System.out.println("SQL: " + preparedStmt);
+			
+			preparedStmt.execute();
+			/*getDbMgr().getConnection().setAutoCommit(false);
+			if (preparedStmt.execute()) {
+				System.out.println("Committing stmt : " + preparedStmt.toString());
 				getDbMgr().getConnection().commit();
+			}
+			else
+				System.out.println("insert failed");*/			
 		}
 		catch(Exception e) { 
 			System.out.println("Error on insert of diamond characteristic." + e);
