@@ -12,8 +12,8 @@ import com.aiblockchain.rest.model.Diamond;
  *
  */
 public interface DiamondManager {
-	public void getDiamond();
 	public int addDiamond(Diamond d);
 	public void updateDiamond(int id);
 	public List<Diamond> getDiamondList();
+	public boolean doesUuidExist(Diamond d);	
 }

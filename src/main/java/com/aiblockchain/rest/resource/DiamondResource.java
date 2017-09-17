@@ -58,9 +58,13 @@ public class DiamondResource {
 	@Path("/save")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public Response saveDocument(Diamond diamond) {
-		int id = getDiamondMgr().addDiamond(diamond);
-		String result = "Saved diamond : " + diamond + " with ID : " + id;
-		return Response.status(201).entity(result).build();
+    	if (!getDiamondMgr().doesUuidExist(diamond)) {
+			int id = getDiamondMgr().addDiamond(diamond);
+			String result = "Saved diamond : " + diamond + " with ID : " + id;
+			return Response.status(201).entity(result).build();
+    	}
+    	else
+    		return Response.status(409).entity(diamond.getUuid()+ " ID already found.").build();
 	
 	}
     

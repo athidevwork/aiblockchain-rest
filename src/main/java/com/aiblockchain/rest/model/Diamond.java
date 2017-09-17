@@ -25,12 +25,15 @@ public class Diamond implements Serializable {
     private String quality;
     private String weight;
     private String measurements;
+	private String uuid;
+	private String email;
     private String rowHash;
     
     public Diamond() {}
     
-	public Diamond(int id, String description, String cut, String color, String clarity, String carat, String shape,
-			String certification, String quality, String weight, String measurements, String rowHash) {
+	public Diamond(int id, String description, String cut, String color, String clarity, 
+			String carat, String shape, String certification, String quality, String weight
+			, String measurements, String uuid, String email, String rowHash) {
 		super();
 		this.id = id;
 		this.description = description;
@@ -43,6 +46,8 @@ public class Diamond implements Serializable {
 		this.quality = quality;
 		this.weight = weight;
 		this.measurements = measurements;
+		this.uuid = uuid;
+		this.email = email;
 		this.rowHash = rowHash;
 	}
 	public int getId() {
@@ -111,6 +116,18 @@ public class Diamond implements Serializable {
 	public void setMeasurements(String measurements) {
 		this.measurements = measurements;
 	}
+	public String getUuid() {
+		return uuid;
+	}
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getRowHash() {
 		return rowHash;
 	}
@@ -121,6 +138,7 @@ public class Diamond implements Serializable {
 	public String toString() {
 		return "Diamond [id=" + id + ", description=" + description + ", cut=" + cut + ", color=" + color + ", clarity="
 				+ clarity + ", carat=" + carat + ", shape=" + shape + ", certification=" + certification + ", quality="
-				+ quality + ", weight=" + weight + ", measurements=" + measurements + ", rowHash=" + rowHash + "]";
+				+ quality + ", weight=" + weight + ", measurements=" + measurements + ", uuid=" + uuid + ", email="
+				+ email + ", rowHash=" + rowHash + "]";
 	}
 }

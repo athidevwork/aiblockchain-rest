@@ -35,8 +35,31 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 	}
     
 	@Override
-	public void getDiamond() {
-		System.out.println("Get not implemented");		
+	public boolean doesUuidExist(Diamond d) {
+		try{    
+			// the mysql insert statement
+			String query = " select * from diamond where uuid = ?";
+
+			PreparedStatement preparedStmt = getDbMgr().getConnection().prepareStatement(query);
+			preparedStmt.setString (1, d.getUuid());
+			
+			System.out.println("SQL: " + preparedStmt);
+			
+			ResultSet rs = preparedStmt.executeQuery();
+			
+			while (rs.next()) {
+				  String uuid = rs.getString("uuid");
+				  System.out.println("UUID = " + uuid + "\n");
+				  if (uuid.equals(d.getUuid()))
+					  return true;
+				  else
+					  return false;
+			}
+		}
+		catch(Exception e) { 
+			System.out.println("Error on select of diamond characteristic." + e);
+		}
+		return true;		
 	}
 
 	@Override
@@ -66,7 +89,7 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 		
 		try{    
 			// the mysql insert statement
-			String query = " insert into diamond (id,description,cut,color,clarity,carat,shape,certification,quality,weight,measurements,rowhash) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String query = " insert into diamond (id,description,cut,color,clarity,carat,shape,certification,quality,weight,measurements,uuid, email,rowhash) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 			PreparedStatement preparedStmt = getDbMgr().getConnection().prepareStatement(query);
 			preparedStmt.setInt (1, value);
@@ -80,7 +103,9 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 			preparedStmt.setString (9, d.getQuality());			
 			preparedStmt.setString (10, d.getWeight());
 			preparedStmt.setString (11, d.getMeasurements());
-			preparedStmt.setString (12, rowHash);
+			preparedStmt.setString (12, d.getUuid());
+			preparedStmt.setString (13, d.getEmail());
+			preparedStmt.setString (14, rowHash);
 			
 			System.out.println("SQL: " + preparedStmt);
 			
@@ -177,8 +202,9 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 			ResultSet rs=stmt.executeQuery("select * from diamond"); 
 			//System.out.println("Result set = " + rs.getFetchSize());
 			while(rs.next())  
-				diamond.add(new Diamond(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)
-						, rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getString(12))); 
+				diamond.add(new Diamond(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)
+						, rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)
+						, rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14))); 
 		}
 		catch(Exception e) { 
 			System.out.println(e);
