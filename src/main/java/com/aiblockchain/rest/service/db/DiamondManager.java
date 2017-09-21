@@ -15,5 +15,7 @@ public interface DiamondManager {
 	public int addDiamond(Diamond d);
 	public void updateDiamond(int id);
 	public List<Diamond> getDiamondList();
-	public boolean doesUuidExist(Diamond d);	
+	public Diamond getDiamond(String itemId);
+	public boolean doesItemIdExist(Diamond d);
+	public List<Diamond> getDiamondsForAcct(String acctId);	
 }

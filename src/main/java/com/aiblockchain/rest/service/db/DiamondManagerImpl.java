@@ -35,22 +35,22 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 	}
     
 	@Override
-	public boolean doesUuidExist(Diamond d) {
+	public boolean doesItemIdExist(Diamond d) {
 		try{    
 			// the mysql insert statement
-			String query = " select * from diamond where uuid = ?";
+			String query = " select * from diamond where itemId = ?";
 
 			PreparedStatement preparedStmt = getDbMgr().getConnection().prepareStatement(query);
-			preparedStmt.setString (1, d.getUuid());
+			preparedStmt.setString (1, d.getItemId());
 			
 			System.out.println("SQL: " + preparedStmt);
 			
 			ResultSet rs = preparedStmt.executeQuery();
 			
 			while (rs.next()) {
-				  String uuid = rs.getString("uuid");
-				  System.out.println("UUID = " + uuid + "\n");
-				  if (uuid.equals(d.getUuid()))
+				  String itemId = rs.getString("itemId");
+				  System.out.println("itemId = " + itemId + "\n");
+				  if (itemId.equals(d.getItemId()))
 					  return true;
 				  else
 					  return false;
@@ -59,7 +59,7 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 		catch(Exception e) { 
 			System.out.println("Error on select of diamond characteristic." + e);
 		}
-		return true;		
+		return false;		
 	}
 
 	@Override
@@ -87,9 +87,9 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 		}
 		System.out.println("Hex Of Database Row Hash = " + rowHash);
 		
-		try{    
+		try{
 			// the mysql insert statement
-			String query = " insert into diamond (id,description,cut,color,clarity,carat,shape,certification,quality,weight,measurements,uuid, email,rowhash) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String query = " insert into diamond (id,description,cut,color,clarity,carat,shape,certification,quality,weight,measurements,itemId,acctId, email,rowhash) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 			PreparedStatement preparedStmt = getDbMgr().getConnection().prepareStatement(query);
 			preparedStmt.setInt (1, value);
@@ -103,9 +103,10 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 			preparedStmt.setString (9, d.getQuality());			
 			preparedStmt.setString (10, d.getWeight());
 			preparedStmt.setString (11, d.getMeasurements());
-			preparedStmt.setString (12, d.getUuid());
-			preparedStmt.setString (13, d.getEmail());
-			preparedStmt.setString (14, rowHash);
+			preparedStmt.setString (12, d.getItemId());
+			preparedStmt.setString (13, d.getAcctId());
+			preparedStmt.setString (14, d.getEmail());
+			preparedStmt.setString (15, rowHash);
 			
 			System.out.println("SQL: " + preparedStmt);
 			
@@ -195,22 +196,79 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 
 	@Override
 	public List<Diamond> getDiamondList() {
-		List<Diamond> diamond = new ArrayList<Diamond>();
+		List<Diamond> diamondList = new ArrayList<Diamond>();
 
 		try { 
-			Statement stmt=getDbMgr().getConnection().createStatement();  
-			ResultSet rs=stmt.executeQuery("select * from diamond"); 
+			Statement stmt=getDbMgr().getConnection().createStatement();
+			ResultSet rs=stmt.executeQuery("select * from diamond");
 			//System.out.println("Result set = " + rs.getFetchSize());
-			while(rs.next())  
-				diamond.add(new Diamond(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)
+			while(rs.next())
+				diamondList.add(new Diamond(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)
 						, rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)
-						, rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14))); 
+						, rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14)
+						, rs.getString(15)));
 		}
-		catch(Exception e) { 
+		catch(Exception e) {
 			System.out.println(e);
-		}  
+		}
 		System.out.println("DiamondList");
-		System.out.println(Arrays.asList(diamond));
+		System.out.println(Arrays.asList(diamondList));
+		return diamondList;
+	}
+
+	@Override
+	public Diamond getDiamond(String itemId) {
+		Diamond diamond = null;
+
+		try {
+			String query = "select * from diamond where itemId = ?";
+
+			PreparedStatement preparedStmt = getDbMgr().getConnection().prepareStatement(query);
+			preparedStmt.setString (1, itemId);
+
+			System.out.println("Acct SQL: " + preparedStmt);
+
+			ResultSet rs=preparedStmt.executeQuery();
+			//System.out.println("Result set = " + rs.getFetchSize());
+			while(rs.next())
+				diamond = new Diamond(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)
+						, rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)
+						, rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14)
+						, rs.getString(15));
+		}
+		catch(Exception e) {
+			System.out.println("Error on select of diamond for an account." + e);
+		}
+		System.out.println("Diamond for an item " + itemId);
+		System.out.println(diamond);
 		return diamond;
+	}
+
+	@Override
+	public List<Diamond> getDiamondsForAcct(String acctId) {
+		List<Diamond> diamondList = new ArrayList<Diamond>();
+
+		try {
+			String query = "select * from diamond where acctId = ?";
+
+			PreparedStatement preparedStmt = getDbMgr().getConnection().prepareStatement(query);
+			preparedStmt.setString (1, acctId);
+
+			System.out.println("Acct SQL: " + preparedStmt);
+
+			ResultSet rs=preparedStmt.executeQuery();
+			//System.out.println("Result set = " + rs.getFetchSize());
+			while(rs.next())
+				diamondList.add(new Diamond(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)
+						, rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)
+						, rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14)
+						, rs.getString(15))); 
+		}
+		catch(Exception e) {
+			System.out.println("Error on select of diamond for an account." + e);
+		}
+		System.out.println("DiamondList for an account = " + acctId);
+		System.out.println(Arrays.asList(diamondList));
+		return diamondList;
 	}
 }

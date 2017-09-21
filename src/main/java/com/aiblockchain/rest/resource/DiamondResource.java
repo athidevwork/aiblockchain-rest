@@ -14,7 +14,9 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -23,10 +25,8 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
 
 import com.aiblockchain.context.AppContext;
 import com.aiblockchain.rest.model.Diamond;
-import com.aiblockchain.rest.model.Users;
 import com.aiblockchain.rest.service.db.DbManager;
 import com.aiblockchain.rest.service.db.DiamondManager;
-import com.aiblockchain.rest.service.db.UserManager;
 
 /**
  * @author Athi
@@ -36,38 +36,59 @@ import com.aiblockchain.rest.service.db.UserManager;
 public class DiamondResource {
 	/** The path to the folder where we want to store the uploaded files */
 	private static final String UPLOAD_FOLDER = "C:/dev/git/aiblockchain/aiblockchain-rest/uploadedFiles/";
-	
+
 	DbManager dbMgr = (DbManager) AppContext.getBean(AppContext.DB_MANAGER);
 	DiamondManager diamondMgr = (DiamondManager) AppContext.getBean(AppContext.DIAMOND_MANAGER);	
 	
     public DbManager getDbMgr() {
 		return dbMgr;
 	}
-	
+
     public DiamondManager getDiamondMgr() {
 		return diamondMgr;
 	}
-	
+
 	@GET
     @Produces("text/plain")
     public Response hello() {
         return Response.ok().entity("Hello from Document Resource").build();
     }
-	
+
     @POST
 	@Path("/save")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public Response saveDocument(Diamond diamond) {
-    	if (!getDiamondMgr().doesUuidExist(diamond)) {
+    	if (!getDiamondMgr().doesItemIdExist(diamond)) {
 			int id = getDiamondMgr().addDiamond(diamond);
 			String result = "Saved diamond : " + diamond + " with ID : " + id;
 			return Response.status(201).entity(result).build();
     	}
     	else
-    		return Response.status(409).entity(diamond.getUuid()+ " ID already found.").build();
-	
+    		return Response.status(409).entity(diamond.getItemId()+ " ID already found.").build();
 	}
-    
+
+    @GET
+	@Path("/lookup/acct/{id}")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public List<Diamond> getAccount(@PathParam("id") String acctId) {
+    	System.out.println("Account = " + acctId);
+    	getDbMgr().init();
+    	List<Diamond> diamonds = getDiamondMgr().getDiamondsForAcct(acctId);
+    	getDbMgr().shutdown();
+    	return diamonds;
+    }
+
+    @GET
+	@Path("/lookup/item/{id}")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public Diamond getItem(@PathParam("id") String itemId) {
+    	System.out.println("Item = " + itemId);
+    	getDbMgr().init();
+    	Diamond diamond = getDiamondMgr().getDiamond(itemId);
+    	getDbMgr().shutdown();
+    	return diamond;
+    }
+
     @GET
 	@Path("/list")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -75,7 +96,7 @@ public class DiamondResource {
     	getDbMgr().init();
     	List<Diamond> diamonds = getDiamondMgr().getDiamondList();
     	getDbMgr().shutdown();
-    	return diamonds;	
+    	return diamonds;
     }
     
 	@POST
@@ -125,7 +146,7 @@ public class DiamondResource {
 		out.flush();
 		out.close();
 	}
-	
+
 	/**
 	 * Creates a folder to desired location if it not already exists
 	 * 
