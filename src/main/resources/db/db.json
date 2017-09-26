@@ -1,5 +1,25 @@
-[{"id":1, "description":"Natural Diamond", "cut":"Radiant Cut", "color":"Intense Yellow", "clarity":"VS1", "carat":"1.26 Carat", "shape":"Cubic", "certification":"None", "quality":"Good", "weight":"1.36", "measurements":"6.15 - 5.45 x 3.97 mm", "itemId":"0123", "acctId":"1", "email":"athi@ai-blockchain.com", "rowhash":"4565a303270b1774732bcb65236596b5"},
- {"id":2, "description":"Artificial Diamond", "cut":"Radiant Cut", "color":"Intense White", "clarity":"VVS1", "carat":"1.25 Carat", "shape":"Cubic", "certification":"None", "quality":"Good", "weight":"1.5", "measurements":"6.15 - 5.45 x 3.97 mm", "itemId":"5678", "acctId":"1", "email":"athi@ai-blockchain.com", "rowhash":"4d2e42fc990bc58bf257beada3362977"},
- {"id":3, "description":"Real Diamond", "cut":"Instant Radiant Cut", "color":"Bright White", "clarity":"VVVS1", "carat":"1.00 Carat", "shape":"Cubic", "certification":"None", "quality":"Excellent", "weight":"2.5", "measurements":"4.15 - 4.45 x 5.17 mm", "itemId":"4567", "acctId":"2", "email":"mike@ai-blockchain.com", "rowhash":"64ca7f257cce122d38d7d2d1bb8531cc"},
- {"id":4, "description":"Test Real Diamond", "cut":"Instant Radiant Cut", "color":"Bright White", "clarity":"VVVVS1", "carat":"2.00 Carat", "shape":"Cubic", "certification":"None", "quality":"Excellent", "weight":"3.5", "measurements":"4.15 - 4.45 x 5.17 mm", "itemId":"6789", "acctId":"3", "email":"drew@ai-blockchain.com", "rowhash":"D76F7F605BFB5E2A7B74DA0F91B216E7"},
- {"id":5, "description":"Test Real Diamond", "cut":"Instant Radiant Cut", "color":"Bright White", "clarity":"VVVVS1", "carat":"2.00 Carat", "shape":"Cubic", "certification":"None", "quality":"Excellent", "weight":"3.5", "measurements":"4.15 - 4.45 x 5.17 mm", "itemId":"1234", "acctId":"1", "email":"athi@ai-blockchain.com", "rowhash":"838EBBC3D8AB35CA4C9E676F6DAFE345"}]
+{
+"diamond": 
+[
+ {"id":1, "itemId":123, "acctId":1, "description":"Natural Diamond", "cut":"Radiant Cut", "color":"Intense Yellow", "clarity":"VS1", "carat":"1.26 Carat", "shape":"Cubic", "certification":"None", "quality":"Good", "weight":"1.36", "measurements":"6.15 - 5.45 x 3.97 mm", "email":"athi@ai-blockchain.com", "rowhash":"4565a303270b1774732bcb65236596b5"},
+ {"id":2, "itemId":5678, "acctId":1, "description":"Artificial Diamond", "cut":"Radiant Cut", "color":"Intense White", "clarity":"VVS1", "carat":"1.25 Carat", "shape":"Cubic", "certification":"None", "quality":"Good", "weight":"1.5", "measurements":"6.15 - 5.45 x 3.97 mm", "email":"athi@ai-blockchain.com", "rowhash":"4d2e42fc990bc58bf257beada3362977"},
+ {"id":3, "itemId":4567, "acctId":2, "description":"Real Diamond", "cut":"Instant Radiant Cut", "color":"Bright White", "clarity":"VVVS1", "carat":"1.00 Carat", "shape":"Cubic", "certification":"None", "quality":"Excellent", "weight":"2.5", "measurements":"4.15 - 4.45 x 5.17 mm", "email":"mike@ai-blockchain.com", "rowhash":"64ca7f257cce122d38d7d2d1bb8531cc"},
+ {"id":4, "itemId":6789, "acctId":3, "description":"Test Real Diamond", "cut":"Instant Radiant Cut", "color":"Bright White", "clarity":"VVVVS1", "carat":"2.00 Carat", "shape":"Cubic", "certification":"None", "quality":"Excellent", "weight":"3.5", "measurements":"4.15 - 4.45 x 5.17 mm", "email":"drew@ai-blockchain.com", "rowhash":"D76F7F605BFB5E2A7B74DA0F91B216E7"},
+ {"id":5, "itemId":1234, "acctId":1, "description":"Test Real Diamond", "cut":"Instant Radiant Cut", "color":"Bright White", "clarity":"VVVVS1", "carat":"2.00 Carat", "shape":"Cubic", "certification":"None", "quality":"Excellent", "weight":"3.5", "measurements":"4.15 - 4.45 x 5.17 mm", "email":"athi@ai-blockchain.com", "rowhash":"838EBBC3D8AB35CA4C9E676F6DAFE345"},
+ {"id":6, "itemId":12345, "acctId":1, "description":"Test Real Diamond", "cut":"Instant Radiant Cut", "color":"Bright White", "clarity":"VVVVS1", "carat":"2.00 Carat", "shape":"Cubic", "certification":"None", "quality":"Excellent", "weight":"3.5", "measurements":"4.15 - 4.45 x 5.17 mm", "email":"athi@ai-blockchain.com", "rowhash":"7E800A5626F8B8ECB8B97CF4F3E7F018"},
+ {"id":7, "itemId":67890, "acctId":1, "description":"Test Real Diamond", "cut":"Instant Radiant Cut", "color":"Bright White", "clarity":"VVVVS1", "carat":"2.00 Carat", "shape":"Cubic", "certification":"None", "quality":"Excellent", "weight":"3.5", "measurements":"4.15 - 4.45 x 5.17 mm", "email":"athi@ai-blockchain.com", "rowhash":"F2ABA1107C480686F125C63D237666F5"}
+],
+"diamond_history":
+[
+ {"id":1, "diamond_itemfk":12345, "date":"2016-01-01", "description":"Mined in Africa"},
+ {"id":2, "diamond_itemfk":12345, "date":"2016-02-01", "description":"Polished in  Belgium"},
+ {"id":3, "diamond_itemfk":12345, "date":"2016-03-01", "description":"Licensed by ABC Associates"},
+ {"id":4, "diamond_itemfk":12345, "date":"2016-04-01", "description":"Purchase by Retailer - Zales"},
+ {"id":5, "diamond_itemfk":12345, "date":"2016-05-01", "description":"Customer Purchase"},
+ {"id":6, "diamond_itemfk":67890, "date":"2016-01-01", "description":"Mined in Canada"},
+ {"id":7, "diamond_itemfk":67890, "date":"2016-02-01", "description":"Polished in  Belgium"},
+ {"id":8, "diamond_itemfk":67890, "date":"2016-03-01", "description":"Licensed by Company"},
+ {"id":9, "diamond_itemfk":67890, "date":"2016-04-01", "description":"Purchase by Retailer - Macys"},
+ {"id":10, "diamond_itemfk":67890, "date":"2016-05-01", "description":"CustomerID025 Purchase"}
+]
+}
