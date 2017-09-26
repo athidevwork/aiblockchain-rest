@@ -40,6 +40,9 @@ curl -X GET curl -X GET http://localhost:5000/users/json
 The result [{"username":"test","userId":100}]
 
 
+curl -H "Accept:application/json" http://localhost:20001/diamond/lookup/acct/1 | json_pp
+
+
 ===================================================================================
 Test using Rest Client :
 

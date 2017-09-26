@@ -4,6 +4,7 @@
 package com.aiblockchain.rest.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -29,6 +30,7 @@ public class Diamond implements Serializable {
     private String acctId;
 	private String email;
     private String rowHash;
+    private List<DiamondHistory> history;
     
     public Diamond() {}
     
@@ -142,11 +144,17 @@ public class Diamond implements Serializable {
 	public void setRowHash(String rowHash) {
 		this.rowHash = rowHash;
 	}
+	public List<DiamondHistory> getHistory() {
+		return history;
+	}
+	public void setHistory(List<DiamondHistory> history) {
+		this.history = history;
+	}
 	@Override
 	public String toString() {
 		return "Diamond [id=" + id + ", description=" + description + ", cut=" + cut + ", color=" + color + ", clarity="
 				+ clarity + ", carat=" + carat + ", shape=" + shape + ", certification=" + certification + ", quality="
 				+ quality + ", weight=" + weight + ", measurements=" + measurements + ", itemId=" + itemId + ", acctId="
-				+ acctId + ", email=" + email + ", rowHash=" + rowHash + "]";
+				+ acctId + ", email=" + email + ", rowHash=" + rowHash + ", history=" + history + "]";
 	}
 }

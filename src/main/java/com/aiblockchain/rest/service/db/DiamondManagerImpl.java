@@ -11,6 +11,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,6 +23,7 @@ import javax.xml.bind.DatatypeConverter;
 import com.aiblockchain.api.SaveRequest;
 import com.aiblockchain.context.AppContext;
 import com.aiblockchain.rest.model.Diamond;
+import com.aiblockchain.rest.model.DiamondHistory;
 
 /**
  * @author Athi
@@ -76,7 +78,7 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 		catch(Exception e) { 
 			System.out.println("Error getting max id from db " + e);
 		}
-		System.out.println("Last ID : " + value);
+		System.out.println("Max ID : " + value);
 		
 		String rowHash = null;
 		//Create a hash for row
@@ -121,6 +123,45 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 		}
 		catch(Exception e) { 
 			System.out.println("Error on insert of diamond characteristic." + e);
+		}
+		
+		int historyId = 0; 
+		try {
+			Statement stmt=getDbMgr().getConnection().createStatement();
+			ResultSet rs = stmt.executeQuery("select max(id) from diamond_history");
+			while(rs.next())
+				historyId = rs.getInt(1) + 1;
+		}
+		catch(Exception e) { 
+			System.out.println("Error getting max id for diamond_history from db " + e);
+		}
+		System.out.println("Max ID on history table : " + historyId);
+		
+		try{
+			//getDbMgr().getConnection().setAutoCommit(false);
+			
+			List<DiamondHistory> history = d.getHistory();
+			
+			// the mysql insert statement to diamond_history
+			String query = " insert into diamond_history (id, diamond_itemfk, date, description) values (?, ?, ?, ?)";
+
+			PreparedStatement preparedStmt = getDbMgr().getConnection().prepareStatement(query);
+			int idValue = historyId;
+			for (DiamondHistory hist : history) {
+				preparedStmt.setInt (1, idValue++);
+				preparedStmt.setString (2, d.getItemId());
+				preparedStmt.setString (3, hist.getDate());
+				preparedStmt.setString (4, hist.getDescription());
+				
+				System.out.println("SQL: " + preparedStmt);
+				
+				preparedStmt.execute();
+			}
+			//getDbMgr().getConnection().commit();
+			//getDbMgr().getConnection().setAutoCommit(true);
+		}
+		catch(Exception e) { 
+			System.out.println("Error on insert of diamond history." + e);
 		}
 		
 		/*try {
@@ -202,11 +243,15 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 			Statement stmt=getDbMgr().getConnection().createStatement();
 			ResultSet rs=stmt.executeQuery("select * from diamond");
 			//System.out.println("Result set = " + rs.getFetchSize());
-			while(rs.next())
-				diamondList.add(new Diamond(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)
+			while(rs.next()) {
+				List<DiamondHistory> history = getHistory(String.valueOf(rs.getInt(12)));
+				Diamond diamond = new Diamond(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)
 						, rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)
 						, rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14)
-						, rs.getString(15)));
+						, rs.getString(15));
+				diamond.setHistory(history);
+				diamondList.add(diamond);
+			}
 		}
 		catch(Exception e) {
 			System.out.println(e);
@@ -221,6 +266,8 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 		Diamond diamond = null;
 
 		try {
+			List<DiamondHistory> history = getHistory(itemId);
+			
 			String query = "select * from diamond where itemId = ?";
 
 			PreparedStatement preparedStmt = getDbMgr().getConnection().prepareStatement(query);
@@ -229,12 +276,15 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 			System.out.println("Acct SQL: " + preparedStmt);
 
 			ResultSet rs=preparedStmt.executeQuery();
+			 
 			//System.out.println("Result set = " + rs.getFetchSize());
-			while(rs.next())
+			while(rs.next()) {
 				diamond = new Diamond(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)
 						, rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)
 						, rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14)
 						, rs.getString(15));
+				diamond.setHistory(history);
+			}
 		}
 		catch(Exception e) {
 			System.out.println("Error on select of diamond for an account." + e);
@@ -242,6 +292,23 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 		System.out.println("Diamond for an item " + itemId);
 		System.out.println(diamond);
 		return diamond;
+	}
+
+	private List<DiamondHistory> getHistory(String itemId) throws SQLException {
+		//get history for the item
+		String historySql = "select id, date, description from diamond_history where diamond_itemfk = ?";
+		
+		PreparedStatement preparedHistStmt = getDbMgr().getConnection().prepareStatement(historySql);
+		preparedHistStmt.setString (1, itemId);
+
+		System.out.println("History SQL: " + preparedHistStmt);
+
+		ResultSet historyrs=preparedHistStmt.executeQuery();
+		List<DiamondHistory> history = new ArrayList<DiamondHistory>();	
+		while(historyrs.next()) {
+			history.add(new DiamondHistory(historyrs.getInt(1), historyrs.getString(2), historyrs.getString(3)));
+		}
+		return history;
 	}
 
 	@Override
@@ -258,11 +325,15 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 
 			ResultSet rs=preparedStmt.executeQuery();
 			//System.out.println("Result set = " + rs.getFetchSize());
-			while(rs.next())
-				diamondList.add(new Diamond(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)
+			while(rs.next()) {
+				List<DiamondHistory> history = getHistory(String.valueOf(rs.getInt(12)));
+				Diamond diamond = new Diamond(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)
 						, rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)
 						, rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14)
-						, rs.getString(15))); 
+						, rs.getString(15));
+				diamond.setHistory(history);
+				diamondList.add(diamond); 				
+			}
 		}
 		catch(Exception e) {
 			System.out.println("Error on select of diamond for an account." + e);

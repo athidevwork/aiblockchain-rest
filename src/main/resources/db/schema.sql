@@ -17,3 +17,15 @@ CREATE TABLE `diamond` (
   `rowhash` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `aiblockchain`.`diamond_history` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `diamond_fk` INT NULL,
+  `date` DATE NULL,
+  `description` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `diamondFK`
+    FOREIGN KEY (`id`)
+    REFERENCES `aiblockchain`.`diamond` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);

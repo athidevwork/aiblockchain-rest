@@ -51,13 +51,13 @@ public class DiamondResource {
 	@GET
     @Produces("text/plain")
     public Response hello() {
-        return Response.ok().entity("Hello from Document Resource").build();
+        return Response.ok().entity("Hello from Diamond Resource").build();
     }
 
     @POST
 	@Path("/save")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-	public Response saveDocument(Diamond diamond) {
+	public Response saveDiamond(Diamond diamond) {
     	if (!getDiamondMgr().doesItemIdExist(diamond)) {
 			int id = getDiamondMgr().addDiamond(diamond);
 			String result = "Saved diamond : " + diamond + " with ID : " + id;
