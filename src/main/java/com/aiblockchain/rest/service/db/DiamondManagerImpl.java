@@ -244,7 +244,8 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 			ResultSet rs=stmt.executeQuery("select * from diamond");
 			//System.out.println("Result set = " + rs.getFetchSize());
 			while(rs.next()) {
-				List<DiamondHistory> history = getHistory(String.valueOf(rs.getInt(12)));
+				System.out.println("item id = " + rs.getInt(2));
+				List<DiamondHistory> history = getHistory(String.valueOf(rs.getInt(2)));
 				Diamond diamond = new Diamond(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)
 						, rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)
 						, rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14)
@@ -326,7 +327,7 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 			ResultSet rs=preparedStmt.executeQuery();
 			//System.out.println("Result set = " + rs.getFetchSize());
 			while(rs.next()) {
-				List<DiamondHistory> history = getHistory(String.valueOf(rs.getInt(12)));
+				List<DiamondHistory> history = getHistory(String.valueOf(rs.getInt(2)));
 				Diamond diamond = new Diamond(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)
 						, rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)
 						, rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14)

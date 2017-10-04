@@ -34,9 +34,9 @@ public class Diamond implements Serializable {
     
     public Diamond() {}
     
-	public Diamond(int id, String description, String cut, String color, String clarity, String carat
-			, String shape, String certification, String quality, String weight, String measurements
-			, String itemId, String acctId, String email, String rowHash) {
+	public Diamond(int id, String itemId, String acctId, String description, String cut, String color, String clarity
+			, String carat, String shape, String certification, String quality, String weight, String measurements
+			, String email, String rowHash) {
 		super();
 		this.id = id;
 		this.description = description;
