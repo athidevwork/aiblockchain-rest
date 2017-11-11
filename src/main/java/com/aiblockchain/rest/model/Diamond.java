@@ -28,7 +28,6 @@ public class Diamond implements Serializable {
     private String measurements;
     private String itemId;
     private String acctId;
-	private String email;
     private String rowHash;
     private List<DiamondHistory> history;
     
@@ -36,7 +35,7 @@ public class Diamond implements Serializable {
     
 	public Diamond(int id, String itemId, String acctId, String description, String cut, String color, String clarity
 			, String carat, String shape, String certification, String quality, String weight, String measurements
-			, String email, String rowHash) {
+			, String rowHash) {
 		super();
 		this.id = id;
 		this.description = description;
@@ -51,7 +50,6 @@ public class Diamond implements Serializable {
 		this.measurements = measurements;
         this.itemId = itemId;
         this.acctId = acctId;
-        this.email = email;
 		this.rowHash = rowHash;
 	}
 	public int getId() {
@@ -132,12 +130,6 @@ public class Diamond implements Serializable {
 	public void setAcctId(String acctId) {
 		this.acctId = acctId;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
 	public String getRowHash() {
 		return rowHash;
 	}
@@ -155,6 +147,6 @@ public class Diamond implements Serializable {
 		return "Diamond [id=" + id + ", description=" + description + ", cut=" + cut + ", color=" + color + ", clarity="
 				+ clarity + ", carat=" + carat + ", shape=" + shape + ", certification=" + certification + ", quality="
 				+ quality + ", weight=" + weight + ", measurements=" + measurements + ", itemId=" + itemId + ", acctId="
-				+ acctId + ", email=" + email + ", rowHash=" + rowHash + ", history=" + history + "]";
+				+ acctId + ", rowHash=" + rowHash + ", history=" + history + "]";
 	}
 }

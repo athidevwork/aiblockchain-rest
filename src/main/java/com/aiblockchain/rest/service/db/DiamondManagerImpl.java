@@ -107,8 +107,7 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 			preparedStmt.setString (11, d.getMeasurements());
 			preparedStmt.setString (12, d.getItemId());
 			preparedStmt.setString (13, d.getAcctId());
-			preparedStmt.setString (14, d.getEmail());
-			preparedStmt.setString (15, rowHash);
+			preparedStmt.setString (14, rowHash);
 			
 			System.out.println("SQL: " + preparedStmt);
 			
@@ -248,8 +247,7 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 				List<DiamondHistory> history = getHistory(String.valueOf(rs.getInt(2)));
 				Diamond diamond = new Diamond(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)
 						, rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)
-						, rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14)
-						, rs.getString(15));
+						, rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14));
 				diamond.setHistory(history);
 				diamondList.add(diamond);
 			}
@@ -282,8 +280,7 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 			while(rs.next()) {
 				diamond = new Diamond(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)
 						, rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)
-						, rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14)
-						, rs.getString(15));
+						, rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14));
 				diamond.setHistory(history);
 			}
 		}
@@ -297,7 +294,7 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 
 	private List<DiamondHistory> getHistory(String itemId) throws SQLException {
 		//get history for the item
-		String historySql = "select id, date, description from diamond_history where diamond_itemfk = ?";
+		String historySql = "select id, date, description from diamond_history where itemId = ?";
 		
 		PreparedStatement preparedHistStmt = getDbMgr().getConnection().prepareStatement(historySql);
 		preparedHistStmt.setString (1, itemId);
@@ -330,8 +327,7 @@ public class DiamondManagerImpl extends DbManagerImpl implements DiamondManager 
 				List<DiamondHistory> history = getHistory(String.valueOf(rs.getInt(2)));
 				Diamond diamond = new Diamond(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)
 						, rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)
-						, rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14)
-						, rs.getString(15));
+						, rs.getString(10), rs.getString(11), rs.getString(12), rs.getString(13), rs.getString(14));
 				diamond.setHistory(history);
 				diamondList.add(diamond); 				
 			}

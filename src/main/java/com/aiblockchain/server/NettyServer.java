@@ -3,17 +3,11 @@
  */
 package com.aiblockchain.server;
 
-import java.io.OutputStream;
 import java.net.URI;
 
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.UriBuilder;
 
-import org.apache.http.protocol.HttpService;
 import org.apache.log4j.PropertyConfigurator;
-import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.jettison.JettisonFeature;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
@@ -21,16 +15,18 @@ import org.glassfish.jersey.moxy.json.MoxyJsonFeature;
 import org.glassfish.jersey.moxy.xml.MoxyXmlFeature;
 import org.glassfish.jersey.netty.httpserver.NettyHttpContainerProvider;
 import org.glassfish.jersey.server.ResourceConfig;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.aiblockchain.rest.data.resource.AssetResource;
 import com.aiblockchain.rest.resource.AIBlockChainResource;
 import com.aiblockchain.rest.resource.DbResource;
 import com.aiblockchain.rest.resource.DiamondResource;
 import com.aiblockchain.rest.resource.HelloWorldResource;
 import com.aiblockchain.rest.resource.SapHana2Resource;
 import com.aiblockchain.rest.resource.UserResource;
-import com.aiblockchain.server.http.WebServer;
 
 import io.netty.channel.Channel;
 
@@ -61,6 +57,7 @@ public class NettyServer {
         .register(SapHana2Resource.class)
         .register(DbResource.class)
         .register(DiamondResource.class)
+        .register(AssetResource.class)
         .register(MoxyJsonFeature.class)
         .register(MoxyXmlFeature.class)
         //.register(JaxbContextResolver.class)  // No need to register this provider if no special configuration is required.
@@ -75,10 +72,18 @@ public class NettyServer {
 
 		PropertyConfigurator.configure(System
 				.getProperty("log4j.configuration"));
+		
 		AbstractApplicationContext context = new AnnotationConfigApplicationContext(ServerSpringConfig.class);
 		
 		// For the destroy method to work.
 		context.registerShutdownHook();
+		
+		//hookup spring data jpa
+		/*AbstractApplicationContext springDataACAContext = new AnnotationConfigApplicationContext(SpringDataConfig.class);
+		
+		springDataACAContext.registerShutdownHook();*/
+		AbstractApplicationContext springDataCPXAContext = new ClassPathXmlApplicationContext("classpath:spring/application-context.xml");	
+		springDataCPXAContext.registerShutdownHook();
 		
 		// Start tcp and flash servers
 		//ServerManager manager = (ServerManager)context.getBean("serverManager");
