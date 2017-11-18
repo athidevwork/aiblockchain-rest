@@ -23,6 +23,9 @@ import com.google.gson.stream.JsonWriter;
  * This TypeAdapter unproxies Hibernate proxied objects, and serializes them
  * through the registered (or default) TypeAdapter of the base class.
  */
+/*public class HibernateProxyTypeAdapter {
+	
+}*/
 public class HibernateProxyTypeAdapter extends TypeAdapter<HibernateProxy> {
 
     public static final TypeAdapterFactory FACTORY = new TypeAdapterFactory() {

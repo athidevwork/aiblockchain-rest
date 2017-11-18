@@ -15,9 +15,9 @@ public class Address implements Serializable {
 	private static final long serialVersionUID = 7078125133300055931L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(columnDefinition = "INTEGER")
-	private long id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="ID", columnDefinition = "INTEGER", insertable = false, updatable = false, nullable = false)
+	private long addressId;
 
 	private String address1;
 
@@ -33,7 +33,7 @@ public class Address implements Serializable {
 	private String zip;
 
 	//bi-directional many-to-one association to ContactAddress
-	@OneToMany(mappedBy="address")
+	@OneToMany(mappedBy="address", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ContactAddress> contactAddresses;
 
 	public Address() {
@@ -49,12 +49,12 @@ public class Address implements Serializable {
 		this.zip = zip;
 	}
 
-	public long getId() {
-		return this.id;
+	public long getAddressId() {
+		return this.addressId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setAddressId(long addressId) {
+		this.addressId = addressId;
 	}
 
 	public String getAddress1() {
@@ -129,7 +129,7 @@ public class Address implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", address1=" + address1 + ", address2=" + address2 + ", atype=" + atype
+		return "Address [id=" + addressId + ", address1=" + address1 + ", address2=" + address2 + ", atype=" + atype
 				+ ", city=" + city + ", state=" + state + ", zip=" + zip + ", contactAddresses=" + contactAddresses
 				+ "]";
 	}

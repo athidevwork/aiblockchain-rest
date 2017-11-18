@@ -5,7 +5,6 @@ import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +14,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -28,10 +28,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan(basePackages={"com.aiblockchain.rest.data"})
 @ImportResource("classpath:/spring/application-context.xml")
 public class SpringDataConfig {
-	@Bean
+/*	@Bean
 	public ModelMapper modelMapper() {
 	    return new ModelMapper();
-	}
+	}*/
 	
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
@@ -39,11 +39,22 @@ public class SpringDataConfig {
 		em.setDataSource(dataSource());
 		em.setPackagesToScan(new String[] { "com.aiblockchain.rest.data" });
 		
-		JpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
+		//JpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
+		JpaVendorAdapter jpaVendorAdapter = new EclipseLinkJpaVendorAdapter();
 		em.setJpaVendorAdapter(jpaVendorAdapter);
-		em.setJpaProperties(jpaProperties());
+		//em.setJpaProperties(jpaProperties());
+		em.setJpaProperties(jpaEclipseLinkProperties());
 		
 		return em;
+	}
+
+	private Properties jpaEclipseLinkProperties() {
+		Properties jpaProperties = new Properties();
+		jpaProperties.put("eclipselink.logging.level", "FINE");
+		jpaProperties.put("eclipselink.logging.file", "jpa.log");
+		jpaProperties.put("eclipselink.logging.timestamp", "true");
+		jpaProperties.put("eclipselink.ddl-generation", "none");
+		return jpaProperties;
 	}
 
 	@Bean

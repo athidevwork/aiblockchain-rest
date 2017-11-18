@@ -25,9 +25,9 @@ public class Transaction implements Serializable {
 	private static final long serialVersionUID = 8420397683536295218L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(columnDefinition = "INTEGER")
-	private long id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "ID", columnDefinition = "INTEGER", insertable = false, updatable = false, nullable = false)
+	private long transId;
 
 	@Column(name="AFTER_HASH")
 	private String afterHash;
@@ -43,18 +43,10 @@ public class Transaction implements Serializable {
 	
 	private String description;
 
-	@Column(name="OWNER_ACCT", columnDefinition="INTEGER")
-	private Account ownerAcct;
-
 	//bi-directional many-to-one association to Asset
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="ASSET_ID", columnDefinition="INTEGER")
 	private Asset asset;
-
-	//bi-directional many-to-one association to Account
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="FROM_ACCOUNT_ID", columnDefinition="INTEGER")
-	private Account fromAccount;
 
 	//bi-directional many-to-one association to Lot
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -63,9 +55,19 @@ public class Transaction implements Serializable {
 
 	//bi-directional many-to-one association to Account
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="TO_ACCOUNT_ID", columnDefinition="INTEGER")
+	@JoinColumn(name="FROM_ACCT_ID", columnDefinition="INTEGER")
+	private Account fromAccount;
+	
+	//bi-directional many-to-one association to Account
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="TO_ACCT_ID", columnDefinition="INTEGER")
 	private Account toAccount;
 
+	//bi-directional many-to-one association to Account
+	@ManyToOne
+	@JoinColumn(name="OWNER_ID", columnDefinition="INTEGER")
+	private Account ownerAcct;	
+	
 	public Transaction() {
 	}
 
@@ -82,12 +84,12 @@ public class Transaction implements Serializable {
 		this.toAccount = toAcct;
 	}
 
-	public long getId() {
-		return this.id;
+	public long getTransIdId() {
+		return this.transId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setTransIdId(long transId) {
+		this.transId = transId;
 	}
 
 	public String getAfterHash() {
@@ -169,10 +171,10 @@ public class Transaction implements Serializable {
 	public void setToAccount(Account account2) {
 		this.toAccount = account2;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Transaction [id=" + id + ", afterHash=" + afterHash + ", afterTrans=" + afterTrans + ", beforeHash="
+		return "Transaction [id=" + transId + ", afterHash=" + afterHash + ", afterTrans=" + afterTrans + ", beforeHash="
 				+ beforeHash + ", beforeTrans=" + beforeTrans + ", description=" + description + ", ownerAcct=" + ownerAcct
 				+ ", asset=" + asset + ", fromAccount=" + fromAccount + ", lot=" + lot + ", toAccount=" + toAccount
 				+ "]";

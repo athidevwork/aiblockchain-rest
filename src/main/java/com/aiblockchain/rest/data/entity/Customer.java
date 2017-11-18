@@ -22,9 +22,9 @@ public class Customer implements Serializable {
 	private static final long serialVersionUID = 6114627040695685844L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(columnDefinition = "INTEGER")
-	private long id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="ID", columnDefinition = "INTEGER", insertable = false, updatable = false, nullable = false)
+	private long custId;
 
 	private String beneficiary;
 
@@ -41,19 +41,19 @@ public class Customer implements Serializable {
 	private String taxId;
 
 	//bi-directional many-to-one association to Account
-	@OneToMany(mappedBy="customer")
+	@OneToMany(mappedBy="acctId", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Account> accounts;
 
 	//bi-directional many-to-one association to ContactAddress
-	@OneToMany(mappedBy="customer")
+	@OneToMany(mappedBy="customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ContactAddress> contactAddresses;
 
 	//bi-directional many-to-one association to ContactEmail
-	@OneToMany(mappedBy="customer")
+	@OneToMany(mappedBy="customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ContactEmail> contactEmails;
 
 	//bi-directional many-to-one association to ContactPhone
-	@OneToMany(mappedBy="customer")
+	@OneToMany(mappedBy="customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ContactPhone> contactPhones;
 
 	public Customer() {
@@ -68,12 +68,12 @@ public class Customer implements Serializable {
 		this.taxId = taxId;
 	}
 
-	public long getId() {
-		return this.id;
+	public long getCustId() {
+		return this.custId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setCustId(long custId) {
+		this.custId = custId;
 	}
 
 	public String getBeneficiary() {
@@ -206,7 +206,7 @@ public class Customer implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", beneficiary=" + beneficiary + ", emergencyContact=" + emergencyContact
+		return "Customer [id=" + custId + ", beneficiary=" + beneficiary + ", emergencyContact=" + emergencyContact
 				+ ", govtId=" + govtId + ", legalName=" + legalName + ", taxId=" + taxId + ", accounts=" + accounts
 				+ ", contactAddresses=" + contactAddresses + ", contactEmails=" + contactEmails + ", contactPhones="
 				+ contactPhones + "]";

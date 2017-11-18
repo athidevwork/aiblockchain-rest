@@ -15,17 +15,10 @@ public class Account implements Serializable {
 	private static final long serialVersionUID = -7571837407885901851L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(columnDefinition = "INTEGER")
-	private long id;
-
-	@Column(name="ACCT_ID")
+	//@GeneratedValue(strategy=GenerationType.AUTO)
+	//@Column(columnDefinition = "INTEGER")
+	@Column(name="ID", insertable = false, updatable = false, nullable = false)
 	private String acctId;
-
-	//bi-directional many-to-one association to Asset
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="ASSET_ID", columnDefinition="INTEGER")
-	private Asset asset;
 
 	//bi-directional many-to-one association to Customer
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -33,33 +26,32 @@ public class Account implements Serializable {
 	private Customer customer;
 
 	//bi-directional many-to-one association to Lot
-	@OneToMany(mappedBy="account")
+	//@OneToMany(mappedBy="asset", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+	//private List<Asset> assets;
+	
+	//bi-directional many-to-one association to Lot
+	@OneToMany(mappedBy="account", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Lot> lots;
 
 	//bi-directional many-to-one association to Transaction
-	@OneToMany(mappedBy="fromAccount")
-	private List<Transaction> transactions1;
+	@OneToMany(mappedBy="fromAccount", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Transaction> sender;
 
 	//bi-directional many-to-one association to Transaction
-	@OneToMany(mappedBy="toAccount")
-	private List<Transaction> transactions2;
+	@OneToMany(mappedBy="toAccount", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Transaction> receiver;
+	
+	//bi-directional many-to-one association to Transaction
+	@OneToMany(mappedBy="ownerAcct", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Transaction> owner;	
 
 	public Account() {
 	}
 
-	public Account(String acctId, Asset asset, Customer customer) {
+	public Account(Customer customer) {
 		super();
-		this.acctId = acctId;
-		this.asset = asset;
+		//this.acctId = acctId;
 		this.customer = customer;
-	}
-
-	public long getId() {
-		return this.id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 	public String getAcctId() {
@@ -70,14 +62,6 @@ public class Account implements Serializable {
 		this.acctId = acctId;
 	}
 
-	public Asset getAsset() {
-		return this.asset;
-	}
-
-	public void setAsset(Asset asset) {
-		this.asset = asset;
-	}
-
 	public Customer getCustomer() {
 		return this.customer;
 	}
@@ -86,6 +70,14 @@ public class Account implements Serializable {
 		this.customer = customer;
 	}
 
+	/*public List<Asset> getAssets() {
+		return this.assets;
+	}
+
+	public void setAssets(List<Asset> assets) {
+		this.assets = assets;
+	}*/
+	
 	public List<Lot> getLots() {
 		return this.lots;
 	}
@@ -108,54 +100,76 @@ public class Account implements Serializable {
 		return lot;
 	}
 
-	public List<Transaction> getTransactions1() {
-		return this.transactions1;
+	public List<Transaction> getSender() {
+		return this.sender;
 	}
 
-	public void setTransactions1(List<Transaction> transactions1) {
-		this.transactions1 = transactions1;
+	public void setSender(List<Transaction> sender) {
+		this.sender = sender;
 	}
 
-	public Transaction addTransactions1(Transaction transactions1) {
-		getTransactions1().add(transactions1);
-		transactions1.setFromAccount(this);
+	public Transaction addsender(Transaction sender) {
+		getSender().add(sender);
+		sender.setFromAccount(this);
 
-		return transactions1;
+		return sender;
 	}
 
-	public Transaction removeTransactions1(Transaction transactions1) {
-		getTransactions1().remove(transactions1);
-		transactions1.setFromAccount(null);
+	public Transaction removesender(Transaction sender) {
+		getSender().remove(sender);
+		sender.setFromAccount(null);
 
-		return transactions1;
+		return sender;
 	}
 
-	public List<Transaction> getTransactions2() {
-		return this.transactions2;
+	public List<Transaction> getreceiver() {
+		return this.receiver;
 	}
 
-	public void setTransactions2(List<Transaction> transactions2) {
-		this.transactions2 = transactions2;
+	public void setreceiver(List<Transaction> receiver) {
+		this.receiver = receiver;
 	}
 
-	public Transaction addTransactions2(Transaction transactions2) {
-		getTransactions2().add(transactions2);
-		transactions2.setToAccount(this);
+	public Transaction addreceiver(Transaction receiver) {
+		getreceiver().add(receiver);
+		receiver.setToAccount(this);
 
-		return transactions2;
+		return receiver;
 	}
 
-	public Transaction removeTransactions2(Transaction transactions2) {
-		getTransactions2().remove(transactions2);
-		transactions2.setToAccount(null);
+	public Transaction removereceiver(Transaction receiver) {
+		getreceiver().remove(receiver);
+		receiver.setToAccount(null);
 
-		return transactions2;
+		return receiver;
 	}
 
+	public List<Transaction> getowner() {
+		return this.owner;
+	}
+
+	public void setowner(List<Transaction> owner) {
+		this.owner = owner;
+	}
+
+	public Transaction addowner(Transaction owner) {
+		getowner().add(owner);
+		owner.setOwnerAcct(this);
+
+		return owner;
+	}
+
+	public Transaction removeowner(Transaction owner) {
+		getowner().remove(owner);
+		owner.setOwnerAcct(null);
+
+		return owner;
+	}
+	
 	@Override
 	public String toString() {
-		return "Account [id=" + id + ", acctId=" + acctId + ", asset=" + asset + ", customer=" + customer + ", lots="
-				+ lots + ", transactions1=" + transactions1 + ", transactions2=" + transactions2 + "]";
+		return "Account [id=" + acctId + ", customer=" + customer + ", lots="
+				+ lots + ", sender=" + sender + ", receiver=" + receiver + ", owner=" + owner + "]";
 	}
 
 }

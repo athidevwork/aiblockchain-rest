@@ -156,12 +156,18 @@
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-entitymanager</artifactId>
       <version>5.2.10.Final</version>
-    </dependency> 
-<!-- 		<dependency>
+    </dependency>
+		<dependency>
 		 <groupId>org.hibernate</groupId>
 		 <artifactId>hibernate-validator</artifactId>
 		 <version>5.3.5.Final</version>
-		</dependency>  -->   
+		</dependency>	
+    <!-- https://mvnrepository.com/artifact/org.eclipse.persistence/eclipselink -->
+    <dependency>
+        <groupId>org.eclipse.persistence</groupId>
+        <artifactId>eclipselink</artifactId>
+        <version>2.5.0</version>
+    </dependency>			
 		<!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
 		<dependency>
 		    <groupId>commons-dbcp</groupId>
@@ -173,12 +179,7 @@
       <artifactId>h2</artifactId>
       <version>1.4.196</version>
       <scope>runtime</scope>
-    </dependency>
-		<dependency>
-		 <groupId>org.hibernate</groupId>
-		 <artifactId>hibernate-validator</artifactId>
-		 <version>5.3.5.Final</version>
-		</dependency>    	
+    </dependency>    	
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -197,7 +198,7 @@
     	<artifactId>gson</artifactId>
     	<version>2.8.0</version>
     </dependency>
-    <dependency>
+<!--    <dependency>
     	<groupId>org.springframework</groupId>
     	<artifactId>spring-webmvc</artifactId>
     	<version>4.3.10.RELEASE</version>
@@ -206,7 +207,7 @@
 		    <groupId>org.modelmapper</groupId>
 		    <artifactId>modelmapper</artifactId>
 		    <version>0.7.4</version>
-		</dependency>    
+		</dependency>  -->   
     <!-- <dependency>
     	<groupId>org.springframework.data</groupId>
     	<artifactId>spring-data-rest-webmvc</artifactId>

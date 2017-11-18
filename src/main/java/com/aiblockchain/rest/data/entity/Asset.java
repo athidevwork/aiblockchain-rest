@@ -11,6 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -27,8 +29,9 @@ public class Asset implements Serializable {
 	private static final long serialVersionUID = -8516327667509660199L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private String id;
+	//@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "ID", insertable = false, updatable = false, nullable = false)
+	private String assetId;
 
 	@Column(name="ASSET_HASH")
 	private String assetHash;
@@ -64,9 +67,10 @@ public class Asset implements Serializable {
 	private String weight;
 
 	//bi-directional many-to-one association to Account
-	@OneToMany(mappedBy="asset", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Account> accounts= new ArrayList<>();
-
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="ACCT_ID", columnDefinition="INTEGER")
+	private Account account;
+	
 	//bi-directional many-to-one association to Transaction
 	@OneToMany(mappedBy="asset", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Transaction> transactions = new ArrayList<>();
@@ -90,12 +94,12 @@ public class Asset implements Serializable {
 		this.weight = weight;
 	}
 
-	public String getId() {
-		return this.id;
+	public String getAssetId() {
+		return this.assetId;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setAssetId(String assetId) {
+		this.assetId = assetId;
 	}
 
 	public String getAssetHash() {
@@ -186,26 +190,12 @@ public class Asset implements Serializable {
 		this.weight = weight;
 	}
 
-	public List<Account> getAccounts() {
-		return this.accounts;
+	public Account getAccount() {
+		return this.account;
 	}
 
-	public void setAccounts(List<Account> accounts) {
-		this.accounts = accounts;
-	}
-
-	public Account addAccount(Account account) {
-		getAccounts().add(account);
-		account.setAsset(this);
-
-		return account;
-	}
-
-	public Account removeAccount(Account account) {
-		getAccounts().remove(account);
-		account.setAsset(null);
-
-		return account;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 	public List<Transaction> getTransactions() {
@@ -230,11 +220,11 @@ public class Asset implements Serializable {
 		return transaction;
 	}
 
-	/*@Override
+	@Override
 	public String toString() {
-		return "[id=" + id + ", assetHash=" + assetHash + ", carat=" + carat + ", certification=" + certification
+		return "[id=" + assetId + ", assetHash=" + assetHash + ", carat=" + carat + ", certification=" + certification
 				+ ", clarity=" + clarity + ", color=" + color + ", cut=" + cut + ", description=" + description
 				+ ", measurements=" + measurements + ", quality=" + quality + ", shape=" + shape + ", weight=" + weight + "]";
 				//+ ", accounts=" + accounts + ", transactions=" + transactions + "]";
-	}*/
+	}
 }

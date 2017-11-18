@@ -15,16 +15,18 @@ public class ContactAddress implements Serializable {
 	private static final long serialVersionUID = -7022846884216910592L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(columnDefinition = "INTEGER")
-	private long id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "ID", columnDefinition = "INTEGER", insertable = false, updatable = false, nullable = false)
+	private long contactAddrId;
 
 	//bi-directional many-to-one association to Customer
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="CUSTOMER_ID", columnDefinition="INTEGER")
 	private Customer customer;
 
 	//bi-directional many-to-one association to Address
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="ADDRESS_ID", columnDefinition="INTEGER")
 	private Address address;
 
 	public ContactAddress() {
@@ -36,12 +38,12 @@ public class ContactAddress implements Serializable {
 		this.address = address;
 	}
 
-	public long getId() {
-		return this.id;
+	public long getContactAddrIdId() {
+		return this.contactAddrId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setContactAddrIdId(long contactAddrId) {
+		this.contactAddrId = contactAddrId;
 	}
 
 	public Customer getCustomer() {
@@ -62,7 +64,7 @@ public class ContactAddress implements Serializable {
 
 	@Override
 	public String toString() {
-		return "ContactAddress [id=" + id + ", customer=" + customer + ", address=" + address + "]";
+		return "ContactAddress [id=" + contactAddrId + ", customer=" + customer + ", address=" + address + "]";
 	}
 
 }

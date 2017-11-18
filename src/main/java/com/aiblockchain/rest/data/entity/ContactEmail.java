@@ -20,16 +20,18 @@ public class ContactEmail implements Serializable {
 	private static final long serialVersionUID = -4603306068113829339L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(columnDefinition = "INTEGER")
-	private long id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "ID", columnDefinition = "INTEGER", insertable = false, updatable = false, nullable = false)
+	private long contactEmailId;
 
 	//bi-directional many-to-one association to Customer
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="CUSTOMER_ID", columnDefinition="INTEGER")
 	private Customer customer;
 
 	//bi-directional many-to-one association to Email
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="EMAIL_ID", columnDefinition="INTEGER")
 	private Email email;
 
 	public ContactEmail() {
@@ -41,12 +43,12 @@ public class ContactEmail implements Serializable {
 		this.email = email;
 	}
 
-	public long getId() {
-		return this.id;
+	public long getContactEmailId() {
+		return this.contactEmailId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setContactEmailId(long contactEmailId) {
+		this.contactEmailId = contactEmailId;
 	}
 
 	public Customer getCustomer() {
@@ -67,7 +69,7 @@ public class ContactEmail implements Serializable {
 
 	@Override
 	public String toString() {
-		return "ContactEmail [id=" + id + ", customer=" + customer + ", email=" + email + "]";
+		return "ContactEmail [id=" + contactEmailId + ", customer=" + customer + ", email=" + email + "]";
 	}
 
 }

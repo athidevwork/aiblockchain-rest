@@ -37,7 +37,7 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="packagesToScan" value="com.aiblockchain.rest.data" />      
         <property name="persistenceXmlLocation" value="classpath:spring/persistence.xml" />
-        <property name="persistenceUnitName" value="aiblockchain_mysql"/>
+        <property name="persistenceUnitName" value="aiblockchain_mysql_hibernate"/>
     </bean>
 
   <bean id="applicationContext" class="com.aiblockchain.rest.data.config.SpringDataContext"></bean>

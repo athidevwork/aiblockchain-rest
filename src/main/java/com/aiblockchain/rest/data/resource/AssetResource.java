@@ -106,7 +106,7 @@ public class AssetResource {
     	Asset dbAsset = assetService.saveAsset(asset);
     	
         UriBuilder builder = uriInfo.getAbsolutePathBuilder();
-        builder.path(dbAsset.getId());
+        builder.path(dbAsset.getAssetId());
         //builder.path(Integer.toString(dbAsset.getId()));
         
     	return Response.created(builder.build()).build();

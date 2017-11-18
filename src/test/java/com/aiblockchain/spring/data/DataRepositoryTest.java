@@ -146,10 +146,11 @@ public class DataRepositoryTest {
 		contactPhoneRepo.save(contactPhone);	
 		
 		//save asset
-		asset = new Asset(null, "1.0", "None", "Clear", "Yellow", "Round", "First Asset for Athi", "1x1x1", "VVVS1", "Round", "0.5g");
-		assetRepo.save(asset);
+		/*asset = new Asset(null, "1.0", "None", "Clear", "Yellow", "Round", "First Asset for Athi", "1x1x1", "VVVS1", "Round", "0.5g");
+		assetRepo.save(asset);*/
+		
 		//save account
-		acct = new Account("10_ABCDEF", asset, customer);
+		acct = new Account(customer);
 		acctRepo.save(acct);
 		
 		//save lot

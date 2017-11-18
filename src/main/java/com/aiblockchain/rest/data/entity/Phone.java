@@ -15,16 +15,16 @@ public class Phone implements Serializable {
 	private static final long serialVersionUID = 1908787136427554623L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(columnDefinition = "INTEGER")
-	private long id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "ID", columnDefinition = "INTEGER", insertable = false, updatable = false, nullable = false)
+	private long phoneId;
 
 	private String pnumber;
 
 	private String ptype;
 
 	//bi-directional many-to-one association to ContactPhone
-	@OneToMany(mappedBy="phone")
+	@OneToMany(mappedBy="phone", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ContactPhone> contactPhones;
 
 	public Phone() {
@@ -36,12 +36,12 @@ public class Phone implements Serializable {
 		this.ptype = ptype;
 	}
 
-	public long getId() {
-		return this.id;
+	public long getPhoneId() {
+		return this.phoneId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setPhoneId(long phoneId) {
+		this.phoneId = phoneId;
 	}
 
 	public String getPnumber() {
@@ -84,7 +84,7 @@ public class Phone implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Phone [id=" + id + ", pnumber=" + pnumber + ", ptype=" + ptype + ", contactPhones=" + contactPhones
+		return "Phone [id=" + phoneId + ", pnumber=" + pnumber + ", ptype=" + ptype + ", contactPhones=" + contactPhones
 				+ "]";
 	}
 

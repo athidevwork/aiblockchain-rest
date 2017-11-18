@@ -15,16 +15,16 @@ public class Email implements Serializable {
 	private static final long serialVersionUID = -7662503089973436L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(columnDefinition = "INTEGER")
-	private long id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "ID", columnDefinition = "INTEGER", insertable = false, updatable = false, nullable = false)
+	private long emailId;
 
 	private String email;
 
 	private String etype;
 
 	//bi-directional many-to-one association to ContactEmail
-	@OneToMany(mappedBy="email")
+	@OneToMany(mappedBy="email", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ContactEmail> contactEmails;
 
 	public Email() {
@@ -36,12 +36,12 @@ public class Email implements Serializable {
 		this.etype = etype;
 	}
 
-	public long getId() {
-		return this.id;
+	public long getEmailIdId() {
+		return this.emailId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setEmailIdId(long emailId) {
+		this.emailId = emailId;
 	}
 
 	public String getEmail() {
@@ -84,7 +84,7 @@ public class Email implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Email [id=" + id + ", email=" + email + ", etype=" + etype + ", contactEmails=" + contactEmails + "]";
+		return "Email [id=" + emailId + ", email=" + email + ", etype=" + etype + ", contactEmails=" + contactEmails + "]";
 	}
 
 }

@@ -17,9 +17,9 @@ public class Lot implements Serializable {
 	private static final long serialVersionUID = -6543933234300704588L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(columnDefinition = "INTEGER")
-	private long id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "ID", columnDefinition = "INTEGER", insertable = false, updatable = false, nullable = false)
+	private long lotId;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="PURCHASE_DATE")
@@ -37,10 +37,11 @@ public class Lot implements Serializable {
 
 	//bi-directional many-to-one association to Account
 	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="ACCT_ID", columnDefinition="INTEGER")
 	private Account account;
 
 	//bi-directional many-to-one association to Transaction
-	@OneToMany(mappedBy="lot")
+	@OneToMany(mappedBy="lot", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Transaction> transactions;
 
 	public Lot() {
@@ -55,12 +56,12 @@ public class Lot implements Serializable {
 		this.account = account;
 	}
 
-	public long getId() {
-		return this.id;
+	public long getLotId() {
+		return this.lotId;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setLotId(long lotId) {
+		this.lotId = lotId;
 	}
 
 	public Date getPurchaseDate() {
@@ -127,7 +128,7 @@ public class Lot implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Lot [id=" + id + ", purchaseDate=" + purchaseDate + ", purchasePrice=" + purchasePrice + ", saleDate="
+		return "Lot [id=" + lotId + ", purchaseDate=" + purchaseDate + ", purchasePrice=" + purchasePrice + ", saleDate="
 				+ saleDate + ", salePrice=" + salePrice + ", account=" + account + ", transactions=" + transactions
 				+ "]";
 	}
