@@ -11,8 +11,8 @@ import java.util.List;
  * The persistent class for the LOT database table.
  * 
  */
-@Entity
-@NamedQuery(name="Lot.findAll", query="SELECT l FROM Lot l")
+//@Entity
+//@NamedQuery(name="Lot.findAll", query="SELECT l FROM Lot l")
 public class Lot implements Serializable {
 	private static final long serialVersionUID = -6543933234300704588L;
 

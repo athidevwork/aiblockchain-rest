@@ -67,13 +67,14 @@ public class Platform {
     protected boolean pay (String order) {
         otc.spending(sender, swapBook.get(order).getSpread());
         otc.depositMargin(swapBook.get(order).getWriter(), swapBook.get(order).getSpread());
-        CreditDefaultSwap con = CreditDefaultSwap(order);
+        /*CreditDefaultSwap con = CreditDefaultSwap(order);
         if(con.annualpay()){
             return true;
         }
         else{
             return false;
-        }
+        }*/
+        return true;
     }
 
 	protected String getAdmin() {

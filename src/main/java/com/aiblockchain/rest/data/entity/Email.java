@@ -9,8 +9,8 @@ import java.util.List;
  * The persistent class for the EMAIL database table.
  * 
  */
-@Entity
-@NamedQuery(name="Email.findAll", query="SELECT e FROM Email e")
+//@Entity
+//@NamedQuery(name="Email.findAll", query="SELECT e FROM Email e")
 public class Email implements Serializable {
 	private static final long serialVersionUID = -7662503089973436L;
 

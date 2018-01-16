@@ -9,8 +9,8 @@ import java.util.List;
  * The persistent class for the ADDRESS database table.
  * 
  */
-@Entity
-@NamedQuery(name="Address.findAll", query="SELECT a FROM Address a")
+//@Entity
+//@NamedQuery(name="Address.findAll", query="SELECT a FROM Address a")
 public class Address implements Serializable {
 	private static final long serialVersionUID = 7078125133300055931L;
 

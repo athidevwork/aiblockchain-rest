@@ -16,7 +16,7 @@ import com.aiblockchain.rest.data.entity.Account;
  * @author Athi
  *
  */
-@Repository
+//@Repository
 //@Transactional(propagation = Propagation.NESTED, value = "transactionManager")
 public interface AccountRepository extends JpaRepository<Account, Integer> {
 	//public List<Account> findAcctsForName(String legalName);

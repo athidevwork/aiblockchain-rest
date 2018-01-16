@@ -9,8 +9,8 @@ import java.util.List;
  * The persistent class for the PHONE database table.
  * 
  */
-@Entity
-@NamedQuery(name="Phone.findAll", query="SELECT p FROM Phone p")
+//@Entity
+//@NamedQuery(name="Phone.findAll", query="SELECT p FROM Phone p")
 public class Phone implements Serializable {
 	private static final long serialVersionUID = 1908787136427554623L;
 

@@ -17,7 +17,7 @@ import com.aiblockchain.rest.data.entity.Asset;
  *
  */
 @XmlRootElement(name = "Assets")
-//@XmlAccessorType(XmlAccessType.FIELD)
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Assets implements Serializable {
 	List<Asset> assetList;
 	private static final long serialVersionUID = 4560470592705892957L;
@@ -35,6 +35,5 @@ public class Assets implements Serializable {
 	/*@Override
 	public String toString() {
 		return "Assets [assetList=" + assetList + "]";
-	}*/
-	
+	}*/	
 }

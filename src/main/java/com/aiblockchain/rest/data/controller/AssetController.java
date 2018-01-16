@@ -13,7 +13,7 @@ import com.aiblockchain.rest.data.entity.Asset;
  * @author Athi
  *
  */
-@Controller
+//@Controller
 //@RequestMapping("/asset")
 public class AssetController {
 /*	@RequestMapping(value = "/list", method = RequestMethod.GET)

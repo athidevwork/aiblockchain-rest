@@ -9,14 +9,14 @@ import java.util.List;
  * The persistent class for the CUSTOMER database table.
  * 
  */
-@Entity
-@NamedQueries({
+//@Entity
+/*@NamedQueries({
 	@NamedQuery(name="Customer.findAll", query="SELECT c FROM Customer c")
-	/*@NamedQuery(name="Customer.findCustomerWithLegalName", query="select cu.id, cu.LEGAL_NAME, a.* " + "" +
+	@NamedQuery(name="Customer.findCustomerWithLegalName", query="select cu.id, cu.LEGAL_NAME, a.* " + "" +
 		"from aiblockchain.customer cu, aiblockchain.address a,  aiblockchain.contact_address ca"+
 		"where cu.LEGAL_NAME like '%?%'"+
-		"and a.ID = ca.ADDRESS_ID and cu.ID = ca.CUSTOMER_ID")*/
-})
+		"and a.ID = ca.ADDRESS_ID and cu.ID = ca.CUSTOMER_ID")
+})*/
 
 public class Customer implements Serializable {
 	private static final long serialVersionUID = 6114627040695685844L;

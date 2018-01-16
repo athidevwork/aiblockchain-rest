@@ -8,9 +8,9 @@ import javax.persistence.*;
  * The persistent class for the CONTACT_PHONE database table.
  * 
  */
-@Entity
-@Table(name="CONTACT_PHONE")
-@NamedQuery(name="ContactPhone.findAll", query="SELECT c FROM ContactPhone c")
+//@Entity
+//@Table(name="CONTACT_PHONE")
+//@NamedQuery(name="ContactPhone.findAll", query="SELECT c FROM ContactPhone c")
 public class ContactPhone implements Serializable {
 	private static final long serialVersionUID = 6810267259946137666L;
 

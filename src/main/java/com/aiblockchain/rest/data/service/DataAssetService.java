@@ -20,15 +20,15 @@ import com.aiblockchain.rest.data.repository.TransactionRepository;
  * @author Athi
  *
  */
-@Service("assetService")
-@Transactional
-public class AssetService {
-	@Autowired
+//@Service("dataAssetService")
+//@Transactional
+public class DataAssetService {
+	/*@Autowired
 	AssetRepository assetRepo;
 	@Autowired
 	AccountRepository acctRepo;
 	@Autowired
-	TransactionRepository transRepo;
+	TransactionRepository transRepo;*/
 	
 	//@Transactional
 	public List<Asset> getAssetList() {
@@ -37,7 +37,7 @@ public class AssetService {
 			//AssetRepository assetRepo = (AssetRepository) SpringDataContext.getBean("assetRepository");
 			//System.out.println("Start get list with assetRepo = " + assetRepo);
 			//System.out.println("asset count = " + assetRepo.count());
-			assets = assetRepo.findAll();
+			//assets = assetRepo.findAll();
 			//System.out.println("Service Assets = " + assets);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -46,6 +46,7 @@ public class AssetService {
 	}
 
 	public Asset saveAsset(Asset asset) {
-		return assetRepo.save(asset);
+		//return assetRepo.save(asset);
+		return null;
 	}
 }

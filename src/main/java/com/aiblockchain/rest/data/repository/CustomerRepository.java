@@ -12,7 +12,7 @@ import com.aiblockchain.rest.data.entity.Customer;
  * @author Athi
  *
  */
-@Repository
+//@Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
 	//Customer findCustomer(long id);

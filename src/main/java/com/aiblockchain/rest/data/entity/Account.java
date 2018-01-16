@@ -9,8 +9,8 @@ import java.util.List;
  * The persistent class for the ACCOUNT database table.
  * 
  */
-@Entity
-@NamedQuery(name="Account.findAll", query="SELECT a FROM Account a")
+//@Entity
+//@NamedQuery(name="Account.findAll", query="SELECT a FROM Account a")
 public class Account implements Serializable {
 	private static final long serialVersionUID = -7571837407885901851L;
 

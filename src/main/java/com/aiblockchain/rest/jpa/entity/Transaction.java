@@ -1,71 +1,77 @@
-package com.aiblockchain.rest.data.entity;
-
-import java.io.Serializable;
+/**
+ * 
+ */
+package com.aiblockchain.rest.jpa.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * The persistent class for the "TRANSACTION" database table.
- * 
+ * @author Athi
+ *
  */
-//@Entity
-//@Table(name="\"TRANSACTION\"")
-//@NamedQuery(name="Transaction.findAll", query="SELECT t FROM Transaction t")
-public class Transaction implements Serializable {
-	private static final long serialVersionUID = 8420397683536295218L;
-
+@Entity
+@Table(name="\"transaction\"")
+@XmlRootElement(name = "Transaction")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Transaction {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name = "ID", columnDefinition = "INTEGER", insertable = false, updatable = false, nullable = false)
-	private long transId;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 
-	@Column(name="AFTER_HASH")
+	@Column(name="after_hash")
 	private String afterHash;
 
-	@Column(name="AFTER_TRANS")
+	@Column(name="after_trans")
 	private String afterTrans;
 	
-	@Column(name="BEFORE_HASH")
+	@Column(name="before_hash")
 	private String beforeHash;
 
-	@Column(name="BEFORE_TRANS")
+	@Column(name="before_trans")
 	private String beforeTrans;
 	
 	private String description;
 
 	//bi-directional many-to-one association to Asset
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="ASSET_ID", columnDefinition="INTEGER")
+	@ManyToOne
+	@JoinColumn(name="asset_id")
+	@JsonIgnore
 	private Asset asset;
 
 	//bi-directional many-to-one association to Lot
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="LOT_ID", columnDefinition="INTEGER")
+	@ManyToOne
+	@JoinColumn(name="lot_id")
+	@JsonIgnore
 	private Lot lot;
 
 	//bi-directional many-to-one association to Account
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="FROM_ACCT_ID", columnDefinition="INTEGER")
+	@ManyToOne
+	@JoinColumn(name="from_acct_id")
+	@JsonIgnore
 	private Account fromAccount;
 	
 	//bi-directional many-to-one association to Account
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="TO_ACCT_ID", columnDefinition="INTEGER")
+	@ManyToOne
+	@JoinColumn(name="to_acct_id")
+	@JsonIgnore
 	private Account toAccount;
 
 	//bi-directional many-to-one association to Account
 	@ManyToOne
-	@JoinColumn(name="OWNER_ID", columnDefinition="INTEGER")
+	@JoinColumn(name="owner_id")
+	@JsonIgnore
 	private Account ownerAcct;	
 	
 	public Transaction() {
@@ -84,12 +90,12 @@ public class Transaction implements Serializable {
 		this.toAccount = toAcct;
 	}
 
-	public long getTransIdId() {
-		return this.transId;
+	public int getId() {
+		return this.id;
 	}
 
-	public void setTransIdId(long transId) {
-		this.transId = transId;
+	public void setId(int transId) {
+		this.id = transId;
 	}
 
 	public String getAfterHash() {
@@ -152,8 +158,8 @@ public class Transaction implements Serializable {
 		return this.fromAccount;
 	}
 
-	public void setFromAccount(Account account1) {
-		this.fromAccount = account1;
+	public void setFromAccount(Account fromAcct) {
+		this.fromAccount = fromAcct;
 	}
 
 	public Lot getLot() {
@@ -168,16 +174,15 @@ public class Transaction implements Serializable {
 		return this.toAccount;
 	}
 
-	public void setToAccount(Account account2) {
-		this.toAccount = account2;
+	public void setToAccount(Account toAcct) {
+		this.toAccount = toAcct;
 	}
 	
 	@Override
 	public String toString() {
-		return "Transaction [id=" + transId + ", afterHash=" + afterHash + ", afterTrans=" + afterTrans + ", beforeHash="
+		return "Transaction [id=" + id + ", afterHash=" + afterHash + ", afterTrans=" + afterTrans + ", beforeHash="
 				+ beforeHash + ", beforeTrans=" + beforeTrans + ", description=" + description + ", ownerAcct=" + ownerAcct
 				+ ", asset=" + asset + ", fromAccount=" + fromAccount + ", lot=" + lot + ", toAccount=" + toAccount
 				+ "]";
 	}
-
 }

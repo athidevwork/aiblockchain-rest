@@ -12,7 +12,7 @@ import com.aiblockchain.rest.data.entity.Lot;
  * @author Athi
  *
  */
-@Repository
+//@Repository
 public interface LotRepository extends JpaRepository<Lot, Integer> {
 
 }

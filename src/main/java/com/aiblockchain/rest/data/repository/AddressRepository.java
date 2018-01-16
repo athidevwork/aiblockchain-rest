@@ -12,7 +12,7 @@ import com.aiblockchain.rest.data.entity.Address;
  * @author Athi
  *
  */
-@Repository
+//@Repository
 public interface AddressRepository extends JpaRepository<Address, String> {
 
 	//Address findAddr(long id);

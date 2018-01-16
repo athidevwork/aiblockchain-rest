@@ -14,7 +14,7 @@ import com.aiblockchain.rest.data.entity.ContactPhone;
  * @author Athi
  *
  */
-@Repository
+//@Repository
 public interface ContactPhoneRepository extends JpaRepository<ContactPhone, Integer> {
 
 	//List<ContactPhone> findPhonesForName(String legalName);

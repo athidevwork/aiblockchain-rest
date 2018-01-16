@@ -22,9 +22,9 @@ import javax.xml.bind.annotation.XmlRootElement;
  * The persistent class for the ASSET database table.
  * 
  */
-@Entity()
-@NamedQuery(name="Asset.findAll", query="SELECT a FROM Asset a")
-@XmlRootElement(name = "Asset")
+//@Entity()
+//@NamedQuery(name="Asset.findAll", query="SELECT a FROM Asset a")
+//@XmlRootElement(name = "Asset")
 public class Asset implements Serializable {
 	private static final long serialVersionUID = -8516327667509660199L;
 

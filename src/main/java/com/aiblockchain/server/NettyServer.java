@@ -20,13 +20,16 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.aiblockchain.rest.data.resource.AssetResource;
+import com.aiblockchain.rest.data.resource.DataAssetResource;
+import com.aiblockchain.rest.exception.ExceptionMapper;
+import com.aiblockchain.rest.jpa.resource.DigitalAssetTransferResource;
 import com.aiblockchain.rest.resource.AIBlockChainResource;
 import com.aiblockchain.rest.resource.DbResource;
 import com.aiblockchain.rest.resource.DiamondResource;
 import com.aiblockchain.rest.resource.HelloWorldResource;
 import com.aiblockchain.rest.resource.SapHana2Resource;
 import com.aiblockchain.rest.resource.UserResource;
+import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 
 import io.netty.channel.Channel;
 
@@ -57,12 +60,15 @@ public class NettyServer {
         .register(SapHana2Resource.class)
         .register(DbResource.class)
         .register(DiamondResource.class)
-        .register(AssetResource.class)
+        //.register(AssetResource.class)
+        .register(DigitalAssetTransferResource.class)
+        .register(ExceptionMapper.class)
         .register(MoxyJsonFeature.class)
         .register(MoxyXmlFeature.class)
         //.register(JaxbContextResolver.class)  // No need to register this provider if no special configuration is required.
         .register(JettisonFeature.class)
         .register(JacksonFeature.class)
+        .register(JacksonJsonProvider.class)        
         .register(MultiPartFeature.class)
         //.register(NettyHttpContainerProvider.class)
         //.register(HttpService.class)

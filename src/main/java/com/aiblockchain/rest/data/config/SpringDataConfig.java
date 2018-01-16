@@ -2,6 +2,7 @@ package com.aiblockchain.rest.data.config;
 
 import java.util.Properties;
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
@@ -14,7 +15,6 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -24,23 +24,23 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = {"com.aiblockchain.rest.data"}, enableDefaultTransactions = false)
-@ComponentScan(basePackages={"com.aiblockchain.rest.data"})
+@EnableJpaRepositories(basePackages = {"com.aiblockchain.rest.jpa"}, enableDefaultTransactions = false)
+@ComponentScan(basePackages={"com.aiblockchain.rest.jpa"})
 @ImportResource("classpath:/spring/application-context.xml")
 public class SpringDataConfig {
 /*	@Bean
 	public ModelMapper modelMapper() {
 	    return new ModelMapper();
 	}*/
-	
+    
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 		em.setDataSource(dataSource());
-		em.setPackagesToScan(new String[] { "com.aiblockchain.rest.data" });
+		em.setPackagesToScan(new String[] { "com.aiblockchain.rest.jpa" });
 		
-		//JpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
-		JpaVendorAdapter jpaVendorAdapter = new EclipseLinkJpaVendorAdapter();
+		JpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
+		//JpaVendorAdapter jpaVendorAdapter = new EclipseLinkJpaVendorAdapter();
 		em.setJpaVendorAdapter(jpaVendorAdapter);
 		//em.setJpaProperties(jpaProperties());
 		em.setJpaProperties(jpaEclipseLinkProperties());
@@ -75,7 +75,7 @@ public class SpringDataConfig {
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/aiblockchain?autoReconnect=true&useSSL=false");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/dat?autoReconnect=true&useSSL=false");
 		dataSource.setUsername("root");
 		dataSource.setPassword("p@ssword");
 		

@@ -8,14 +8,14 @@ import javax.persistence.*;
  * The persistent class for the CONTACT_EMAIL database table.
  * 
  */
-@Entity
-@Table(name="CONTACT_EMAIL")
-@NamedQueries({
+//@Entity
+//@Table(name="CONTACT_EMAIL")
+/*@NamedQueries({
 	@NamedQuery(name="ContactEmail.findAll", query="SELECT c FROM ContactEmail c")
-	/*@NamedQuery(name="ContactEmail.findEmailsForName", query="select cu.id, cu.LEGAL_NAME, e.etype, e.email from customer cu, email e,  contact_email ce " +
+	@NamedQuery(name="ContactEmail.findEmailsForName", query="select cu.id, cu.LEGAL_NAME, e.etype, e.email from customer cu, email e,  contact_email ce " +
 													"where lower(cu.LEGAL_NAME) like CONCAT(?1,'%') " +
-													"and e.ID = ce.EMAIL_ID and cu.ID = ce.CUSTOMER_ID")*/
-})
+													"and e.ID = ce.EMAIL_ID and cu.ID = ce.CUSTOMER_ID
+})*/
 public class ContactEmail implements Serializable {
 	private static final long serialVersionUID = -4603306068113829339L;
 

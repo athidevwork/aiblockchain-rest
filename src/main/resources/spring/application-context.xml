@@ -16,10 +16,10 @@
     
     <!-- <mvc:annotation-driven /> -->
     <context:annotation-config />
-    <context:component-scan base-package="com.aiblockchain.rest.data" />
+    <context:component-scan base-package="com.aiblockchain.rest" />
     <context:property-placeholder location="classpath:props/jdbc.properties"/>
     
-    <jpa:repositories base-package="com.aiblockchain.rest.data.repository"></jpa:repositories>
+    <!-- <jpa:repositories base-package="com.aiblockchain.rest.data.repository"></jpa:repositories> -->
     
 		<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		    <property name="locations" value="classpath:props/jdbc.properties"/>
@@ -35,14 +35,14 @@
     
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="com.aiblockchain.rest.data" />      
+        <property name="packagesToScan" value="com.aiblockchain.rest.jpa" />      
         <property name="persistenceXmlLocation" value="classpath:spring/persistence.xml" />
         <property name="persistenceUnitName" value="aiblockchain_mysql_hibernate"/>
     </bean>
 
   <bean id="applicationContext" class="com.aiblockchain.rest.data.config.SpringDataContext"></bean>
   
-  <tx:annotation-driven proxy-target-class="true" />
+  <tx:annotation-driven transaction-manager="transactionManager" />
   
 <!--     <bean id="AssetRepository" class="com.aiblockchain.rest.data.repository.AssetRepository">
     </bean>

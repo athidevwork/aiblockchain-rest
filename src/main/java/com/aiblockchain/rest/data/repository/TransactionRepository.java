@@ -14,7 +14,7 @@ import com.aiblockchain.rest.data.entity.Transaction;
  * @author Athi
  *
  */
-@Repository
+//@Repository
 //@Transactional(propagation = Propagation.NESTED, value = "transactionManager")
 public interface TransactionRepository extends JpaRepository<Transaction, Integer> {
 

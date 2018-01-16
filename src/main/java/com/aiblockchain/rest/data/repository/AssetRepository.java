@@ -14,7 +14,7 @@ import com.aiblockchain.rest.data.entity.Asset;
  * @author Athi
  *
  */
-@Repository
+//@Repository
 //@Transactional(propagation = Propagation.NESTED, value = "transactionManager")
 public interface AssetRepository extends JpaRepository<Asset, String> {
 	//public List<Asset> findAll();

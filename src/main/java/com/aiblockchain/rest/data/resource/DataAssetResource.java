@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.aiblockchain.rest.data.adapter.HibernateProxyTypeAdapter;
 import com.aiblockchain.rest.data.config.SpringDataContext;
 import com.aiblockchain.rest.data.entity.Asset;
-import com.aiblockchain.rest.data.service.AssetService;
+import com.aiblockchain.rest.data.service.DataAssetService;
 import com.aiblockchain.rest.data.wrapper.Assets;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -33,14 +33,14 @@ import com.google.gson.GsonBuilder;
  * @author Athi
  *
  */
-@Service
+//@Service
 //@Controller
 //@Component
 //@ContextConfiguration(locations="classpath:spring/application-context.xml")
 //@Transactional(propagation=Propagation.REQUIRED)
-@Path("/asset_transfer")
-@Component
-public class AssetResource {
+@Path("/data_asset_transfer")
+//@Component
+public class DataAssetResource {
 	GsonBuilder gsonBuilder = new GsonBuilder();
 	
 	//Gson gson = new Gson();
@@ -71,14 +71,14 @@ public class AssetResource {
     	//curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET http://localhost:20001/asset_transfer/list
     	//curl -i -H "Accept: application/json" -X GET http://localhost:20001/asset_transfer/list
     	//curl -i -H "Accept: application/xml" -X GET http://localhost:20001/asset_transfer/list
-    	AssetService assetService = (AssetService) SpringDataContext.getBean("assetService");
+    	/*DataAssetService assetService = (DataAssetService) SpringDataContext.getBean("assetService");
     	//System.out.println("Start get list with assetService = " + assetService);
     	List<Asset> assetList= assetService.getAssetList();
     	//System.out.println("Assets = " + assets);
 
-    	/*List<Asset> pojoAsset = assetList.stream()
+    	List<Asset> pojoAsset = assetList.stream()
                 .map(asset -> convertToPojoAsset(asset))
-                .collect(Collectors.toList());*/
+                .collect(Collectors.toList());
     	//System.out.println("Converted data " + pojoAsset);
     	
     	Assets assets = new Assets();
@@ -93,7 +93,8 @@ public class AssetResource {
 			e.printStackTrace();
 		}
     	
-        return Response.ok(assets).build();   	
+        return Response.ok(assets).build(); */
+        return null;
     }
 
     @POST
@@ -102,14 +103,15 @@ public class AssetResource {
     @Transactional()
     public Response saveAsset (Asset asset, @Context UriInfo uriInfo) {
     	//Asset asset = new Asset(null, "1.5", "none", "vvs1", "colorless", "round", "Test asset", "1x1x1", "Superior", "test1", "test2");
-    	AssetService assetService = (AssetService) SpringDataContext.getBean("assetService");
+    	/*DataAssetService assetService = (DataAssetService) SpringDataContext.getBean("assetService");
     	Asset dbAsset = assetService.saveAsset(asset);
     	
         UriBuilder builder = uriInfo.getAbsolutePathBuilder();
         builder.path(dbAsset.getAssetId());
         //builder.path(Integer.toString(dbAsset.getId()));
         
-    	return Response.created(builder.build()).build();
+    	return Response.created(builder.build()).build();*/
+    	return null;
     }
 	/*private Asset convertToPojoAsset(Asset sdAsset) {
 		ModelMapper modelMapper = (ModelMapper) SpringDataContext.getBean("modelMapper");		

@@ -12,7 +12,7 @@ import com.aiblockchain.rest.data.entity.Email;
  * @author Athi
  *
  */
-@Repository
+//@Repository
 public interface EmailRepository extends JpaRepository<Email, Integer> {
 
 	//Email findEmail(long id);

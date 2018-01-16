@@ -14,7 +14,7 @@ import com.aiblockchain.rest.data.entity.ContactAddress;
  * @author Athi
  *
  */
-@Repository
+//@Repository
 public interface ContactAddressRepository extends JpaRepository<ContactAddress, Integer> {
 	//List<ContactAddress> findAddrsForName(String legalName);	
 }
