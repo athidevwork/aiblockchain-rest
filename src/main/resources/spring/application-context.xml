@@ -19,41 +19,55 @@
     <context:component-scan base-package="com.aiblockchain.rest" />
     <context:property-placeholder location="classpath:props/jdbc.properties"/>
     
-    <!-- <jpa:repositories base-package="com.aiblockchain.rest.data.repository"></jpa:repositories> -->
+    <jpa:repositories base-package="com.aiblockchain.rest.data.repository"/>
     
-		<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		    <property name="locations" value="classpath:props/jdbc.properties"/>
-		</bean>
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	    <property name="locations" value="classpath:props/jdbc.properties"/>
+	</bean>
 
-    <!-- Database -->
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <!-- Dat Database -->
+    <bean id="dataSourceDat" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	    <property name="driverClassName" value="${jdbc.driverClassName}"/>
-	    <property name="url" value="${jdbc.url}"/>
+	    <property name="url" value="${jdbc.url.dat}"/>
 	    <property name="username" value="${jdbc.username}"/>
 	    <property name="password" value="${jdbc.password}"/>
     </bean>
     
-    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="com.aiblockchain.rest.jpa" />      
+    <bean id="entityManagerFactoryDat" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSourceDat"/>
+        <property name="packagesToScan" value="com.aiblockchain.rest" />      
         <property name="persistenceXmlLocation" value="classpath:spring/persistence.xml" />
-        <property name="persistenceUnitName" value="aiblockchain_mysql_hibernate"/>
+        <property name="persistenceUnitName" value="aiblockchain_mysql_dat"/>
     </bean>
-
-  <bean id="applicationContext" class="com.aiblockchain.rest.data.config.SpringDataContext"></bean>
   
-  <tx:annotation-driven transaction-manager="transactionManager" />
-  
-<!--     <bean id="AssetRepository" class="com.aiblockchain.rest.data.repository.AssetRepository">
+  <tx:annotation-driven transaction-manager="transactionManagerDat, transactionManagerCre" />
+  <bean id="transactionManagerDat" class="org.springframework.orm.jpa.JpaTransactionManager">
+      <property name="entityManagerFactory" ref="entityManagerFactoryDat" />
+      <property name="dataSource" ref="dataSourceDat"/>
+  </bean>
+    
+    <!-- Database -->
+    <bean id="dataSourceCre" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	    <property name="driverClassName" value="${jdbc.driverClassName}"/>
+	    <property name="url" value="${jdbc.url.cre}"/>
+	    <property name="username" value="${jdbc.username}"/>
+	    <property name="password" value="${jdbc.password}"/>
     </bean>
     
-    <bean id="AssetService" class="com.aiblockchain.rest.data.service.AssetService">
-      <property name="assetRepo" ref="AssetRepository"/>
+    <bean id="entityManagerFactoryCre" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSourceCre"/>
+        <property name="packagesToScan" value="com.aiblockchain.rest" />      
+        <property name="persistenceXmlLocation" value="classpath:spring/persistence.xml" />
+        <property name="persistenceUnitName" value="aiblockchain_mysql_cre"/>
     </bean>
-        
-    <bean id="AssetTransferResource" class="com.aiblockchain.rest.data.resource.AssetTransferResource">
-      <property name="assetService" ref="AssetService"/>
-    </bean> -->
+  
+  <bean id="transactionManagerCre" class="org.springframework.orm.jpa.JpaTransactionManager">
+      <property name="entityManagerFactory" ref="entityManagerFactoryCre" />
+      <property name="dataSource" ref="dataSourceCre"/>
+  </bean>
+      
+  <bean id="applicationContext" class="com.aiblockchain.rest.data.config.SpringDataContext"></bean>
+    
     
     <!--<context:annotation-config />
     <context:component-scan base-package="com.example" />

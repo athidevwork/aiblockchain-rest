@@ -3,29 +3,18 @@
  */
 package com.aiblockchain.rest.data.resource;
 
-import java.util.List;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.aiblockchain.rest.data.adapter.HibernateProxyTypeAdapter;
-import com.aiblockchain.rest.data.config.SpringDataContext;
-import com.aiblockchain.rest.data.entity.Asset;
-import com.aiblockchain.rest.data.service.DataAssetService;
-import com.aiblockchain.rest.data.wrapper.Assets;
-import com.google.gson.Gson;
+import com.aiblockchain.rest.data.entity.dat.Asset;
 import com.google.gson.GsonBuilder;
 
 

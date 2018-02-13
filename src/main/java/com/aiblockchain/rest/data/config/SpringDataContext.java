@@ -49,4 +49,12 @@ public class SpringDataContext implements ApplicationContextAware {
 		}
 		return applicationContext.getBean(beanName);
 	}
+	
+	public static String getProperty(String property) {
+		if (null == property)
+		{
+			return null;
+		}
+		return applicationContext.getEnvironment().getProperty(property);
+	}
 }

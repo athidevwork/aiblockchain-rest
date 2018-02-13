@@ -15,14 +15,13 @@ import org.glassfish.jersey.moxy.json.MoxyJsonFeature;
 import org.glassfish.jersey.moxy.xml.MoxyXmlFeature;
 import org.glassfish.jersey.netty.httpserver.NettyHttpContainerProvider;
 import org.glassfish.jersey.server.ResourceConfig;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.aiblockchain.rest.data.resource.DataAssetResource;
+import com.aiblockchain.rest.data.resource.DataFaultResource;
 import com.aiblockchain.rest.exception.ExceptionMapper;
-import com.aiblockchain.rest.jpa.resource.DigitalAssetTransferResource;
+import com.aiblockchain.rest.jpa.resource.FaultResource;
 import com.aiblockchain.rest.resource.AIBlockChainResource;
 import com.aiblockchain.rest.resource.DbResource;
 import com.aiblockchain.rest.resource.DiamondResource;
@@ -60,8 +59,10 @@ public class NettyServer {
         .register(SapHana2Resource.class)
         .register(DbResource.class)
         .register(DiamondResource.class)
-        //.register(AssetResource.class)
-        .register(DigitalAssetTransferResource.class)
+        //.register(DataAssetResource.class)
+        //.register(DigitalAssetTransferResource.class)
+        .register(FaultResource.class)
+        .register(DataFaultResource.class)
         .register(ExceptionMapper.class)
         .register(MoxyJsonFeature.class)
         .register(MoxyXmlFeature.class)
@@ -91,6 +92,22 @@ public class NettyServer {
 		AbstractApplicationContext springDataCPXAContext = new ClassPathXmlApplicationContext("classpath:spring/application-context.xml");	
 		springDataCPXAContext.registerShutdownHook();
 		
+		/*Users users = (Users) SpringDataContext.getBean("Users");
+		System.out.println("\nUsers before reading in file : \n" + users);
+    	try (BufferedReader br = new BufferedReader(  
+                new FileReader("src/main/resources/config/users.json"))) {
+    		System.out.println("Reading users from file src/main/resources/config/users.json ..."); 
+            users = (new Gson()).fromJson(br, Users.class);
+            System.out.println("\nUsers after reading from file : \n" + users);
+    		System.out.println("Successfully read users from File src/main/resources/config/users.json...");            
+        } catch (FileNotFoundException e) {
+        	System.out.println("src/main/resources/config/users.json file not found.");
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("IOException while trying to read src/main/resources/config/users.json");
+			e.printStackTrace();
+		}*/	
+    	
 		// Start tcp and flash servers
 		//ServerManager manager = (ServerManager)context.getBean("serverManager");
         System.out.println("Netty jersey server started with Uri: " + baseUri.toString());

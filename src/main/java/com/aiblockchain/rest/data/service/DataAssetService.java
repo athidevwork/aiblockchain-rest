@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aiblockchain.rest.data.config.SpringDataContext;
-import com.aiblockchain.rest.data.entity.Asset;
-import com.aiblockchain.rest.data.repository.AccountRepository;
-import com.aiblockchain.rest.data.repository.AssetRepository;
-import com.aiblockchain.rest.data.repository.TransactionRepository;
+import com.aiblockchain.rest.data.entity.dat.Asset;
+import com.aiblockchain.rest.data.repository.dat.AccountRepository;
+import com.aiblockchain.rest.data.repository.dat.AssetRepository;
+import com.aiblockchain.rest.data.repository.dat.TransactionRepository;
 
 /**
  * @author Athi

@@ -17,28 +17,28 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.aiblockchain.rest.data.entity.Account;
-import com.aiblockchain.rest.data.entity.Address;
-import com.aiblockchain.rest.data.entity.Asset;
-import com.aiblockchain.rest.data.entity.ContactAddress;
-import com.aiblockchain.rest.data.entity.ContactEmail;
-import com.aiblockchain.rest.data.entity.ContactPhone;
-import com.aiblockchain.rest.data.entity.Customer;
-import com.aiblockchain.rest.data.entity.Email;
-import com.aiblockchain.rest.data.entity.Lot;
-import com.aiblockchain.rest.data.entity.Phone;
-import com.aiblockchain.rest.data.entity.Transaction;
-import com.aiblockchain.rest.data.repository.AccountRepository;
-import com.aiblockchain.rest.data.repository.AddressRepository;
-import com.aiblockchain.rest.data.repository.AssetRepository;
-import com.aiblockchain.rest.data.repository.ContactAddressRepository;
-import com.aiblockchain.rest.data.repository.ContactEmailRepository;
-import com.aiblockchain.rest.data.repository.ContactPhoneRepository;
-import com.aiblockchain.rest.data.repository.CustomerRepository;
-import com.aiblockchain.rest.data.repository.EmailRepository;
-import com.aiblockchain.rest.data.repository.LotRepository;
-import com.aiblockchain.rest.data.repository.PhoneRepository;
-import com.aiblockchain.rest.data.repository.TransactionRepository;
+import com.aiblockchain.rest.data.entity.dat.Account;
+import com.aiblockchain.rest.data.entity.dat.Address;
+import com.aiblockchain.rest.data.entity.dat.Asset;
+import com.aiblockchain.rest.data.entity.dat.ContactAddress;
+import com.aiblockchain.rest.data.entity.dat.ContactEmail;
+import com.aiblockchain.rest.data.entity.dat.ContactPhone;
+import com.aiblockchain.rest.data.entity.dat.Customer;
+import com.aiblockchain.rest.data.entity.dat.Email;
+import com.aiblockchain.rest.data.entity.dat.Lot;
+import com.aiblockchain.rest.data.entity.dat.Phone;
+import com.aiblockchain.rest.data.entity.dat.Transaction;
+import com.aiblockchain.rest.data.repository.dat.AccountRepository;
+import com.aiblockchain.rest.data.repository.dat.AddressRepository;
+import com.aiblockchain.rest.data.repository.dat.AssetRepository;
+import com.aiblockchain.rest.data.repository.dat.ContactAddressRepository;
+import com.aiblockchain.rest.data.repository.dat.ContactEmailRepository;
+import com.aiblockchain.rest.data.repository.dat.ContactPhoneRepository;
+import com.aiblockchain.rest.data.repository.dat.CustomerRepository;
+import com.aiblockchain.rest.data.repository.dat.EmailRepository;
+import com.aiblockchain.rest.data.repository.dat.LotRepository;
+import com.aiblockchain.rest.data.repository.dat.PhoneRepository;
+import com.aiblockchain.rest.data.repository.dat.TransactionRepository;
 
 //@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations="classpath:spring/test-context.xml")
@@ -87,7 +87,7 @@ public class DataRepositoryTest {
 	//@Test
 	public void testSaveAddress() {
 		addr = new Address("1010 Alexander Rd", "Suite 100", "Office", "Princeton", "NJ", "08060");
-		addrRepo.save(addr);
+		//addrRepo.save(addr);
 		
 		/*Address dbAddr = addrRepo.findAddr(addr.getId());
 		assertNotNull(dbAddr);
@@ -97,7 +97,7 @@ public class DataRepositoryTest {
 	//@Test
 	public void testSaveEmail() {
 		email = new Email("Test//@Test.com", "Work");
-		emailRepo.save(email);
+		//emailRepo.save(email);
 		
 		/*Email dbEmail = emailRepo.findEmail(email.getId());
 		assertNotNull(dbEmail);
@@ -107,7 +107,7 @@ public class DataRepositoryTest {
 	//@Test
 	public void testSavePhone() {
 		phone = new Phone("123-456-7896", "Work");
-		phoneRepo.save(phone);
+		//phoneRepo.save(phone);
 		
 		/*Phone dbPhone = phoneRepo.findPhone(phone.getId());
 		assertNotNull(dbPhone);
@@ -121,7 +121,7 @@ public class DataRepositoryTest {
 		customer.setContactAddresses(contactAddrRepo.findAddrsForName(legalName));
 		customer.setContactEmails(contactEmailRepo.findEmailsForName(legalName));
 		customer.setContactPhones(contactPhoneRepo.findPhonesForName(legalName));*/
-		custRepo.save(customer);
+		//custRepo.save(customer);
 		
 		/*Customer cust = custRepo.findCustomer(customer.getId());
 		assertNotNull(cust);
@@ -137,13 +137,13 @@ public class DataRepositoryTest {
 		
 		//save contact_address
 		contactAddress = new ContactAddress(customer, addr);
-		contactAddrRepo.save(contactAddress);
+		//contactAddrRepo.save(contactAddress);
 		//save contact_email
 		contactEmail = new ContactEmail(customer, email);
-		contactEmailRepo.save(contactEmail);
+		//contactEmailRepo.save(contactEmail);
 		//save contact_phone
 		contactPhone = new ContactPhone(customer, phone);
-		contactPhoneRepo.save(contactPhone);	
+		//contactPhoneRepo.save(contactPhone);	
 		
 		//save asset
 		/*asset = new Asset(null, "1.0", "None", "Clear", "Yellow", "Round", "First Asset for Athi", "1x1x1", "VVVS1", "Round", "0.5g");
@@ -151,7 +151,7 @@ public class DataRepositoryTest {
 		
 		//save account
 		acct = new Account(customer);
-		acctRepo.save(acct);
+		//acctRepo.save(acct);
 		
 		//save lot
 		DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
@@ -162,11 +162,11 @@ public class DataRepositoryTest {
 			e.printStackTrace();
 		}
 		lot = new Lot(fromDate, new BigDecimal(15000.00), null, null, acct);
-		lotRepo.save(lot);
+		//lotRepo.save(lot);
 		
 		//save transaction
 		trans = new Transaction(null, null, "First Retailer transaction", acct, asset, acct, lot, null);
-		transRepo.save(trans);
+		//transRepo.save(trans);
 	}
 
 	@Test

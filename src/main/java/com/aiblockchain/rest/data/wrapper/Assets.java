@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.aiblockchain.rest.data.entity.Asset;
+import com.aiblockchain.rest.data.entity.dat.Asset;
 
 /**
  * @author Athi

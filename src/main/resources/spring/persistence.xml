@@ -4,6 +4,27 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
         http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" version="2.0">
 
+    <persistence-unit name="aiblockchain_mysql_cre" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="validate"/>
+            <property name="hibernate.show_sql" value="true"/>  
+            <property name="hibernate.enable_lazy_load_no_trans" value="true"/>            
+        </properties>
+    </persistence-unit>
+    
+    <persistence-unit name="aiblockchain_mysql_dat" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+            <!-- <property name="hibernate.hbm2ddl.auto" value="validate"/> -->
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.show_sql" value="true"/>  
+            <property name="hibernate.enable_lazy_load_no_trans" value="true"/>            
+        </properties>
+    </persistence-unit>
+
     <persistence-unit name="aiblockchain_mysql_jpa" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <properties>
@@ -18,17 +39,6 @@
         </properties>
     </persistence-unit>
     
-    <persistence-unit name="aiblockchain_mysql_hibernate" transaction-type="RESOURCE_LOCAL">
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <properties>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="validate"/>
-            <!-- <property name="hibernate.hbm2ddl.auto" value="create-drop"/> -->
-            <property name="hibernate.show_sql" value="true"/>  
-            <property name="hibernate.enable_lazy_load_no_trans" value="true"/>            
-        </properties>
-    </persistence-unit>
-
     <persistence-unit name="aiblockchain_h2" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
@@ -38,13 +48,4 @@
             <property name="hibernate.enable_lazy_load_no_trans" value="true"/>
         </properties>
     </persistence-unit>
-        
-    <!--<persistence-unit name="transactions-optional">
-        <provider>org.datanucleus.api.jpa.PersistenceProviderImpl</provider>
-        <properties>
-            <property name="datanucleus.NontransactionalRead" value="true"/>
-            <property name="datanucleus.NontransactionalWrite" value="true"/>
-            <property name="datanucleus.ConnectionURL" value="appengine"/>
-        </properties>
-    </persistence-unit>-->
 </persistence>

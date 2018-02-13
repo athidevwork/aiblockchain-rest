@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 
-import com.aiblockchain.rest.data.entity.Asset;
+import com.aiblockchain.rest.data.entity.dat.Asset;
 
 /**
  * @author Athi

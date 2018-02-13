@@ -16,13 +16,13 @@ import javax.ws.rs.core.Response;
 import org.springframework.stereotype.Component;
 
 import com.aiblockchain.rest.data.config.SpringDataContext;
-import com.aiblockchain.rest.jpa.entity.Account;
-import com.aiblockchain.rest.jpa.entity.Asset;
-import com.aiblockchain.rest.jpa.entity.Customer;
-import com.aiblockchain.rest.jpa.service.AccountService;
-import com.aiblockchain.rest.jpa.service.AssetService;
-import com.aiblockchain.rest.jpa.service.CustomerService;
-import com.aiblockchain.rest.jpa.service.SampleDataService;
+import com.aiblockchain.rest.jpa.entity.dat.Account;
+import com.aiblockchain.rest.jpa.entity.dat.Asset;
+import com.aiblockchain.rest.jpa.entity.dat.Customer;
+import com.aiblockchain.rest.jpa.service.dat.AccountService;
+import com.aiblockchain.rest.jpa.service.dat.AssetService;
+import com.aiblockchain.rest.jpa.service.dat.CustomerService;
+import com.aiblockchain.rest.jpa.service.dat.SampleDataService;
 
 /**
  * @author Athi
