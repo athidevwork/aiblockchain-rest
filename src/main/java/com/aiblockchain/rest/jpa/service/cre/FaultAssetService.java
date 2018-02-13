@@ -3,6 +3,7 @@
  */
 package com.aiblockchain.rest.jpa.service.cre;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -38,5 +39,16 @@ public class FaultAssetService {
 	    	}
 	    }*/		
 		return assets;		
+	}
+
+	public List<FaultAsset> getAssetCategoryList(String category) {
+	    Query query = entityManager.createQuery("select c from FaultAsset c");
+	    List<FaultAsset> assets = (List<FaultAsset>) query.getResultList();
+	    List<FaultAsset> filteredAsset = new ArrayList<FaultAsset>();
+	    for (FaultAsset asset : assets) {
+	    	if (asset.getCategory().contains(category) || asset.getSubCategory().contains(category))
+	    		filteredAsset.add(asset);
+	    }
+		return filteredAsset;
 	}
 }

@@ -15,6 +15,7 @@ import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -131,6 +132,24 @@ public class FaultResource {
     	//ServiceResponse response = new ServiceResponse();
     	//response.setList(usersList);
 		return Response.ok().entity(objectList).build();
+    }
+    
+    @GET
+	@Path("/assets/{category}")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON, MediaType.TEXT_XML})
+    public Response getFaultAssetCategoryList(@PathParam(value = "category") String category) {
+    	FaultAssetService assetService = (FaultAssetService) SpringDataContext.getBean("FaultAssetService");
+    	List<FaultAsset> assetsList = assetService.getAssetCategoryList(category);
+    	System.out.println("Asset size : " + assetsList.size());
+    	
+    	List<Object> objectList = new ArrayList<Object>();
+    	for (FaultAsset asset : assetsList) {
+    		objectList.add(asset);
+    	}
+    	/*ServiceResponse response = new ServiceResponse();
+    	response.setList(assetsList);*/
+    	
+    	return Response.ok().entity(objectList).header("faultasset", "AllAssets").build();
     }
     
     @GET
