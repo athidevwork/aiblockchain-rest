@@ -41,12 +41,16 @@ public class FaultAssetService {
 		return assets;		
 	}
 
-	public List<FaultAsset> getAssetCategoryList(String category) {
+	public List<FaultAsset> getAssetsSearchList(String searchCriteria) {
 	    Query query = entityManager.createQuery("select c from FaultAsset c");
 	    List<FaultAsset> assets = (List<FaultAsset>) query.getResultList();
+	    System.out.println("All assets size : " + assets.size());
+	    
 	    List<FaultAsset> filteredAsset = new ArrayList<FaultAsset>();
 	    for (FaultAsset asset : assets) {
-	    	if (asset.getCategory().contains(category) || asset.getSubCategory().contains(category))
+	    	if (asset.getBuilding().contains(searchCriteria) 
+	    			|| asset.getLocation().contains(searchCriteria)
+	    			|| asset.getUnit().contains(searchCriteria))
 	    		filteredAsset.add(asset);
 	    }
 		return filteredAsset;

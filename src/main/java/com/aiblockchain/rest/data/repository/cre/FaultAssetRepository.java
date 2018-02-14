@@ -17,7 +17,8 @@ import com.aiblockchain.rest.jpa.entity.cre.FaultAsset;
  *
  */
 @Repository("FaultAssetRepository")
-@Transactional(propagation = Propagation.NESTED, value = "transactionManageCre")
+//@Transactional(propagation = Propagation.NESTED, value = "transactionManageCre")
+@Transactional(transactionManager="transactionManagerCre")//, value = "cre")
 public interface FaultAssetRepository  extends JpaRepository<FaultAsset, Integer> {
 	/*public List<FaultAsset> findByCategoryOrderByCategoryAsc(String category);
 	public List<FaultAsset> findBySubCategoryOrderBySubCategoryAsc(String subCategory);

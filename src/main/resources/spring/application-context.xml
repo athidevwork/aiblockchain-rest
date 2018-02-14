@@ -40,32 +40,38 @@
         <property name="persistenceUnitName" value="aiblockchain_mysql_dat"/>
     </bean>
   
-  <tx:annotation-driven transaction-manager="transactionManagerDat, transactionManagerCre" />
   <bean id="transactionManagerDat" class="org.springframework.orm.jpa.JpaTransactionManager">
       <property name="entityManagerFactory" ref="entityManagerFactoryDat" />
       <property name="dataSource" ref="dataSourceDat"/>
+      <qualifier value="dat"/>
   </bean>
+  
+  <!-- <tx:annotation-driven transaction-manager="transactionManagerDat" /> -->
     
-    <!-- Database -->
-    <bean id="dataSourceCre" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-	    <property name="driverClassName" value="${jdbc.driverClassName}"/>
-	    <property name="url" value="${jdbc.url.cre}"/>
-	    <property name="username" value="${jdbc.username}"/>
-	    <property name="password" value="${jdbc.password}"/>
-    </bean>
+   <!-- Database -->
+   <bean id="dataSourceCre" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName" value="${jdbc.driverClassName}"/>
+    <property name="url" value="${jdbc.url.cre}"/>
+    <property name="username" value="${jdbc.username}"/>
+    <property name="password" value="${jdbc.password}"/>
+   </bean>
     
-    <bean id="entityManagerFactoryCre" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="dataSourceCre"/>
-        <property name="packagesToScan" value="com.aiblockchain.rest" />      
-        <property name="persistenceXmlLocation" value="classpath:spring/persistence.xml" />
-        <property name="persistenceUnitName" value="aiblockchain_mysql_cre"/>
-    </bean>
+   <bean id="entityManagerFactoryCre" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+       <property name="dataSource" ref="dataSourceCre"/>
+       <property name="packagesToScan" value="com.aiblockchain.rest" />      
+       <property name="persistenceXmlLocation" value="classpath:spring/persistence.xml" />
+       <property name="persistenceUnitName" value="aiblockchain_mysql_cre"/>
+   </bean>
   
   <bean id="transactionManagerCre" class="org.springframework.orm.jpa.JpaTransactionManager">
       <property name="entityManagerFactory" ref="entityManagerFactoryCre" />
       <property name="dataSource" ref="dataSourceCre"/>
+      <qualifier value="cre"/>
   </bean>
       
+  <!-- <tx:annotation-driven transaction-manager="transactionManagerCre" /> -->
+  <tx:annotation-driven />
+    
   <bean id="applicationContext" class="com.aiblockchain.rest.data.config.SpringDataContext"></bean>
     
     

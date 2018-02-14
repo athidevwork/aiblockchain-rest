@@ -8,8 +8,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.aiblockchain.rest.data.config.SpringDataContext;
 import com.aiblockchain.rest.data.repository.cre.FaultRepository;
 import com.aiblockchain.rest.jpa.entity.cre.Fault;
 
@@ -22,6 +22,7 @@ public class FaultService {
 	@Autowired
 	FaultRepository faultRepo;
 	
+	//@Transactional(transactionManager="transactionManagerCre")
 	public List<Fault> getFaultList() {
 		List<Fault> faults = new ArrayList<>();
 		try {

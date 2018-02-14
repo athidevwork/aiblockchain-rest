@@ -3,12 +3,9 @@
  */
 package com.aiblockchain.rest.jpa.entity.cre;
 
-import java.time.LocalDateTime;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,9 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * @author Athi
@@ -32,7 +27,10 @@ public class Fault {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	int id;
-	LocalDateTime fDate;
+	String fDate;
+	String category;
+	String subCategory;
+	String description;	
 	String fSignature;
 	@Column(name="aibc_status")
 	String aibcStatus;
@@ -44,11 +42,11 @@ public class Fault {
 	//@JsonBackReference
 	//@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	//@JoinColumn(name="asset_id", columnDefinition="INTEGER", nullable=false, updatable=false, insertable=true)
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JsonIgnore
 	//@JsonManagedReference
     @JoinColumn(name="asset_id")//, nullable=false, updatable=false, insertable=true)
-	private FaultAsset faultAsset;
+	private FaultAsset asset;
 	
 	public Fault() {}
 	
@@ -58,12 +56,30 @@ public class Fault {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public LocalDateTime getDate() {
+	public String getDate() {
 		return fDate;
 	}
-	public void setDate(LocalDateTime date) {
+	public void setDate(String date) {
 		this.fDate = date;
 	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	public String getSubCategory() {
+		return subCategory;
+	}
+	public void setSubCategory(String subCategory) {
+		this.subCategory = subCategory;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}	
 	public String getSignature() {
 		return fSignature;
 	}
@@ -81,28 +97,17 @@ public class Fault {
 	}
 	public void setAibcTrans(String aibcTrans) {
 		this.aibcTrans = aibcTrans;
-	}
-	/*public LocalDateTime getfDate() {
-		return fDate;
-	}
-	public void setfDate(LocalDateTime fDate) {
-		this.fDate = fDate;
-	}
-	public String getfSignature() {
-		return fSignature;
-	}
-	public void setfSignature(String fSignature) {
-		this.fSignature = fSignature;
-	}*/
+	}	
 	public FaultAsset getFaultAsset() {
-		return faultAsset;
+		return asset;
 	}
-	public void setFaultAsset(FaultAsset faultAsset) {
-		this.faultAsset = faultAsset;
+	public void setFaultAsset(FaultAsset asset) {
+		this.asset = asset;
 	}
 	@Override
 	public String toString() {
-		return "Fault [id=" + id + ", fDate=" + fDate + ", fSignature=" + fSignature + ", aibcStatus=" + aibcStatus
-				+ ", aibcTrans=" + aibcTrans + ", faultAsset=" + faultAsset + "]";
+		return "Fault [id=" + id + ", fDate=" + fDate + ", category=" + category + ", subCategory=" + subCategory
+				+ ", description=" + description + ", fSignature=" + fSignature + ", aibcStatus=" + aibcStatus
+				+ ", aibcTrans=" + aibcTrans + ", asset=" + asset + "]";
 	}
 }

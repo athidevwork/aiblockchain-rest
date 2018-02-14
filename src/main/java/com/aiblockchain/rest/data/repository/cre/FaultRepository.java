@@ -14,7 +14,8 @@ import com.aiblockchain.rest.jpa.entity.cre.Fault;
  *
  */
 @Repository("FaultRepository")
-@Transactional(propagation = Propagation.NESTED, value = "transactionManageCre")
+//@Transactional(propagation = Propagation.NESTED, value = "transactionManageCre")
+@Transactional(value = "cre")
 public interface FaultRepository  extends JpaRepository<Fault, Integer> {
 	public List<Fault> findByAibcStatus(String status);
 	//public List<Fault> findByDateContaining(String yearMonthOrDate); //2018

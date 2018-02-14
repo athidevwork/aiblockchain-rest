@@ -33,8 +33,9 @@ public class FaultAsset {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)	
 	int id;
 	String atype;
-	String category;
-	String subCategory;
+	String building;
+	String location;
+	String unit;
 	String description;
 	
 	//bi-directional many-to-one association to Fault
@@ -44,7 +45,7 @@ public class FaultAsset {
 	//@OneToMany(mappedBy="faultAsset", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonIgnoreProperties("faultAsset")
 	//@JsonBackReference
-	@OneToMany(mappedBy="faultAsset", cascade=CascadeType.PERSIST)
+	@OneToMany(mappedBy="asset", cascade=CascadeType.PERSIST)
 	private Set<Fault> faults = new HashSet<Fault>();
 	
 	public FaultAsset() {}
@@ -58,23 +59,26 @@ public class FaultAsset {
 	public String getAtype() {
 		return atype;
 	}
+	public String getBuilding() {
+		return building;
+	}
+	public void setBuilding(String building) {
+		this.building = building;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public String getUnit() {
+		return unit;
+	}
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}	
 	public void setAtype(String type) {
 		this.atype = type;
-	}
-	public String getCategory() {
-		return category;
-	}
-	public void setCategory(String category) {
-		this.category = category;
-	}
-	public String getSubCategory() {
-		return subCategory;
-	}
-	public void setSubCategory(String subCategory) {
-		this.subCategory = subCategory;
-	}
-	public String getDescription() {
-		return description;
 	}
 	public void setDescription(String description) {
 		this.description = description;
@@ -87,7 +91,7 @@ public class FaultAsset {
 	}
 	@Override
 	public String toString() {
-		return "FaultAsset [id=" + id + ", atype=" + atype + ", category=" + category + ", subCategory=" + subCategory
-				+ ", description=" + description + ", faults=" + faults + "]";
+		return "FaultAsset [id=" + id + ", atype=" + atype + ", building=" + building + ", location=" + location
+				+ ", unit=" + unit + ", description=" + description + ", faults=" + faults + "]";
 	}
 }

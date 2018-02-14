@@ -14,6 +14,7 @@ import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -31,9 +32,10 @@ import com.aiblockchain.rest.jpa.entity.User;
 import com.aiblockchain.rest.jpa.entity.Users;
 import com.aiblockchain.rest.jpa.entity.cre.Fault;
 import com.aiblockchain.rest.jpa.entity.cre.FaultAsset;
+import com.aiblockchain.rest.jpa.entity.cre.FaultAsset;
 import com.aiblockchain.rest.jpa.service.cre.FaultAssetService;
 import com.aiblockchain.rest.jpa.service.cre.FaultService;
-import com.aiblockchain.rest.jpa.service.cre.SampleFaultDataService;
+import com.aiblockchain.rest.jpa.service.cre.FaultDataService;
 import com.aiblockchain.rest.security.Utils;
 import com.google.gson.Gson;
 
@@ -75,18 +77,49 @@ public class FaultResource {
     	User faultUser = new User(user, encUserName, encPassword, authorization);
     	String userJson = gson.toJson(faultUser);
     	
-    	Users users = (Users) SpringDataContext.getBean("Users");
-    	users.addUser(faultUser);   	
-    	String usersJson = gson.toJson(users);
-    	
-		try (FileWriter file = new FileWriter("src/main/resources/config/users.json")) {
-			file.write(usersJson);
-			System.out.println("Successfully wrote user Json Object to File...");
-			System.out.println("\nJSON Object: " + usersJson);
-		}
+    	saveUser(faultUser);
 		
     	return Response.ok().entity(userJson).build();
     }
+
+	private void saveUser(User faultUser) throws IOException {
+		Users origUsers = (Users) SpringDataContext.getBean("Users");
+		System.out.println("\nUsers before reading in file : \n" + origUsers);
+    	try (BufferedReader br = new BufferedReader(  
+                new FileReader("src/main/resources/config/users.json"))) {
+    		System.out.println("Reading users from file src/main/resources/config/users.json ..."); 
+    		origUsers = (new Gson()).fromJson(br, Users.class);
+            System.out.println("\nUsers after reading from file : \n" + origUsers);
+    		System.out.println("Successfully read users from File src/main/resources/config/users.json...");            
+        } catch (FileNotFoundException e) {
+        	System.out.println("src/main/resources/config/users.json file not found.");
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("IOException while trying to read src/main/resources/config/users.json");
+			e.printStackTrace();
+		}
+    	
+    	boolean userFound = false;
+    	if (origUsers.getUsers().size() > 0) {
+    		for (User user : origUsers.getUsers()) {
+    			if (user.getUser().equalsIgnoreCase(faultUser.getUser())) {
+    				System.out.println("User found already.");
+    				userFound = true;
+    				break;
+    			}
+    		}
+    	}
+    	
+		if (!userFound) {		
+	    	origUsers.addUser(faultUser);
+	    	String usersJson = gson.toJson(origUsers);    	
+			try (FileWriter file = new FileWriter("src/main/resources/config/users.json")) {
+				file.write(usersJson);
+				System.out.println("Successfully wrote user Json Object to File...");
+				System.out.println("\nJSON Object: " + usersJson);
+			}	    	
+		}    	
+	}
 
     @GET
     @Path("/user/getauth")
@@ -135,11 +168,11 @@ public class FaultResource {
     }
     
     @GET
-	@Path("/assets/{category}")
+	@Path("/assets/{searchStr}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON, MediaType.TEXT_XML})
-    public Response getFaultAssetCategoryList(@PathParam(value = "category") String category) {
+    public Response getFaultAssetCategoryList(@PathParam(value = "searchStr") String searchStr) {
     	FaultAssetService assetService = (FaultAssetService) SpringDataContext.getBean("FaultAssetService");
-    	List<FaultAsset> assetsList = assetService.getAssetCategoryList(category);
+    	List<FaultAsset> assetsList = assetService.getAssetsSearchList(searchStr);
     	System.out.println("Asset size : " + assetsList.size());
     	
     	List<Object> objectList = new ArrayList<Object>();
@@ -193,10 +226,10 @@ public class FaultResource {
 	@Path("/sample/save")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON, MediaType.TEXT_XML})
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON, MediaType.TEXT_XML})
-    public Response saveFault () {
+    public Response saveSampleFault () {
     //public Response saveAsset (Asset asset, @Context UriInfo uriInfo) {
     	//Asset asset = new Asset(null, "1.5", "none", "vvs1", "colorless", "round", "Test asset", "1x1x1", "Superior", "test1", "test2");
-    	SampleFaultDataService sampleDataService = (SampleFaultDataService) SpringDataContext.getBean("SampleFaultDataService");
+    	FaultDataService sampleDataService = (FaultDataService) SpringDataContext.getBean("SampleFaultDataService");
     	sampleDataService.saveSampleData();
     	
         //UriBuilder builder = uriInfo.getAbsolutePathBuilder();
@@ -204,5 +237,15 @@ public class FaultResource {
         //builder.path(Integer.toString(dbAsset.getId()));
         
     	return Response.ok().build();
-    }	    
+    }	
+    
+    @POST
+	@Path("/save")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON, MediaType.TEXT_XML})
+    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON, MediaType.TEXT_XML})
+    public Response saveFault (FaultAsset faultAsset) {
+    	FaultDataService faultService = (FaultDataService) SpringDataContext.getBean("SampleFaultDataService");
+    	FaultAsset savedAsset = faultService.saveFault(faultAsset);        
+    	return Response.ok().entity(savedAsset).build();
+    }    
 }
