@@ -105,9 +105,13 @@ public class FaultDataService {
 	    else {
 	    	System.out.println("Found existing asset");
 	    	saveToAsset.setAtype("CRE");
+	    	saveToAsset.setId(dbAsset.get(0).getId());
 	    	saveToAsset.setBuilding(dbAsset.get(0).getBuilding());
 	    	saveToAsset.setLocation(dbAsset.get(0).getLocation());
 	    	saveToAsset.setUnit(dbAsset.get(0).getUnit());
+	    	/*entityManager.flush();
+	    	entityManager.clear();*/
+	    	//entityManager.persist(saveToAsset);
 	    }
 	    
 	    System.out.println ("Saved or Existing asset : " + saveToAsset.toString());

@@ -45,7 +45,7 @@ public class FaultAsset {
 	//@OneToMany(mappedBy="faultAsset", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonIgnoreProperties("faultAsset")
 	//@JsonBackReference
-	@OneToMany(mappedBy="asset", cascade=CascadeType.PERSIST)
+	@OneToMany(mappedBy="asset")
 	private Set<Fault> faults = new HashSet<Fault>();
 	
 	public FaultAsset() {}

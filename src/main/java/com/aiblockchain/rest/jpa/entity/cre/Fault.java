@@ -42,7 +42,7 @@ public class Fault {
 	//@JsonBackReference
 	//@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	//@JoinColumn(name="asset_id", columnDefinition="INTEGER", nullable=false, updatable=false, insertable=true)
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(optional=false)
 	@JsonIgnore
 	//@JsonManagedReference
     @JoinColumn(name="asset_id")//, nullable=false, updatable=false, insertable=true)
