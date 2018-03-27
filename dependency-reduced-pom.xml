@@ -69,7 +69,10 @@
             <imageTag>latest</imageTag>
           </imageTags>
           <baseImage>java:8</baseImage>
-          <entryPoint>["java", "-cp", "target/lib/*:target/aiblockchain-rest.jar", "-Dlog4j.debug", "-Dlog4j.configuration=log4j.properties", "-jar", "/apps/${project.build.finalName}.jar", "5000"]</entryPoint>
+          <entryPoint>["java", "-cp",
+						"target/lib/*:target/aiblockchain-rest.jar", "-Dlog4j.debug",
+						"-Dlog4j.configuration=log4j.properties", "-jar",
+						"/apps/${project.build.finalName}.jar", "5000"]</entryPoint>
           <pushImage>true</pushImage>
           <resources>
             <resource>
@@ -142,7 +145,7 @@
     </dependency>
   </dependencies>
   <properties>
-    <spring.version>4.3.11.RELEASE</spring.version>
+    <spring.version>5.0.4.RELEASE</spring.version>
     <jdk.version>1.8</jdk.version>
     <glassfish.version>2.25.1</glassfish.version>
     <log4j.version>1.2.17</log4j.version>

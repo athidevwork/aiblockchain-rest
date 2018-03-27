@@ -1,228 +1,233 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.aiblockchain</groupId>
-  <artifactId>aiblockchain-rest</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>AI BLOCKCHAIN REST SERVICES</name>
-  <description>AI Block Chain Restful Services Demo</description>
-  
-	<!--<repositories>
-	  <repository>
-	    <id>data-local</id>
-	    <name>data</name>
-	    <url>file://${project.basedir}/repo</url>
-	  </repository>
-	</repositories>-->
-	  
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.aiblockchain</groupId>
+	<artifactId>aiblockchain-rest</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>AI BLOCKCHAIN REST SERVICES</name>
+	<description>AI Block Chain Restful Services Demo</description>
+
+	<!--<repositories> <repository> <id>data-local</id> <name>data</name> <url>file://${project.basedir}/repo</url> 
+		</repository> </repositories> -->
+
 	<properties>
 		<jdk.version>1.8</jdk.version>
 		<junit.version>4.12</junit.version>
 		<log4j.version>1.2.17</log4j.version>
-		<spring.version>4.3.11.RELEASE</spring.version>
+		<spring.version>5.0.4.RELEASE</spring.version>
 		<glassfish.version>2.25.1</glassfish.version>
 	</properties>
-		  
+
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
 		<dependency>
-		    <groupId>org.apache.httpcomponents</groupId>
-		    <artifactId>httpclient</artifactId>
-		    <version>4.5.2</version>
-		</dependency>			
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.2</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
-		 <dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-core</artifactId>
-		    <version>${spring.version}</version>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-context</artifactId>
-		    <version>${spring.version}</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
-		     <groupId>org.springframework</groupId>
-		     <artifactId>spring-beans</artifactId>
-		     <version>${spring.version}</version>
-		 </dependency>		 							
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
 		<dependency>
-		    <groupId>org.glassfish.jersey.containers</groupId>
-		    <artifactId>jersey-container-netty-http</artifactId>
-		    <version>${glassfish.version}</version>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-netty-http</artifactId>
+			<version>${glassfish.version}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-server -->
 		<dependency>
-		    <groupId>org.glassfish.jersey.core</groupId>
-		    <artifactId>jersey-server</artifactId>
-		    <version>${glassfish.version}</version>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-server</artifactId>
+			<version>${glassfish.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.glassfish.jersey.core</groupId>
 			<artifactId>jersey-client</artifactId>
 			<version>${glassfish.version}</version>
 		</dependency>
-		
-    <dependency>
-        <groupId>org.glassfish.jersey.containers</groupId>
-        <artifactId>jersey-container-servlet</artifactId>
-        <version>${glassfish.version}</version>
-    </dependency>
-        		
+
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-servlet</artifactId>
+			<version>${glassfish.version}</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api -->
-		<!--  <dependency>
-		    <groupId>javax.ws.rs</groupId>
-		    <artifactId>javax.ws.rs-api</artifactId>
-		    <version>2.0</version>
-		</dependency>-->
+		<!-- <dependency> <groupId>javax.ws.rs</groupId> <artifactId>javax.ws.rs-api</artifactId> 
+			<version>2.0</version> </dependency> -->
 		<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-common -->
 		<dependency>
-		    <groupId>org.glassfish.jersey.core</groupId>
-		    <artifactId>jersey-common</artifactId>
-		    <version>${glassfish.version}</version>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-common</artifactId>
+			<version>${glassfish.version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.glassfish.jersey.media</groupId>
-		    <artifactId>jersey-media-jaxb</artifactId>
-		    <version>${glassfish.version}</version>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-jaxb</artifactId>
+			<version>${glassfish.version}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-json-jackson -->
 		<dependency>
-		    <groupId>org.glassfish.jersey.media</groupId>
-		    <artifactId>jersey-media-json-jackson</artifactId>
-		    <version>${glassfish.version}</version>
-		</dependency>	
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-jackson</artifactId>
+			<version>${glassfish.version}</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-multipart -->
 		<dependency>
-		    <groupId>org.glassfish.jersey.media</groupId>
-		    <artifactId>jersey-media-multipart</artifactId>
-		    <version>${glassfish.version}</version>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-multipart</artifactId>
+			<version>${glassfish.version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.glassfish.jersey.media</groupId>
-		    <artifactId>jersey-media-moxy</artifactId>
-		    <version>${glassfish.version}</version>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-moxy</artifactId>
+			<version>${glassfish.version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.glassfish.jersey.media</groupId>
-		    <artifactId>jersey-media-json-jettison</artifactId>
-		    <version>${glassfish.version}</version>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-jettison</artifactId>
+			<version>${glassfish.version}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3 -->
 		<dependency>
-		    <groupId>com.amazonaws</groupId>
-		    <artifactId>aws-java-sdk-s3</artifactId>
-		    <version>1.11.109</version>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-s3</artifactId>
+			<version>1.11.109</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
 		<dependency>
-		    <groupId>javax.servlet</groupId>
-		    <artifactId>javax.servlet-api</artifactId>
-		    <version>4.0.0-b03</version>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.0-b03</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
-		    <groupId>mysql</groupId>
-		    <artifactId>mysql-connector-java</artifactId>
-		    <version>6.0.6</version>
-		</dependency>				
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>6.0.6</version>
+		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
 		</dependency>
-    <dependency>
-      <groupId>org.springframework.data</groupId>
-      <artifactId>spring-data-jpa</artifactId>
-      <version>1.11.7.RELEASE</version>
-    </dependency>		
-<!--		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-webmvc</artifactId>
-		    <version>4.3.10.RELEASE</version>
-		</dependency>    
-     <dependency>
-      <groupId>org.hibernate.javax.persistence</groupId>
-      <artifactId>hibernate-jpa-2.0-api</artifactId>
-      <version>1.0.1.Final</version>
-    </dependency>  -->
 		<dependency>
-		    <groupId>org.hibernate.javax.persistence</groupId>
-		    <artifactId>hibernate-jpa-2.1-api</artifactId>
-		    <version>1.0.0.Final</version>
-		</dependency>       
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-entitymanager</artifactId>
-      <version>5.2.10.Final</version>
-    </dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>2.0.5.RELEASE</version>
+		</dependency>
+		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-webmvc</artifactId> 
+			<version>4.3.10.RELEASE</version> </dependency> <dependency> <groupId>org.hibernate.javax.persistence</groupId> 
+			<artifactId>hibernate-jpa-2.0-api</artifactId> <version>1.0.1.Final</version> 
+			</dependency> -->
 		<dependency>
-		 <groupId>org.hibernate</groupId>
-		 <artifactId>hibernate-validator</artifactId>
-		 <version>5.3.5.Final</version>
-		</dependency>	
-    <!-- https://mvnrepository.com/artifact/org.eclipse.persistence/eclipselink -->
-    <dependency>
-        <groupId>org.eclipse.persistence</groupId>
-        <artifactId>eclipselink</artifactId>
-        <version>2.5.0</version>
-    </dependency>			
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.1-api</artifactId>
+			<version>1.0.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>5.2.10.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.3.5.Final</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.eclipse.persistence/eclipselink -->
+		<dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>eclipselink</artifactId>
+			<version>2.5.0</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
 		<dependency>
-		    <groupId>commons-dbcp</groupId>
-		    <artifactId>commons-dbcp</artifactId>
-		    <version>1.4</version>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.196</version>
+			<scope>runtime</scope>
+		</dependency>
+		<!--<dependency>
+		 <groupId>org.springframework</groupId>
+		 <artifactId>spring-core</artifactId>
+		 <version>4.3.11.RELEASE</version>
 		</dependency>		
-    <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <version>1.4.196</version>
-      <scope>runtime</scope>
-    </dependency>    	
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>4.3.11.RELEASE</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.data</groupId>
+		    <artifactId>spring-data-commons</artifactId>
+		    <version>2.0.5.RELEASE</version>
+		</dependency>-->			
+		<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-mongodb -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb</artifactId>
+			<version>2.0.5.RELEASE</version>
+		</dependency>
+<!--		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-commons</artifactId>
+			<version>2.0.5.RELEASE</version>
+		</dependency>
+ 		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-commons-core</artifactId>
+			<version>1.2.0.RELEASE</version>
+		</dependency>	 -->	
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
-		</dependency>		
-    <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
-    <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-test</artifactId>
-        <version>4.3.11.RELEASE</version>
-        <scope>test</scope>
-    </dependency>
-    <dependency>
-    	<groupId>com.google.code.gson</groupId>
-    	<artifactId>gson</artifactId>
-    	<version>2.8.0</version>
-    </dependency>
-<!--    <dependency>
-    	<groupId>org.springframework</groupId>
-    	<artifactId>spring-webmvc</artifactId>
-    	<version>4.3.10.RELEASE</version>
-    </dependency>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
 		<dependency>
-		    <groupId>org.modelmapper</groupId>
-		    <artifactId>modelmapper</artifactId>
-		    <version>0.7.4</version>
-		</dependency>  -->   
-    <!-- <dependency>
-    	<groupId>org.springframework.data</groupId>
-    	<artifactId>spring-data-rest-webmvc</artifactId>
-    	<version>2.6.3.RELEASE</version>
-    </dependency> -->
-<!--     <dependency>
-    	<groupId>com.sun.jersey</groupId>
-    	<artifactId>jersey-core</artifactId>
-    	<version>1.18.1</version>
-    </dependency> -->
-	</dependencies>  
-	
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.3.11.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.0</version>
+		</dependency>
+		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-webmvc</artifactId> 
+			<version>4.3.10.RELEASE</version> </dependency> <dependency> <groupId>org.modelmapper</groupId> 
+			<artifactId>modelmapper</artifactId> <version>0.7.4</version> </dependency> -->
+		<!-- <dependency> <groupId>org.springframework.data</groupId> <artifactId>spring-data-rest-webmvc</artifactId> 
+			<version>2.6.3.RELEASE</version> </dependency> -->
+		<!-- <dependency> <groupId>com.sun.jersey</groupId> <artifactId>jersey-core</artifactId> 
+			<version>1.18.1</version> </dependency> -->
+	</dependencies>
+
 	<build>
 		<finalName>aiblockchain-rest</finalName>
-		<plugins>			
+		<plugins>
 			<!-- download source code in Eclipse, best practice -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -233,7 +238,7 @@
 					<downloadJavadocs>false</downloadJavadocs>
 				</configuration>
 			</plugin>
-		
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -243,216 +248,153 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-		    <plugin>
-		    
-		      <!-- Build an executable JAR -->
-		      <groupId>org.apache.maven.plugins</groupId>
-		      <artifactId>maven-jar-plugin</artifactId>
-		      <version>3.0.2</version>
-		      <configuration>
-		      	<!-- DO NOT include log4j.properties file in your Jar -->
-				  <excludes>
-					<exclude>**/log4j.properties</exclude>
-				</excludes>
-		        <archive>
-		          <manifest>
-		            <addClasspath>true</addClasspath>
-		            <classpathPrefix>lib/</classpathPrefix>
-		            <mainClass>com.aiblockchain.server.NettyServerMain</mainClass>
-		          </manifest>
-		        </archive>
-		      </configuration>
-		    </plugin>	
-		    
+			<plugin>
+
+				<!-- Build an executable JAR -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.0.2</version>
+				<configuration>
+					<!-- DO NOT include log4j.properties file in your Jar -->
+					<excludes>
+						<exclude>**/log4j.properties</exclude>
+					</excludes>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib/</classpathPrefix>
+							<mainClass>com.aiblockchain.server.NettyServerMain</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+
 			<!-- Copy project dependency -->
-			<!--
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-dependency-plugin</artifactId> 
+				<version>2.5.1</version> <executions> <execution> <id>copy-dependencies</id> 
+				<phase>package</phase> <goals> <goal>copy-dependencies</goal> </goals> <configuration> 
+				exclude junit, we need runtime dependency only <includeScope>runtime</includeScope> 
+				<outputDirectory>${project.build.directory}/dependency-jars/</outputDirectory> 
+				</configuration> </execution> </executions> </plugin> -->
+
+			<!-- Maven Assembly Plugin -->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-assembly-plugin</artifactId> 
+				<version>2.4.1</version> <configuration> get all project dependencies <descriptorRefs> 
+				<descriptorRef>jar-with-dependencies</descriptorRef> </descriptorRefs> MainClass 
+				in mainfest make a executable jar <archive> <manifest> <addClasspath>true</addClasspath> 
+				<mainClass>com.aiblockchain.server.NettyServerMain</mainClass> </manifest> 
+				<manifestEntries> <Class-Path>.</Class-Path> need to add current directory 
+				to classpath properties files can be found </manifestEntries> </archive> 
+				</configuration> <executions> <execution> <id>make-assembly</id> bind to 
+				the packaging phase <phase>package</phase> <goals> <goal>single</goal> </goals> 
+				</execution> </executions> </plugin> -->
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
-				<version>2.5.1</version>
 				<executions>
-				  <execution>
-					<id>copy-dependencies</id>
-					<phase>package</phase>
-					<goals>
-						<goal>copy-dependencies</goal>
-					</goals>
-					<configuration>
-					   exclude junit, we need runtime dependency only 
-					  <includeScope>runtime</includeScope>
-					  <outputDirectory>${project.build.directory}/dependency-jars/</outputDirectory>
-					</configuration>
-				  </execution>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<includeScope>runtime</includeScope>
+							<outputDirectory>${project.build.directory}/lib</outputDirectory>
+						</configuration>
+					</execution>
 				</executions>
 			</plugin>
-			-->	
-			
-			<!-- Maven Assembly Plugin -->
-<!-- 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.4.1</version>
-				<configuration>
-					get all project dependencies
-					<descriptorRefs>
-						<descriptorRef>jar-with-dependencies</descriptorRef>
-					</descriptorRefs>
-					MainClass in mainfest make a executable jar
-					<archive>
-					  <manifest>
-					  	<addClasspath>true</addClasspath> 
-						<mainClass>com.aiblockchain.server.NettyServerMain</mainClass>
-					  </manifest>
-	                  	<manifestEntries>
-	                        <Class-Path>.</Class-Path> need to add current directory to classpath properties files can be found
-	                    </manifestEntries>					  
-					</archive>
-				</configuration>
-				<executions>
-				  <execution>
-					<id>make-assembly</id>
-                    bind to the packaging phase
-					<phase>package</phase>
-					<goals>
-						<goal>single</goal>
-					</goals>
-				  </execution>
-				</executions>
-			</plugin>	 -->
-			
-			<plugin>
-			    <groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-dependency-plugin</artifactId>
-			    <executions>
-			        <execution>
-			            <id>copy-dependencies</id>
-			            <phase>package</phase>
-			            <goals>
-			                <goal>copy-dependencies</goal>
-			            </goals>
-			            <configuration>
-			            	<includeScope>runtime</includeScope>
-			                <outputDirectory>${project.build.directory}/lib</outputDirectory>
-			            </configuration>
-			        </execution>
-			    </executions>
-			</plugin>
-			
+
 			<plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
 				<version>0.4.10</version>
 				<configuration>
-				    <serverId>docker-hub</serverId>
-				    <registryUrl>https://index.docker.io/v1/</registryUrl>
+					<serverId>docker-hub</serverId>
+					<registryUrl>https://index.docker.io/v1/</registryUrl>
 					<imageName>athidevwork/aiblockchain-rest</imageName>
 					<imageTags>
-			           <!-- <imageTag>${project.version}</imageTag> -->
-			           <imageTag>latest</imageTag>
-			        </imageTags>
+						<!-- <imageTag>${project.version}</imageTag> -->
+						<imageTag>latest</imageTag>
+					</imageTags>
 					<baseImage>java:8</baseImage>
-					<entryPoint>["java", "-cp", "target/lib/*:target/aiblockchain-rest.jar", "-Dlog4j.debug", "-Dlog4j.configuration=log4j.properties", "-jar", "/apps/${project.build.finalName}.jar", "5000"]</entryPoint>
+					<entryPoint>["java", "-cp",
+						"target/lib/*:target/aiblockchain-rest.jar", "-Dlog4j.debug",
+						"-Dlog4j.configuration=log4j.properties", "-jar",
+						"/apps/${project.build.finalName}.jar", "5000"]</entryPoint>
 					<pushImage>true</pushImage>
-					<!-- copy the service's jar file from target into the root directory of the image -->
+					<!-- copy the service's jar file from target into the root directory 
+						of the image -->
 					<resources>
 						<resource>
 							<targetPath>/apps/</targetPath>
 							<directory>${project.build.directory}</directory>
-				            <includes>
-				                <include>${project.build.directory}/log4j.properties</include>
-                                <include>${project.build.finalName}.jar</include>				                
-				            </includes>							
+							<includes>
+								<include>${project.build.directory}/log4j.properties</include>
+								<include>${project.build.finalName}.jar</include>
+							</includes>
 							<excludes>
-							     <exclude>*.iml</exclude>
-							     <exclude>pom.xml</exclude>
-							     <!-- <exclude>target/**/*</exclude> -->
+								<exclude>*.iml</exclude>
+								<exclude>pom.xml</exclude>
+								<!-- <exclude>target/**/*</exclude> -->
 							</excludes>
 						</resource>
 					</resources>
 				</configuration>
 			</plugin>
-			
-<!-- 	        <plugin>
-	            <groupId>org.apache.maven.plugins</groupId>
-	            <artifactId>maven-jar-plugin</artifactId>
-	            <version>3.0.2</version>
-	            <configuration>
-	            	<descriptorRefs>
-						<descriptorRef>jar-with-dependencies</descriptorRef>
-					</descriptorRefs>
-	                <archive>
-	                    <index>true</index>
-	                    <manifest>
-	                        <addClasspath>true</addClasspath>
-	                        <mainClass>com.aiblockchain.server.NettyServerMain</mainClass>
-	                    </manifest>
-	                    <manifestEntries>
-	                        <mode>development</mode>
-	                        <url>${pom.url}</url>
-	                        <key>value</key>
-	                        <Class-Path>.</Class-Path>
-	                    </manifestEntries>
-	                </archive>
-	            </configuration>
-	        </plugin> -->
-        			
-			<!-- 
-		      <plugin>
-		       <groupId>org.codehaus.mojo</groupId>
-		       <artifactId>exec-maven-plugin</artifactId>
-		       <version>1.1.1</version>
-		       <executions>
-		        <execution>
-		         <phase>test</phase>
-		         <goals>
-		          <goal>java</goal>
-		         </goals>
-		         <configuration>
-		          <mainClass>com.aiblockchain.NettyServerMain</mainClass>
-		          <arguments>
-		           <argument>netty</argument>
-		           <argument>5000</argument>
-		          </arguments>
-		         </configuration>
-		        </execution>
-		       </executions>
-		      </plugin>	
-		       -->	
-		       
-		    <!-- Need this to run in docker -->
-	        <plugin>
-	            <groupId>org.apache.maven.plugins</groupId>
-	            <artifactId>maven-shade-plugin</artifactId>
-	            <version>2.4.3</version>
-	            <executions>
-	                <execution>
-	                    <phase>package</phase>
-	                    <goals>
-	                        <goal>shade</goal>
-	                    </goals>
-				        <configuration>
-				          <filters>
-				            <filter>
-				              <artifact>*:*</artifact>
-				              <excludes>
-				                <exclude>META-INF/*.SF</exclude>
-				                <exclude>META-INF/*.DSA</exclude>
-				                <exclude>META-INF/*.RSA</exclude>
-				              </excludes>
-				            </filter>
-				          </filters>
-			              <transformers>
-			                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-			                  <resource>META-INF/spring.handlers</resource>
-			                </transformer>
-			                <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
-			                  <resource>META-INF/spring.schemas</resource>
-			                </transformer>
-			              </transformers>				          
-				        </configuration>
-	                </execution>
-	            </executions>
-	        </plugin>		       				    		
-		</plugins>	
+
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-jar-plugin</artifactId> 
+				<version>3.0.2</version> <configuration> <descriptorRefs> <descriptorRef>jar-with-dependencies</descriptorRef> 
+				</descriptorRefs> <archive> <index>true</index> <manifest> <addClasspath>true</addClasspath> 
+				<mainClass>com.aiblockchain.server.NettyServerMain</mainClass> </manifest> 
+				<manifestEntries> <mode>development</mode> <url>${pom.url}</url> <key>value</key> 
+				<Class-Path>.</Class-Path> </manifestEntries> </archive> </configuration> 
+				</plugin> -->
+
+			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>exec-maven-plugin</artifactId> 
+				<version>1.1.1</version> <executions> <execution> <phase>test</phase> <goals> 
+				<goal>java</goal> </goals> <configuration> <mainClass>com.aiblockchain.NettyServerMain</mainClass> 
+				<arguments> <argument>netty</argument> <argument>5000</argument> </arguments> 
+				</configuration> </execution> </executions> </plugin> -->
+
+			<!-- Need this to run in docker -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>2.4.3</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<filters>
+								<filter>
+									<artifact>*:*</artifact>
+									<excludes>
+										<exclude>META-INF/*.SF</exclude>
+										<exclude>META-INF/*.DSA</exclude>
+										<exclude>META-INF/*.RSA</exclude>
+									</excludes>
+								</filter>
+							</filters>
+							<transformers>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring.handlers</resource>
+								</transformer>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+									<resource>META-INF/spring.schemas</resource>
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 </project>

@@ -1,139 +1,121 @@
 <?xml  version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
                            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
                            http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
-                           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+                           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+                           http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
 
-    
-    <!-- <mvc:annotation-driven /> -->
-    <context:annotation-config />
-    <context:component-scan base-package="com.aiblockchain.rest" />
-    <context:property-placeholder location="classpath:props/jdbc.properties"/>
-    
-    <jpa:repositories base-package="com.aiblockchain.rest.data.repository"/>
-    
-	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-	    <property name="locations" value="classpath:props/jdbc.properties"/>
+
+	<!-- <mvc:annotation-driven /> -->
+	<context:annotation-config />
+	<context:component-scan base-package="com.aiblockchain.rest" />
+	<context:property-placeholder location="classpath:props/jdbc.properties" />
+
+	<jpa:repositories base-package="com.aiblockchain.rest.data.repository" />
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="classpath:props/jdbc.properties" />
 	</bean>
 
-    <!-- Dat Database -->
-    <bean id="dataSourceDat" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-	    <property name="driverClassName" value="${jdbc.driverClassName}"/>
-	    <property name="url" value="${jdbc.url.dat}"/>
-	    <property name="username" value="${jdbc.username}"/>
-	    <property name="password" value="${jdbc.password}"/>
-    </bean>
-    
-    <bean id="entityManagerFactoryDat" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="dataSourceDat"/>
-        <property name="packagesToScan" value="com.aiblockchain.rest" />      
-        <property name="persistenceXmlLocation" value="classpath:spring/persistence.xml" />
-        <property name="persistenceUnitName" value="aiblockchain_mysql_dat"/>
-    </bean>
+	<!-- Dat Database -->
+	<bean id="dataSourceDat"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url.dat}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="entityManagerFactoryDat"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSourceDat" />
+		<property name="packagesToScan" value="com.aiblockchain.rest" />
+		<property name="persistenceXmlLocation" value="classpath:spring/persistence.xml" />
+		<property name="persistenceUnitName" value="aiblockchain_mysql_dat" />
+	</bean>
+
+	<bean id="transactionManagerDat" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactoryDat" />
+		<property name="dataSource" ref="dataSourceDat" />
+		<qualifier value="dat" />
+	</bean>
+
+	<!-- <tx:annotation-driven transaction-manager="transactionManagerDat" /> -->
+
+	<!-- Database -->
+	<bean id="dataSourceCre"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url.cre}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<bean id="entityManagerFactoryCre"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSourceCre" />
+		<property name="packagesToScan" value="com.aiblockchain.rest" />
+		<property name="persistenceXmlLocation" value="classpath:spring/persistence.xml" />
+		<property name="persistenceUnitName" value="aiblockchain_mysql_cre" />
+	</bean>
+
+	<bean id="transactionManagerCre" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactoryCre" />
+		<property name="dataSource" ref="dataSourceCre" />
+		<qualifier value="cre" />
+	</bean>
+
+	<!-- <tx:annotation-driven transaction-manager="transactionManagerCre" /> -->
+	<tx:annotation-driven />
+
+	<bean id="applicationContext" class="com.aiblockchain.rest.data.config.SpringDataContext"></bean>
+
+	<mongo:mongo-client id="mongoClient" host="localhost" port="27017" />
+	<!-- <mongo:db-factory id="mongoDbFactory" dbname="cre" mongo-ref="mongoClient" /> -->
+	
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate"> 
+	    <!-- <constructor-arg ref="mongoDbFactory"/> -->
+    	<constructor-arg ref="mongoClient" />
+    	<constructor-arg value="cre" />	    
+	</bean>
+	
+	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+	
+	<mongo:repositories base-package="com.aiblockchain.rest.data.mongo.cre.respository" mongo-template-ref="mongoTemplate"/>
   
-  <bean id="transactionManagerDat" class="org.springframework.orm.jpa.JpaTransactionManager">
-      <property name="entityManagerFactory" ref="entityManagerFactoryDat" />
-      <property name="dataSource" ref="dataSourceDat"/>
-      <qualifier value="dat"/>
-  </bean>
-  
-  <!-- <tx:annotation-driven transaction-manager="transactionManagerDat" /> -->
-    
-   <!-- Database -->
-   <bean id="dataSourceCre" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-    <property name="driverClassName" value="${jdbc.driverClassName}"/>
-    <property name="url" value="${jdbc.url.cre}"/>
-    <property name="username" value="${jdbc.username}"/>
-    <property name="password" value="${jdbc.password}"/>
-   </bean>
-    
-   <bean id="entityManagerFactoryCre" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-       <property name="dataSource" ref="dataSourceCre"/>
-       <property name="packagesToScan" value="com.aiblockchain.rest" />      
-       <property name="persistenceXmlLocation" value="classpath:spring/persistence.xml" />
-       <property name="persistenceUnitName" value="aiblockchain_mysql_cre"/>
-   </bean>
-  
-  <bean id="transactionManagerCre" class="org.springframework.orm.jpa.JpaTransactionManager">
-      <property name="entityManagerFactory" ref="entityManagerFactoryCre" />
-      <property name="dataSource" ref="dataSourceCre"/>
-      <qualifier value="cre"/>
-  </bean>
-      
-  <!-- <tx:annotation-driven transaction-manager="transactionManagerCre" /> -->
-  <tx:annotation-driven />
-    
-  <bean id="applicationContext" class="com.aiblockchain.rest.data.config.SpringDataContext"></bean>
-    
-    
-    <!--<context:annotation-config />
-    <context:component-scan base-package="com.example" />
-    
-    <mvc:annotation-driven/>
-
-    <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
-        <property name="prefix" value="/WEB-INF/jsp/" />
-        <property name="suffix" value=".jsp" />
-    </bean>
-
-    <tx:annotation-driven />
-    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="entityManagerFactory" ref="entityManagerFactory" />
-        <property name="dataSource" ref="dataSource"/>
-
-    </bean>
-
-    <beans profile="default">
-        <jdbc:embedded-database id="dataSource"/>        
-        <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-            <property name="dataSource" ref="dataSource"/>
-            <property name="jpaVendorAdapter">
-                <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
-            </property>
-            <property name="jpaProperties">
-                <props>
-                    <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
-                    <prop key="hibernate.hbm2ddl.auto">create</prop>
-                </props>
-            </property>
-        </bean>
-    </beans>
-
-    <beans profile="prod">
-        <bean class="java.net.URI" id="dbUrl">
-            <constructor-arg value="#{systemEnvironment['DATABASE_URL']}"/>
-        </bean>
-
-        <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-            <property name="url" value="#{ 'jdbc:postgresql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath() }"/>
-            <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
-            <property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>
-        </bean>
-        
-        <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-            <property name="dataSource" ref="dataSource"/>
-            <property name="jpaVendorAdapter">
-                <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
-            </property>
-            <property name="jpaProperties">
-                <props>
-                    <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
-                    <prop key="hibernate.show_sql">true</prop>
-                    change this to 'verify' before running as a production app
-                    <prop key="hibernate.hbm2ddl.auto">update</prop>
-                </props>
-            </property>
-        </bean>
-    </beans>-->
+	<!--<context:annotation-config /> <context:component-scan base-package="com.example" 
+		/> <mvc:annotation-driven/> <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" 
+		/> <property name="prefix" value="/WEB-INF/jsp/" /> <property name="suffix" 
+		value=".jsp" /> </bean> <tx:annotation-driven /> <bean id="transactionManager" 
+		class="org.springframework.orm.jpa.JpaTransactionManager"> <property name="entityManagerFactory" 
+		ref="entityManagerFactory" /> <property name="dataSource" ref="dataSource"/> 
+		</bean> <beans profile="default"> <jdbc:embedded-database id="dataSource"/> 
+		<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"> 
+		<property name="dataSource" ref="dataSource"/> <property name="jpaVendorAdapter"> 
+		<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/> 
+		</property> <property name="jpaProperties"> <props> <prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop> 
+		<prop key="hibernate.hbm2ddl.auto">create</prop> </props> </property> </bean> 
+		</beans> <beans profile="prod"> <bean class="java.net.URI" id="dbUrl"> <constructor-arg 
+		value="#{systemEnvironment['DATABASE_URL']}"/> </bean> <bean id="dataSource" 
+		class="org.apache.commons.dbcp.BasicDataSource"> <property name="url" value="#{ 
+		'jdbc:postgresql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath() 
+		}"/> <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] 
+		}"/> <property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] 
+		}"/> </bean> <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"> 
+		<property name="dataSource" ref="dataSource"/> <property name="jpaVendorAdapter"> 
+		<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/> 
+		</property> <property name="jpaProperties"> <props> <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop> 
+		<prop key="hibernate.show_sql">true</prop> change this to 'verify' before 
+		running as a production app <prop key="hibernate.hbm2ddl.auto">update</prop> 
+		</props> </property> </bean> </beans> -->
 
 </beans>

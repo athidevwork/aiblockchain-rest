@@ -19,6 +19,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.aiblockchain.rest.data.mongo.cre.resource.MongoFaultResource;
 import com.aiblockchain.rest.data.resource.DataFaultResource;
 import com.aiblockchain.rest.exception.ExceptionMapper;
 import com.aiblockchain.rest.jpa.resource.FaultResource;
@@ -63,6 +64,7 @@ public class NettyServer {
         //.register(DigitalAssetTransferResource.class)
         .register(FaultResource.class)
         .register(DataFaultResource.class)
+        .register(MongoFaultResource.class)
         .register(ExceptionMapper.class)
         .register(MoxyJsonFeature.class)
         .register(MoxyXmlFeature.class)
