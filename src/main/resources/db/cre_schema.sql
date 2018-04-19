@@ -36,7 +36,8 @@ create table fault (
 	category varchar(25) default null, /* fault category */
 	subcategory varchar(25) default null, /* fault sub category */
 	description varchar(75) default null,	
-	fdate varchar(25),
+	startDate varchar(25),
+	endDate varchar(25),
 	fsignature varchar(64) default null,
 	aibc_status varchar(25) default null,
 	aibc_trans  varchar(64) default null,
@@ -55,3 +56,15 @@ INSERT INTO asset (id, atype, category, subcategory, description) VALUES (8, 'CR
 INSERT INTO asset (id, atype, category, subcategory, description) VALUES (9, 'CRE', 'Plumbing', 'Blocked Filter', 'Blocked Filter');
 INSERT INTO asset (id, atype, category, subcategory, description) VALUES (10, 'CRE', 'Plumbing', 'Kitchen Faucet', 'Kitchen Faucet Leak');
 INSERT INTO asset (id, atype, category, subcategory, description) VALUES (11, 'CRE', 'Plumbing', 'Bathroom', 'Bathroom Leak');*/
+
+create table cre_user (
+	id int not null auto_increment,
+	email varchar(25) ,--default null,
+	username varchar(75),
+	password varchar(75),
+	authorization varchar(75),
+	first_name varchar(25),
+	last_name varchar(25),
+	status varchar(20),
+	primary key (id, email)
+);

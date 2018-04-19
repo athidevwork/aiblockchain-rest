@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -19,6 +20,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -30,6 +33,7 @@ import com.aiblockchain.rest.data.util.RestUtil;
 import com.aiblockchain.rest.jpa.entity.ServiceResponse;
 import com.aiblockchain.rest.jpa.entity.User;
 import com.aiblockchain.rest.jpa.entity.Users;
+import com.aiblockchain.rest.jpa.entity.cre.CreUser;
 import com.aiblockchain.rest.jpa.entity.cre.Fault;
 import com.aiblockchain.rest.jpa.entity.cre.FaultAsset;
 import com.aiblockchain.rest.jpa.entity.cre.FaultAsset;
@@ -51,6 +55,8 @@ public class FaultResource {
 	
 	//@Autowired
 	//Users users;
+    @Context
+    private HttpServletRequest request;
 	
 	public FaultResource () {
 		//RestUtil.setPropsForEnv("cre");		
@@ -61,6 +67,87 @@ public class FaultResource {
     public Response getHome() {
     	return Response.ok().entity("Got Fault Resource").build();
     }
+
+    @POST
+	@Path("/creuser/register")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON, MediaType.TEXT_XML})
+    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON, MediaType.TEXT_XML})
+    public Response createCreUser (CreUser user) throws Exception {
+    	FaultDataService faultService = (FaultDataService) SpringDataContext.getBean("SampleFaultDataService");
+    	
+       	/*String encUserName = Utils.encrypt(user.getUsername(), "CreFaultRestService");
+    	String encPassword = Utils.encrypt(user.getPassword(), "CreFaultRestService");*/
+    	String authorizationStr = user.getUsername() + ":" + user.getPassword();
+    	
+    	byte[] encodedBytes;
+        encodedBytes = Base64.getEncoder().encode(authorizationStr.getBytes());
+        String authorization = "Basic " + new String(encodedBytes);
+        
+        /*user.setUsername(encUserName);
+        user.setPassword(encPassword);*/
+        user.setAuthorization(authorization);
+        
+    	CreUser savedUser = faultService.savecreUser(user);  
+    	
+    	/*savedUser.setUsername(Utils.decrypt(savedUser.getUsername(), "CreFaultRestService"));
+    	savedUser.setPassword(Utils.decrypt(savedUser.getPassword(), "CreFaultRestService"));*/
+    	return Response.ok().entity(savedUser).build();
+    } 
+
+    @POST
+	@Path("/creuser/validate")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON, MediaType.TEXT_XML})
+    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON, MediaType.TEXT_XML})
+    public Response validateCreUser (CreUser user) {
+    	FaultDataService faultService = (FaultDataService) SpringDataContext.getBean("SampleFaultDataService");
+
+    	CreUser dbUser = faultService.getValidatedCreUsers(user.getUsername(), user.getPassword());
+    	System.out.println("User : " + dbUser);
+    	
+    	if (dbUser == null)
+    		return Response.noContent().build();
+    	else
+    		return Response.ok(dbUser).build();
+    }
+    
+    @GET
+    @Path("/creuser")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public Response checkUser(@QueryParam("user") String user, @QueryParam("password") String password, @Context HttpServletRequest request) {
+    	System.out.println("Entering check user : " + request);
+    	String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);    	
+    	
+    	System.out.println("auth header : " + authHeader);
+    	String authorizationStr = user + ":" + password;
+    	
+    	byte[] encodedBytes;
+        encodedBytes = Base64.getEncoder().encode(authorizationStr.getBytes());
+        String authorization = "Basic " + new String(encodedBytes);
+        
+        System.out.println("Authorization check : " + authHeader == authorization);
+    	
+    	FaultDataService faultService = (FaultDataService) SpringDataContext.getBean("SampleFaultDataService");
+    	CreUser dbUser = faultService.getValidatedCreUsers(authorization);
+    	System.out.println("User : " + dbUser);
+		
+    	return Response.ok().entity(dbUser).build();
+    }
+
+    @GET
+	@Path("/creusers")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON, MediaType.TEXT_XML})
+    public Response getCreUser() {
+    	FaultDataService faultService = (FaultDataService) SpringDataContext.getBean("SampleFaultDataService");
+    	List<CreUser> usersList = faultService.getCreUsersList();
+    	System.out.println("Users size : " + usersList.size());
+    	
+    	List<Object> objectList = new ArrayList<Object>();
+    	for (CreUser fault : usersList) {
+    		objectList.add(fault);
+    	}
+    	
+    	return Response.ok().entity(objectList).header("CreUser", "AllUsers").build();
+    } 
     
     @GET
     @Path("/user/create")

@@ -74,7 +74,7 @@ public class MongoFaultResource {
     @GET
     @Path("/asset/{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Response getAsset(@PathParam(value = "id") int id) {
+    public Response getAsset(@PathParam(value = "id") String id) {
     	MongoFaultAssetService faultService = (MongoFaultAssetService) SpringDataContext.getBean("MongoFaultAssetService");
     	
     	MongoFaultAsset asset = faultService.getFaultAsset(id);
@@ -86,10 +86,10 @@ public class MongoFaultResource {
     @Path("/asset/{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})    
-    public Response updateAsset(@PathParam(value = "id") int id, MongoFaultAsset asset) {
+    public Response updateAsset(@PathParam(value = "id") String id, MongoFaultAsset asset) {
     	MongoFaultAssetService faultService = (MongoFaultAssetService) SpringDataContext.getBean("MongoFaultAssetService");
     	if (faultService.updateFaultAsset(id, asset))       
-    		return Response.ok().build();
+    		return Response.ok(faultService.getFaultAsset(id)).build();
     	else
     		return Response.noContent().entity("Id not found in db for " + id).build();    	
     }
@@ -98,10 +98,10 @@ public class MongoFaultResource {
     @Path("/asset/{id}")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     //@Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})    
-    public Response deleteAsset(@PathParam(value = "id") int id) {
+    public Response deleteAsset(@PathParam(value = "id") String id) {
     	MongoFaultAssetService faultService = (MongoFaultAssetService) SpringDataContext.getBean("MongoFaultAssetService");
     	if (faultService.deleteFaultAsset(id))       
-    		return Response.ok().build();
+    		return Response.ok(faultService.getFaultAsset(id)).build();
     	else
     		return Response.noContent().entity("Id not found in db for " + id).build();    	
     }

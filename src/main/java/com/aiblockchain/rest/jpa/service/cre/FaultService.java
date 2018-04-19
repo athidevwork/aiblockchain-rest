@@ -12,6 +12,7 @@ import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.aiblockchain.rest.jpa.entity.cre.CreUser;
 import com.aiblockchain.rest.jpa.entity.cre.Fault;
 import com.aiblockchain.rest.jpa.entity.cre.FaultAsset;
 

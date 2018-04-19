@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aiblockchain.rest.jpa.entity.cre.CreUser;
 import com.aiblockchain.rest.jpa.entity.cre.Fault;
 import com.aiblockchain.rest.jpa.entity.cre.FaultAsset;
 import com.aiblockchain.rest.jpa.entity.cre.FaultAsset;
@@ -54,7 +55,8 @@ public class FaultDataService {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
             System.out.println("Today's date is: "+dateFormat.format(date));
 
-        	fault.setDate(dateFormat.format(date));
+            fault.setStartDate(dateFormat.format(date));
+	    	fault.setEndDate(dateFormat.format(date));
         	fault.setCategory("Plumbing");
         	fault.setSubCategory("Master Bath");     	
         	fault.setDescription("Master Batch Left Faucet Leak");
@@ -121,7 +123,8 @@ public class FaultDataService {
 	        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
 	        System.out.println("Today's date is: "+dateFormat.format(date));
 
-	    	fault.setDate(dateFormat.format(date));
+	    	fault.setStartDate(dateFormat.format(date));
+	    	fault.setEndDate(dateFormat.format(date));
 	    	fault.setCategory(fault.getCategory());
 	    	fault.setSubCategory(fault.getSubCategory());
 	    	fault.setDescription(fault.getDescription());
@@ -137,5 +140,74 @@ public class FaultDataService {
 	    }
 
 		return faultAsset;
+	}
+
+	public CreUser savecreUser(CreUser user) {
+		System.out.println("Fault asset in service : " + user);
+	    Query query = entityManager.createQuery("select c from CreUser c "
+	    		+ " where c.email = :email")
+	    		.setParameter("email", user.getEmail());
+
+	    List<CreUser> dbUser = (List<CreUser>) query.getResultList();
+	    
+	    CreUser saveToUser = new CreUser();
+	    if (dbUser.size() == 0) {
+	    	System.out.println("Creating new user");
+	    	saveToUser.setEmail(user.getEmail());
+	    	saveToUser.setFirstName(user.getFirstName());
+	    	saveToUser.setLastName(user.getLastName());
+	    	saveToUser.setUsername(user.getUsername());
+	    	saveToUser.setPassword(user.getPassword());
+	    	saveToUser.setAuthorization(user.getAuthorization());
+	    	saveToUser.setStatus("ACTIVE");
+	    	entityManager.persist(saveToUser);
+	    }
+	    else {
+	    	System.out.println("Found existing user");
+	    	saveToUser.setId(dbUser.get(0).getId());
+	    	saveToUser.setEmail(dbUser.get(0).getEmail());
+	    	saveToUser.setFirstName(dbUser.get(0).getFirstName());
+	    	saveToUser.setLastName(dbUser.get(0).getLastName());
+	    	saveToUser.setUsername(dbUser.get(0).getUsername());
+	    	saveToUser.setPassword(dbUser.get(0).getPassword());
+	    	saveToUser.setAuthorization(dbUser.get(0).getAuthorization());
+	    	saveToUser.setStatus(dbUser.get(0).getStatus());
+	    }
+	    return saveToUser;
+	}
+
+	public List<CreUser> getCreUsersList() {
+	    Query query = entityManager.createQuery("select c from CreUser c");
+	    List<CreUser> users = (List<CreUser>) query.getResultList();	
+		return users;
+	}
+
+	public CreUser getAuthorization(String auth) {
+	    Query query = entityManager.createQuery("select c from CreUser c "
+	    		+ " where c.authorization = :auth")
+	    		.setParameter("auth", auth);
+
+	    List<CreUser> dbUser = (List<CreUser>) query.getResultList();
+	    return dbUser.get(0);
+	}
+
+	public CreUser getValidatedCreUsers(String authorization) {
+		CreUser user = getAuthorization(authorization) ;
+		System.out.println ("Auth User : " + user);
+		return user;
+	}
+
+	public CreUser getValidatedCreUsers(String username, String password) {
+	    Query query = entityManager.createQuery("select c from CreUser c "
+	    		+ " where c.username = :username"
+	    		+ " and c.password = :password")
+	    		.setParameter("username", username)
+	    		.setParameter("password", password);
+
+	    List<CreUser> dbUser = (List<CreUser>) query.getResultList();
+	    if (dbUser.isEmpty())
+	    	return null;
+	    else
+	    	return dbUser.get(0);
 	}
 }

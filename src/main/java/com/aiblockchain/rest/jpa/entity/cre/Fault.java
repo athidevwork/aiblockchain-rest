@@ -27,7 +27,8 @@ public class Fault {
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	int id;
-	String fDate;
+	String startDate;
+	String endDate;
 	String category;
 	String subCategory;
 	String description;	
@@ -56,12 +57,22 @@ public class Fault {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getDate() {
-		return fDate;
+	public String getStartDate() {
+		return startDate;
 	}
-	public void setDate(String date) {
-		this.fDate = date;
+
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
 	}
+
+	public String getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+
 	public String getCategory() {
 		return category;
 	}
@@ -104,10 +115,12 @@ public class Fault {
 	public void setFaultAsset(FaultAsset asset) {
 		this.asset = asset;
 	}
+
 	@Override
 	public String toString() {
-		return "Fault [id=" + id + ", fDate=" + fDate + ", category=" + category + ", subCategory=" + subCategory
-				+ ", description=" + description + ", fSignature=" + fSignature + ", aibcStatus=" + aibcStatus
-				+ ", aibcTrans=" + aibcTrans + ", asset=" + asset + "]";
+		return "Fault [id=" + id + ", startDate=" + startDate + ", endDate=" + endDate + ", category=" + category
+				+ ", subCategory=" + subCategory + ", description=" + description + ", fSignature=" + fSignature
+				+ ", aibcStatus=" + aibcStatus + ", aibcTrans=" + aibcTrans + ", asset=" + asset + "]";
 	}
+
 }

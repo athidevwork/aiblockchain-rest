@@ -5,6 +5,7 @@ package com.aiblockchain.server;
 
 import java.net.URI;
 
+import javax.servlet.http.HttpServlet;
 import javax.ws.rs.core.UriBuilder;
 
 import org.apache.log4j.PropertyConfigurator;
@@ -15,6 +16,7 @@ import org.glassfish.jersey.moxy.json.MoxyJsonFeature;
 import org.glassfish.jersey.moxy.xml.MoxyXmlFeature;
 import org.glassfish.jersey.netty.httpserver.NettyHttpContainerProvider;
 import org.glassfish.jersey.server.ResourceConfig;
+import org.glassfish.jersey.servlet.internal.spi.RequestContextProvider;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -73,6 +75,11 @@ public class NettyServer {
         .register(JacksonFeature.class)
         .register(JacksonJsonProvider.class)        
         .register(MultiPartFeature.class)
+        /*.register(RequestContextFilter.class);
+        .property("contextConfig", annotationConfigApplicationContext);
+        .register(RestSupport.class)*/
+        //.register(RequestContextProvider.class)
+        //.register(HttpServlet.class)
         //.register(NettyHttpContainerProvider.class)
         //.register(HttpService.class)
         .register(org.glassfish.jersey.filter.LoggingFilter.class);

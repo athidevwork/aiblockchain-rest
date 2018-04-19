@@ -10,9 +10,10 @@ import org.springframework.data.annotation.Id;
  *
  */
 public class MongoFault {
-	@Id
-	int id;
-	String fDate;
+	//@Id
+	//int id;
+	String startDate;
+	String endDate;
 	String category;
 	String subCategory;
 	String description;	
@@ -20,20 +21,26 @@ public class MongoFault {
 	String aibcStatus;
 	String aibcTrans;
 	
-	public int getId() {
+	/*public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getfDate() {
-		return fDate;
-	}
-	public void setfDate(String fDate) {
-		this.fDate = fDate;
-	}
+	}*/
 	public String getCategory() {
 		return category;
+	}
+	public String getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+	public String getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
 	}
 	public void setCategory(String category) {
 		this.category = category;
@@ -70,8 +77,8 @@ public class MongoFault {
 	}
 	@Override
 	public String toString() {
-		return "MongoFault [id=" + id + ", fDate=" + fDate + ", category=" + category + ", subCategory=" + subCategory
-				+ ", description=" + description + ", fSignature=" + signature + ", aibcStatus=" + aibcStatus
-				+ ", aibcTrans=" + aibcTrans + "]";
+		return "MongoFault [startDate=" + startDate + ", endDate=" + endDate + ", category=" + category
+				+ ", subCategory=" + subCategory + ", description=" + description + ", signature=" + signature
+				+ ", aibcStatus=" + aibcStatus + ", aibcTrans=" + aibcTrans + "]";
 	}
 }

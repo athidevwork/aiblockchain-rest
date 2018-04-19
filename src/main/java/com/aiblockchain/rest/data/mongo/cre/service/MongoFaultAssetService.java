@@ -3,10 +3,13 @@
  */
 package com.aiblockchain.rest.data.mongo.cre.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.mongodb.repository.query.AbstractMongoQuery;
 import org.springframework.stereotype.Service;
 
 import com.aiblockchain.rest.data.config.SpringDataContext;
@@ -42,11 +45,18 @@ public class MongoFaultAssetService {
 		for (MongoFault fault : faultAsset.getFaults()) {
 			System.out.println("Encoded Fault Hash string : " + Utils.sha256(fault.toString()));		
 	    	fault.setSignature(Utils.sha256(fault.toString()));
+        	
+	    	Date date = new Date();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+            System.out.println("Today's date is: "+dateFormat.format(date));
+
+            fault.setStartDate(dateFormat.format(date));
+	    	fault.setEndDate(dateFormat.format(date));	    	
 		}
 		return assetRepo.save(faultAsset);
 	}
 
-	public boolean updateFaultAsset(int id, MongoFaultAsset asset) {
+	public boolean updateFaultAsset(String id, MongoFaultAsset asset) {
 		MongoFaultAssetRepository assetRepo = (MongoFaultAssetRepository) SpringDataContext.getBean("MongoFaultAssetRepository");
 		System.out.println("Save with repo : " + assetRepo);
 		if (assetRepo.existsById(String.valueOf(id))) {
@@ -56,6 +66,11 @@ public class MongoFaultAssetService {
 			for (MongoFault fault : dbAsset.getFaults()) {
 				fault.setAibcTrans(asset.getFaults().get(i).getAibcTrans());
 				fault.setAibcStatus(asset.getFaults().get(i).getAibcStatus());
+		    	Date date = new Date();
+	            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+	            System.out.println("Today's date is: "+dateFormat.format(date));
+
+	            fault.setEndDate(dateFormat.format(date));
 				i++;
 			}
 			assetRepo.save(dbAsset);
@@ -67,7 +82,7 @@ public class MongoFaultAssetService {
 		}
 	}
 	
-	public boolean deleteFaultAsset(int id) {
+	public boolean deleteFaultAsset(String id) {
 		MongoFaultAssetRepository assetRepo = (MongoFaultAssetRepository) SpringDataContext.getBean("MongoFaultAssetRepository");
 		System.out.println("Save with repo : " + assetRepo);
 		if (assetRepo.existsById(String.valueOf(id))) {
@@ -83,7 +98,7 @@ public class MongoFaultAssetService {
 		}
 	}
 
-	public MongoFaultAsset getFaultAsset(int id) {
+	public MongoFaultAsset getFaultAsset(String id) {
 		MongoFaultAssetRepository assetRepo = (MongoFaultAssetRepository) SpringDataContext.getBean("MongoFaultAssetRepository");		
 		System.out.println("ID : " + id);
 		MongoFaultAsset asset = null;
@@ -102,6 +117,7 @@ public class MongoFaultAssetService {
 	public List<MongoFaultAsset> getFaultAsset(String building, String location, String unit) {
 		MongoFaultAssetRepository assetRepo = (MongoFaultAssetRepository) SpringDataContext.getBean("MongoFaultAssetRepository");
 		System.out.println("Save with repo : " + assetRepo);
+		System.out.println("building : " + building + ", location : " + location + ", unit : " + unit);
 		List<MongoFaultAsset> assets = assetRepo.findByBuildingAndLocationAndUnit(building, location, unit);
 		System.out.println("Assets in service : " + assets);
 		return assets;

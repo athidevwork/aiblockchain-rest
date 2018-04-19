@@ -6,6 +6,9 @@ package com.aiblockchain.rest.data.mongo.cre.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -17,7 +20,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "faults")
 public class MongoFaultAsset {
 	@Id	
-	int id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	String id;
 	String atype;
 	String building;
 	String location;
@@ -25,10 +29,10 @@ public class MongoFaultAsset {
 	String description;
 	private List<MongoFault> faults = new ArrayList<MongoFault>();
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getAtype() {
